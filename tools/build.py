@@ -28,6 +28,7 @@ SERIES = "Startup Bootcamp Series"
 # Update this if you name the GitHub repo something other than 'ai-founders-handbook'.
 SITE_URL = "https://arubhatt.github.io/ai-founders-handbook"
 PDF_HREF = "dist/The-AI-Founders-Handbook.pdf"
+ASSET_VER = "3"   # bump on any CSS/JS change to bust browser caches
 
 # ---------------------------------------------------------------- Table of contents
 TOC = [
@@ -275,8 +276,8 @@ def page_head(title, depth_ok=True):
 <meta property="og:image" content="{SITE_URL}/assets/img/cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/book.css">
-<link rel="stylesheet" href="assets/css/code.css">
+<link rel="stylesheet" href="assets/css/book.css?v={ASSET_VER}">
+<link rel="stylesheet" href="assets/css/code.css?v={ASSET_VER}">
 </head>
 <body>
 <div class="progress"></div>
@@ -307,8 +308,8 @@ def page_foot():
     <div class="search-results" id="search-results"></div>
   </div>
 </div>
-<script src="assets/js/search-index.js"></script>
-<script src="assets/js/book.js"></script>
+<script src="assets/js/search-index.js?v={ASSET_VER}"></script>
+<script src="assets/js/book.js?v={ASSET_VER}"></script>
 </body>
 </html>"""
 

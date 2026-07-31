@@ -48,8 +48,8 @@
   --paper-2:    #1D1A12;
   --paper-3:    #262117;
   --ink:        #F4EFE6;
-  --ink-2:      #D8D0C0;
-  --muted:      #B5AC99;
+  --ink-2:      #E8E1D2;
+  --muted:      #CDC4B0;
   --rule:       #38331F;
   --rule-2:     #47412F;
 
@@ -67,7 +67,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper:#14120C; --paper-2:#1D1A12; --paper-3:#262117;
-    --ink:#F4EFE6; --ink-2:#D8D0C0; --muted:#B5AC99;
+    --ink:#F4EFE6; --ink-2:#E8E1D2; --muted:#CDC4B0;
     --rule:#38331F; --rule-2:#47412F;
     --accent:#9CBDEC; --accent-ink:#BCD2F3; --accent-bg:#1A2436;
     --rust:#E39A7C; --rust-bg:#2B1E17; --sage:#9CC49B; --sage-bg:#172219;
