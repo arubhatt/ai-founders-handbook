@@ -431,6 +431,8 @@ figure figcaption .fig-label { color: var(--accent); font-weight: 600; text-tran
 .foot-curated a { border-bottom: 1px solid var(--rule-2); }
 .foot-inner a:hover { color: var(--accent); }
 .foot-gh { display: inline-flex; align-items: center; gap: .45rem; }
+.foot-right { display: inline-flex; align-items: center; gap: 1.3rem; flex-wrap: wrap; }
+.foot-dl { border-bottom: 1px solid var(--rule-2); }
 @media print { .site-footer { display: none; } }
 .cover-rule { height: 1px; background: var(--rule-2); margin: 3rem 0; }
 .part-block { margin: 2.5rem 0; }
@@ -470,10 +472,14 @@ figure figcaption .fig-label { color: var(--accent); font-weight: 600; text-tran
 /* ---------- Print ---------- */
 @media print {
   .topbar, .sidebar, .progress, .prevnext, .search-modal, .copy, .anchor, .menu-toggle { display: none !important; }
+  .callout, .exercise, .codeblock pre, .prose thead th, .prose tbody tr:nth-child(even), figure .diagram {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
   body { background: #fff; color: #000; font-size: 11pt; }
   .layout { display: block; }
   .reading { max-width: none; padding: 0; }
-  .sidenote { float: none; width: auto; margin: .6rem 0; border-left: 2px solid #999; padding-left: .7rem; font-size: 9pt; }
+  .sidenote { float: none !important; clear: none !important; display: block; width: auto !important; max-width: none !important;
+    margin: .5rem 0 !important; border-left: 2px solid #bbb; padding: .25rem 0 .25rem .7rem; font-size: 9.5pt; background: none !important; }
   .callout, .table-wrap, .codeblock pre, figure { break-inside: avoid; }
   .prose h2, .prose h3 { break-after: avoid; }
   a { color: #000; text-decoration: none; background: none; }

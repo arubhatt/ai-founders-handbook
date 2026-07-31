@@ -25,6 +25,9 @@ IMG = os.path.join(ROOT, "assets", "img")
 BOOK_TITLE = "The AI Founder's Handbook"
 BOOK_SUB = "Building an AI Startup in 2026"
 SERIES = "Startup Bootcamp Series"
+# Update this if you name the GitHub repo something other than 'ai-founders-handbook'.
+SITE_URL = "https://arubhatt.github.io/ai-founders-handbook"
+PDF_HREF = "dist/The-AI-Founders-Handbook.pdf"
 
 # ---------------------------------------------------------------- Table of contents
 TOC = [
@@ -265,6 +268,12 @@ def page_head(title, depth_ok=True):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
+<meta name="description" content="{BOOK_SUB} — a field guide for founders building at the frontier, following one AI startup from idea to scale.">
+<meta property="og:title" content="{html.escape(BOOK_TITLE)}">
+<meta property="og:description" content="{BOOK_SUB} — a field guide for founders.">
+<meta property="og:type" content="book">
+<meta property="og:image" content="{SITE_URL}/assets/img/cover.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/book.css">
 <link rel="stylesheet" href="assets/css/code.css">
@@ -287,7 +296,8 @@ def page_foot():
 <footer class="site-footer">
   <div class="foot-inner">
     <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
-    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener">{ICONS['github']} github.com/arubhatt</a>
+    <span class="foot-right"><a class="foot-dl" href="{PDF_HREF}">Download PDF</a>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener">{ICONS['github']} github.com/arubhatt</a></span>
   </div>
 </footer>
 <div class="search-modal" id="search-modal">
