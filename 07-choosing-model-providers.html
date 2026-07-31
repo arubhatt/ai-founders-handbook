@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choosing Model Providers &amp; Hugging Face · The AI Founder&#x27;s Handbook</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/book.css">
+<link rel="stylesheet" href="assets/css/code.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html">The AI Founder's <b>Handbook</b></a>
+  <span class="spacer"></span>
+  <span class="byline-top hide-sm">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+  <button class="iconbtn" data-search-open aria-label="Search"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="hide-sm">Search</span> <kbd>/</kbd></button>
+  <a class="iconbtn" href="https://github.com/arubhatt" target="_blank" rel="noopener" aria-label="GitHub — arubhatt"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  <button class="iconbtn" id="theme-btn" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="toc"><a class="toc-book" href="index.html">The AI Founder&#x27;s Handbook</a>
+<div class="toc-part"><span class="pnum">I</span> Foundations</div>
+<a class="" href="01-introduction-to-ai-startups.html"><span class="cnum">01</span>Introduction to AI Startups</a>
+<a class="" href="02-ai-fundamentals-models.html"><span class="cnum">02</span>AI Fundamentals I: Models, Modalities &amp; Inference</a>
+<a class="" href="03-ai-fundamentals-rag-agents.html"><span class="cnum">03</span>AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</a>
+<div class="toc-part"><span class="pnum">II</span> Market &amp; Validation</div>
+<a class="" href="04-markets-users-product-strategy.html"><span class="cnum">04</span>Markets, Users &amp; AI Product Strategy</a>
+<a class="" href="05-data-strategy-flywheel.html"><span class="cnum">05</span>Data Strategy &amp; the Data Flywheel</a>
+<a class="" href="06-customer-validation-for-ai.html"><span class="cnum">06</span>Customer Validation for AI</a>
+<div class="toc-part"><span class="pnum">III</span> The Stack</div>
+<a class="current" href="07-choosing-model-providers.html"><span class="cnum">07</span>Choosing Model Providers &amp; Hugging Face</a>
+<div class="subnav"><a href="#the-build-versus-buy-spectrum">7.1  The build-versus-buy spectrum</a><a href="#choosing-a-frontier-model-provider">7.2  Choosing a frontier model provider</a><a href="#the-open-weight-route-and-hugging-face">7.3  The open-weight route and Hugging Face</a><a href="#the-license-is-the-landmine">The license is the landmine</a><a href="#the-inference-layer-sets-your-margins">7.4  The inference layer sets your margins</a><a href="#putting-it-together-route-dont-marry">7.5  Putting it together: route, don’t marry</a></div>
+<a class="" href="08-content-data-stack.html"><span class="cnum">08</span>The Content &amp; Data Stack</a>
+<a class="" href="09-infra-observability-llmops.html"><span class="cnum">09</span>Infrastructure, Observability &amp; LLMOps</a>
+<a class="" href="10-production-evals-monitoring.html"><span class="cnum">10</span>Production Evals &amp; Monitoring</a>
+<div class="toc-part"><span class="pnum">IV</span> Go-to-Market &amp; Moat</div>
+<a class="" href="11-selling-ai-customer-success.html"><span class="cnum">11</span>Selling AI &amp; Customer Success</a>
+<a class="" href="12-defensibility-ai-moat.html"><span class="cnum">12</span>Defensibility &amp; the AI Moat</a>
+<div class="toc-part"><span class="pnum">V</span> Company Building</div>
+<a class="" href="13-finance-unit-economics.html"><span class="cnum">13</span>Finance &amp; Unit Economics for AI</a>
+<a class="" href="14-venture-funding-for-ai.html"><span class="cnum">14</span>Venture Funding for AI</a>
+<a class="" href="15-pitfalls-crises-ai.html"><span class="cnum">15</span>Pitfalls &amp; Crises in AI</a>
+<div class="toc-part"><span class="pnum">VI</span> People</div>
+<a class="" href="16-team-culture-leadership.html"><span class="cnum">16</span>Team, Culture &amp; Leadership for AI</a>
+<div class="toc-part"><span class="pnum">VII</span> Responsibility</div>
+<a class="" href="17-responsible-ai-regulation.html"><span class="cnum">17</span>Responsible AI: Safety, Ethics &amp; Regulation</a></nav></aside>
+  <main class="content">
+    <article class="chapter">
+      <header class="chapter-head reading">
+        <div class="kicker">Part III · The Stack · Chapter 7</div>
+        <div class="chapter-num">07</div>
+        <h1 class="chapter-title">Choosing Model Providers &amp; Hugging Face</h1>
+        <p class="chapter-dek">Your model is a supplier, not a soulmate. How to pick one — closed API, open weight, or self-hosted — without betting the company on a vendor you&#x27;ll want to leave in six months.</p>
+        <div class="chapter-meta">22 min read · Part III · The Stack</div>
+      </header>
+      <div class="reading"><div class="prose">
+<p class="lede">The single most consequential technical decision an AI startup makes in its first year is also the one founders agonize over least: <strong>which model sits behind the product</strong>. They will spend weeks on a logo and minutes on a choice that determines their gross margin, their latency, their failure modes, their compliance surface, and — if they&rsquo;re careless — their independence. This chapter is about making that choice deliberately, and building it so you can unmake it.</p>
+<p>The good news for a 2026 founder is that you almost certainly should not train a model. The bad news is that &ldquo;just use an API&rdquo; hides a dozen sub-decisions, each with a cost attached. We&rsquo;ll walk the whole decision tree — from the build-versus-buy spectrum, through frontier providers, the open-weight route on Hugging Face, and the inference layer that quietly sets your unit economics — and we&rsquo;ll make every decision concrete by watching <strong>Cortex</strong>, our running example, an autonomous customer-support agent that resolves tickets end-to-end for mid-market SaaS companies.</p>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Open weights ≠ open source</p>
+<p>&ldquo;Open weight&rdquo; means the trained parameters are downloadable and you can run the model yourself. It says nothing about the <em>license</em>. A model can be open weight yet legally restricted (Llama&rsquo;s community license), while &ldquo;open source&rdquo; in the OSI sense — freedom to use, study, modify, and redistribute for any purpose — is rarer than the marketing implies. Always separate the artifact (weights you can download) from the rights (what the license lets you do with them).<span class="sidenote-ref">1</span><span class="sidenote"><span class="sn-num">1</span>This distinction bites startups constantly: teams download a model, ship it, and only discover the acceptable-use or scale clauses during an acquisition's due diligence.</span></p>
+</div>
+<h2 id="the-build-versus-buy-spectrum"><span class="secnum">7.1</span>The build-versus-buy spectrum<a class="anchor" href="#the-build-versus-buy-spectrum" aria-label="Link to this section">#</a></h2>
+<p>There is no single &ldquo;build or buy&rdquo; switch. There is a spectrum of ownership, and each step to the right buys you control at the price of capital, talent, and time.</p>
+<figure class="diagram"><svg viewBox="0 0 720 566" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Decision tree for sourcing an AI model, from renting a frontier API to pretraining your own.">
+  <style>
+    .dg text { font-family: var(--sans, sans-serif); fill: var(--ink, #201c16); }
+    .dg .q      { fill: var(--paper-2, #f3ecdd); stroke: var(--rule-2, #d7cbb2); }
+    .dg .qaccent{ fill: var(--accent, #234b7a); }
+    .dg .out    { fill: var(--accent-bg, #e9eef5); stroke: var(--accent, #234b7a); }
+    .dg .rec    { fill: var(--sage-bg, #e6ede2); stroke: var(--sage, #4b6b4e); }
+    .dg .start  { fill: var(--accent, #234b7a); stroke: var(--accent, #234b7a); }
+    .dg .start text, .dg .startlabel { fill: var(--paper, #faf7f0); }
+    .dg .faded  { fill: var(--paper, #faf7f0); stroke: var(--rule-2, #d7cbb2); opacity: .55; }
+    .dg .qt   { font-size: 13.5px; font-weight: 500; }
+    .dg .ot   { font-size: 13.5px; font-weight: 600; }
+    .dg .num  { font-size: 13.5px; font-weight: 700; fill: var(--accent, #234b7a); }
+    .dg .yes  { font-size: 11px; font-weight: 700; fill: var(--sage, #4b6b4e); letter-spacing: .05em; }
+    .dg .no   { font-size: 11px; font-weight: 700; fill: var(--muted, #6e675b); letter-spacing: .05em; }
+    .dg .cap  { font-size: 11px; font-weight: 600; fill: var(--muted, #6e675b); letter-spacing: .12em; }
+    .dg .flow { stroke: var(--rule-2, #d7cbb2); stroke-width: 1.6; fill: none; }
+  </style>
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2, #d7cbb2)"/>
+    </marker>
+  </defs>
+
+  <g class="dg">
+    <!-- axis caption -->
+    <text class="cap" x="80" y="16">RENT</text>
+    <text class="cap" x="640" y="16" text-anchor="end">OWN</text>
+
+    <!-- flow lines (drawn first, under boxes) -->
+    <path class="flow" d="M230 54 V88"   marker-end="url(#arw)"/>
+    <path class="flow" d="M230 152 V200" marker-end="url(#arw)"/>
+    <path class="flow" d="M230 264 V312" marker-end="url(#arw)"/>
+    <path class="flow" d="M230 376 V414" marker-end="url(#arw)"/>
+    <path class="flow" d="M230 466 V498" marker-end="url(#arw)"/>
+    <path class="flow" d="M380 120 H470" marker-end="url(#arw)"/>
+    <path class="flow" d="M380 232 H470" marker-end="url(#arw)"/>
+    <path class="flow" d="M380 344 H470" marker-end="url(#arw)"/>
+
+    <!-- edge labels -->
+    <text class="yes" x="420" y="114" text-anchor="middle">YES</text>
+    <text class="yes" x="420" y="226" text-anchor="middle">YES</text>
+    <text class="yes" x="420" y="338" text-anchor="middle">YES</text>
+    <text class="no"  x="242" y="180">NO</text>
+    <text class="no"  x="242" y="292">NO</text>
+    <text class="no"  x="242" y="404">NO</text>
+
+    <!-- start -->
+    <rect class="start" x="100" y="10" width="260" height="44" rx="22"/>
+    <text class="ot startlabel" x="230" y="37" text-anchor="middle">Your feature needs a model</text>
+
+    <!-- Q1 -->
+    <rect class="q" x="80" y="88" width="300" height="64" rx="9"/>
+    <text class="qt" x="230" y="114" text-anchor="middle">Can a hosted API clear quality,</text>
+    <text class="qt" x="230" y="132" text-anchor="middle">latency, cost &amp; privacy?</text>
+    <!-- Out 1 (recommended) -->
+    <rect class="rec" x="470" y="92" width="232" height="56" rx="9"/>
+    <text class="ot" x="486" y="125"><tspan class="num">①</tspan> Frontier API — rent</text>
+
+    <!-- Q2 -->
+    <rect class="q" x="80" y="200" width="300" height="64" rx="9"/>
+    <text class="qt" x="230" y="226" text-anchor="middle">Is the wall cost / volume /</text>
+    <text class="qt" x="230" y="244" text-anchor="middle">residency — not quality?</text>
+    <!-- Out 2 -->
+    <rect class="out" x="470" y="204" width="232" height="56" rx="9"/>
+    <text class="ot" x="486" y="230"><tspan class="num">②</tspan> Open weights on an</text>
+    <text class="ot" x="486" y="248" >     inference host</text>
+
+    <!-- Q3 -->
+    <rect class="q" x="80" y="312" width="300" height="64" rx="9"/>
+    <text class="qt" x="230" y="338" text-anchor="middle">Proprietary data + ML</text>
+    <text class="qt" x="230" y="356" text-anchor="middle">talent to adapt a model?</text>
+    <!-- Out 3 -->
+    <rect class="out" x="470" y="316" width="232" height="56" rx="9"/>
+    <text class="ot" x="486" y="342"><tspan class="num">③</tspan> Fine-tune / adapt</text>
+    <text class="ot" x="486" y="360">     open weights</text>
+
+    <!-- scope box -->
+    <rect class="q" x="80" y="414" width="300" height="52" rx="9"/>
+    <text class="qt" x="230" y="438" text-anchor="middle">Sharpen scope · push</text>
+    <text class="qt" x="230" y="456" text-anchor="middle">prompting + RAG harder (Ch 8)</text>
+
+    <!-- pretrain (faded) -->
+    <rect class="faded" x="40" y="498" width="380" height="44" rx="9"/>
+    <text class="qt" x="230" y="525" text-anchor="middle">④ Pretrain your own — rarely correct for a startup</text>
+  </g>
+</svg>
+<figcaption><strong>Figure 7.1</strong> — The model-sourcing decision tree. Most startups should live in the left two branches for as long as possible; every step right adds a standing engineering and compliance cost.</figcaption></figure>
+<p>At the far left, you call a <strong>frontier API</strong> (OpenAI, Anthropic, Google) and rent intelligence by the token. At the far right, you <strong>pretrain</strong> your own foundation model — a path that in 2026 costs eight figures and a research team, and is almost never the right first move for a startup whose moat is a product, not a model.<span class="sidenote-ref">2</span><span class="sidenote"><span class="sn-num">2</span>If your investors are excited that you're <em>training a foundation model</em>, be sure the excitement is about a genuine data or architecture advantage — not resume-driven development. The graveyard of 2023–2025 is full of startups that raised to train models they could have rented.</span> In between sit two options founders routinely overlook: <strong>prompting and retrieval</strong> on a hosted model (cheap, fast, reversible) and <strong>fine-tuning or adapting</strong> an open-weight model you host yourself (more control, real MLOps burden).</p>
+<p>The heuristic that has aged well: <strong>move right only when a concrete, measured limitation of the cheaper option forces you to.</strong> Not because open weights feel more defensible, not because self-hosting feels cheaper on a spreadsheet — but because you hit a wall on quality, cost, latency, data residency, or availability that the option to your left cannot clear.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>Rent capability until renting demonstrably fails you. The moment your data flywheel, your margins, or your compliance obligations <em>require</em> ownership, you&rsquo;ll know — with numbers, not vibes.</p>
+</div>
+<p>For Cortex, this framing settles the first argument fast. Their moat is the resolution workflow and the proprietary ticket-outcome data they accumulate — not the base model. They start by renting a frontier API, instrument everything, and keep the option to move right open by never coupling their code to one vendor&rsquo;s SDK (more on that at the end of the chapter).</p>
+<h2 id="choosing-a-frontier-model-provider"><span class="secnum">7.2</span>Choosing a frontier model provider<a class="anchor" href="#choosing-a-frontier-model-provider" aria-label="Link to this section">#</a></h2>
+<p>If you&rsquo;re renting, you&rsquo;re choosing among a handful of frontier labs whose flagship models cluster within a few dozen Elo points of one another on public leaderboards.<span class="sidenote-ref">3</span><span class="sidenote"><span class="sn-num">3</span>The public yardstick most founders cite is <strong>Arena</strong> (the artist formerly known as LMArena / LMSYS Chatbot Arena, rebranded January 2026), which ranks models by human pairwise votes fed into a Bradley–Terry/Elo model. Treat it as a signal of general preference, not of <em>your</em> task performance — which only your own evals measure (Chapter 6).</span> The July 2026 landscape alone saw four frontier releases in six weeks — Claude Fable 5, Grok 4.5, the GPT-5.6 family, and Kimi K3<sup class="footnote-ref" id="fnref:arena"><a class="footnote-ref" href="#fn:arena">1</a></sup> — so any table of &ldquo;best model&rdquo; is stale on arrival. Choose on the <strong>dimensions that don&rsquo;t churn</strong>, not on this week&rsquo;s top of the leaderboard.</p>
+<p>Seven dimensions decide a provider. Weight them for <em>your</em> workload:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Why it matters for a startup</th>
+<th>How to test it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task quality</td>
+<td>Leaderboards ≠ your task. A model that tops Arena may lose on your tickets.</td>
+<td>Your own eval set (Ch 6), not vibes</td>
+</tr>
+<tr>
+<td>Latency &amp; throughput</td>
+<td>Agentic products make many calls per action; p95 latency compounds.</td>
+<td>Load-test at your real prompt sizes</td>
+</tr>
+<tr>
+<td>Price per token</td>
+<td>Sets your COGS and gross margin (Ch 13).</td>
+<td>Blended input+output at your ratio</td>
+</tr>
+<tr>
+<td>Context window</td>
+<td>Long context can replace retrieval complexity — at a price.</td>
+<td>Test quality <em>and</em> cost at full length</td>
+</tr>
+<tr>
+<td>Data &amp; privacy policy</td>
+<td>Enterprise buyers ask &ldquo;do you train on our data?&rdquo; in the security review.</td>
+<td>Read the DPA; get zero-retention in writing</td>
+</tr>
+<tr>
+<td>Reliability &amp; rate limits</td>
+<td>An outage in your provider is an outage in your product.</td>
+<td>Check status history; negotiate limits</td>
+</tr>
+<tr>
+<td>Roadmap &amp; deprecation</td>
+<td>Models get retired; your prompts are tuned to a version.</td>
+<td>Ask the deprecation policy up front</td>
+</tr>
+</tbody>
+</table></div>
+<p>A few 2026 realities worth internalizing before you read any pricing page:</p>
+<ul>
+<li><strong>Price spans a ~600× range</strong>, from ultra-budget &ldquo;nano&rdquo; tiers around $0.10 per million input tokens to premium reasoning models at $60+ per million output tokens.<sup class="footnote-ref" id="fnref:cloudzero"><a class="footnote-ref" href="#fn:cloudzero">2</a></sup> Output tokens cost two-to-six times input across every provider — so your input/output <em>ratio</em>, not the headline number, drives cost.</li>
+<li><strong>Cached input is ~90% cheaper</strong> at OpenAI, Anthropic, and Google, which makes effective cost nearly equal for cache-heavy workloads and rewards prompt architectures that keep a stable prefix.<sup class="footnote-ref" id="fnref:finout"><a class="footnote-ref" href="#fn:finout">3</a></sup></li>
+<li><strong>Batch APIs give a flat ~50% discount</strong> for work that tolerates up to 24 hours of latency — offered by OpenAI, Anthropic, Google, and Alibaba.<sup class="footnote-ref" id="fnref2:cloudzero"><a class="footnote-ref" href="#fn:cloudzero">2</a></sup> Cortex runs its nightly eval suite and ticket-summarization backfills on the batch tier and halves that line item.</li>
+<li><strong>Large-context pricing differs sharply.</strong> Some providers charge a surcharge past 200K tokens; others (Anthropic&rsquo;s Sonnet/Opus tiers) offer 1M-token context at a flat rate.<sup class="footnote-ref" id="fnref2:finout"><a class="footnote-ref" href="#fn:finout">3</a></sup> If your architecture leans on long context, this one clause can dominate your bill.</li>
+</ul>
+<span class="sidenote-ref">4</span><span class="sidenote case"><span class="sn-num">4</span><span class="sn-label">In the wild</span><strong>In the wild</strong> — Cortex benchmarked three frontier tiers on 500 real anonymized tickets scored by their resolution eval. The mid-tier model resolved 91% as many tickets as the premium model at <strong>28% of the cost</strong>. They route the easy 80% of tickets to the mid-tier model and escalate only ambiguous cases to the premium one — a pattern we generalize below.</span>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Read the data-use clause before the pricing</p>
+<p>The cheapest way to lose an enterprise deal is to discover, during their security review, that your model provider trains on prompts by default. Confirm zero-retention / no-training terms in the DPA, in writing, <em>before</em> you build on a provider — not after a buyer&rsquo;s legal team asks. This is a Chapter 11 sales problem you prevent here in Chapter 7.</p>
+</div>
+<h2 id="the-open-weight-route-and-hugging-face"><span class="secnum">7.3</span>The open-weight route and Hugging Face<a class="anchor" href="#the-open-weight-route-and-hugging-face" aria-label="Link to this section">#</a></h2>
+<p>The moment your workload is high-volume, latency-sensitive, privacy-constrained, or simply expensive at frontier prices, the open-weight route earns a serious look. In 2026 the open frontier is genuinely strong: Qwen 3.5, DeepSeek V4, Llama 4, Mistral Large 3, GLM-5, Kimi, and Gemma 4 all ship downloadable weights, and several trade blows with closed models on coding and reasoning benchmarks.<sup class="footnote-ref" id="fnref:hfopen"><a class="footnote-ref" href="#fn:hfopen">5</a></sup></p>
+<p><strong>Hugging Face is the center of gravity</strong> for finding, evaluating, and pulling these models. Reading a model&rsquo;s page like an engineer — not a tourist — is a skill worth developing:</p>
+<ul>
+<li><strong>The model card</strong> is the spec sheet: intended use, training data disclosure, benchmark claims, known limitations, and the prompt/chat template you must match exactly or quality collapses.</li>
+<li><strong>The license</strong> (top of the page) governs whether you can ship it at all — covered in its own section below because it&rsquo;s where startups get hurt.</li>
+<li><strong>Leaderboards</strong> such as Hugging Face&rsquo;s Open LLM Leaderboard score models on reproducible public benchmarks (IFEval, BBH, MATH, GPQA, MUSR, MMLU-PRO).<sup class="footnote-ref" id="fnref:hflb"><a class="footnote-ref" href="#fn:hflb">6</a></sup> Use them to <em>shortlist</em>, then confirm on your own evals — public benchmarks leak into training data and reward the wrong things.</li>
+<li><strong>File format</strong> signals how you&rsquo;ll run it. <code>safetensors</code> is the standard, safe-to-load tensor format for GPU serving; <code>GGUF</code> bundles weights plus metadata for efficient CPU/edge and local inference via runtimes like llama.cpp.<sup class="footnote-ref" id="fnref:gguf"><a class="footnote-ref" href="#fn:gguf">7</a></sup></li>
+<li><strong>Quantization</strong> (e.g., 4-bit/8-bit GGUF or AWQ builds) trades a little quality for large memory and cost savings — often the difference between needing one GPU and needing four.</li>
+</ul>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Quantization</p>
+<p>Compressing a model&rsquo;s weights to fewer bits per parameter (16-bit → 8- or 4-bit) to shrink memory and speed up inference. A well-quantized model keeps most of its quality at a fraction of the hardware cost — but &ldquo;most&rdquo; is task-dependent, so quantization is a change you must re-run your evals against, not a free lunch.</p>
+</div>
+<div class="codeblock"><div class="codehead"><span class="lang">python</span><button class="copy" type="button">Copy</button></div><pre><code><span class="c1"># A model choice is reversible when it hides behind an interface.</span>
+<span class="c1"># Cortex defines one Provider protocol; every backend implements it.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protocol</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Provider</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="o">...</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenAICompatible</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Works for OpenAI, and for Together / Fireworks / Groq / vLLM,</span>
+<span class="sd">    which all expose an OpenAI-compatible endpoint — swap base_url only.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+
+<span class="c1"># Switching an open-weight host is a one-line config change, not a rewrite:</span>
+<span class="n">gpt</span>   <span class="o">=</span> <span class="n">OpenAICompatible</span><span class="p">(</span><span class="s2">&quot;https://api.openai.com/v1&quot;</span><span class="p">,</span> <span class="n">KEY</span><span class="p">,</span> <span class="s2">&quot;gpt-5.6-terra&quot;</span><span class="p">)</span>
+<span class="n">qwen</span>  <span class="o">=</span> <span class="n">OpenAICompatible</span><span class="p">(</span><span class="s2">&quot;https://api.together.xyz/v1&quot;</span><span class="p">,</span> <span class="n">KEY</span><span class="p">,</span> <span class="s2">&quot;Qwen/Qwen3.5-235B&quot;</span><span class="p">)</span></code></pre></div>
+<h3 id="the-license-is-the-landmine">The license is the landmine<a class="anchor" href="#the-license-is-the-landmine" aria-label="Link to this section">#</a></h3>
+<p>Downloadable does not mean usable-in-your-product. Licenses fall into tiers, and the difference between them is the difference between a clean acquisition and a diligence disaster.<sup class="footnote-ref" id="fnref:presenc"><a class="footnote-ref" href="#fn:presenc">8</a></sup></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>License</th>
+<th>Commercial use</th>
+<th>Catch for startups</th>
+<th>2026 examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apache 2.0</td>
+<td>Yes, unrestricted</td>
+<td>None — no scale, field, or MAU limits</td>
+<td>Qwen 3.5, Gemma 4</td>
+</tr>
+<tr>
+<td>MIT</td>
+<td>Yes, unrestricted</td>
+<td>None</td>
+<td>DeepSeek V4</td>
+</tr>
+<tr>
+<td>Llama Community</td>
+<td>Yes, with limits</td>
+<td>700M-MAU ceiling; can&rsquo;t train other models on outputs; <strong>not licensed to EU-based entities for multimodal</strong></td>
+<td>Llama 4 Scout</td>
+</tr>
+<tr>
+<td>Gemma / custom</td>
+<td>Usually yes</td>
+<td>Vendor-specific acceptable-use terms</td>
+<td>(pre-2026 Gemma)</td>
+</tr>
+<tr>
+<td>OpenRAIL-M</td>
+<td>Conditional</td>
+<td>Use-case restrictions travel with the weights</td>
+<td>Various</td>
+</tr>
+<tr>
+<td>CC-BY-NC</td>
+<td><strong>No</strong></td>
+<td>Research/non-commercial only</td>
+<td>Some research models</td>
+</tr>
+</tbody>
+</table></div>
+<p>Apache 2.0 is now the most-adopted open-weight license — roughly 38% of new Hugging Face releases in 2026 — precisely because it removes this friction.<sup class="footnote-ref" id="fnref2:presenc"><a class="footnote-ref" href="#fn:presenc">8</a></sup> The unconditional-for-commerce picks are <strong>DeepSeek V4 (MIT), Qwen 3.5 (Apache 2.0), and Gemma 4 (Apache 2.0</strong> — Google dropped its custom terms in April 2026).<sup class="footnote-ref" id="fnref3:presenc"><a class="footnote-ref" href="#fn:presenc">8</a></sup></p>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>The Llama EU trap</p>
+<p>Meta&rsquo;s community license carries a 700-million-monthly-active-user ceiling, forbids using Llama outputs to train non-Llama models, and — critically — its <strong>multimodal</strong> models are <em>not licensed to companies domiciled in the EU</em>.<sup class="footnote-ref" id="fnref4:presenc"><a class="footnote-ref" href="#fn:presenc">8</a></sup> If you&rsquo;re an EU startup, or plan to sell into one, or might be acquired by one, a permissive Apache/MIT model removes a whole category of legal risk. Cortex, eyeing European customers, ruled Llama&rsquo;s multimodal line out on this clause alone.</p>
+</div>
+<h2 id="the-inference-layer-sets-your-margins"><span class="secnum">7.4</span>The inference layer sets your margins<a class="anchor" href="#the-inference-layer-sets-your-margins" aria-label="Link to this section">#</a></h2>
+<p>Choosing an open-weight <em>model</em> is only half the decision; you still have to <em>serve</em> it. This is where founders who &ldquo;went open to save money&rdquo; sometimes discover they&rsquo;ve traded a predictable API bill for an unpredictable GPU bill. Four options, roughly in order of increasing operational burden:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>You manage</th>
+<th>Best when</th>
+<th>Watch out for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serverless token API (Together, Fireworks, inference.net)</td>
+<td>Nothing</td>
+<td>You want open models at open prices, fast</td>
+<td>Per-token price varies 20%+ for the <em>same</em> model across hosts</td>
+</tr>
+<tr>
+<td>Speed-optimized host (Groq)</td>
+<td>Nothing</td>
+<td>Latency is the product (real-time agents/voice)</td>
+<td>Model selection narrower; price ≠ always lowest</td>
+</tr>
+<tr>
+<td>Managed GPU / dedicated (Baseten, dedicated endpoints)</td>
+<td>Config, autoscaling</td>
+<td>Steady high volume; need isolation/SLAs</td>
+<td>You pay for idle capacity</td>
+</tr>
+<tr>
+<td>Self-host (vLLM/TGI on your cloud)</td>
+<td>Everything</td>
+<td>Scale, data residency, or custom kernels demand it</td>
+<td>Real MLOps headcount (Ch 9)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two 2026 facts reshape this table. First, the <strong>same open model can cost 20% more on one serverless host than another</strong> — Llama 4 Maverick input tokens run meaningfully cheaper on Fireworks than on Together, for identical weights.<sup class="footnote-ref" id="fnref:inference"><a class="footnote-ref" href="#fn:inference">4</a></sup> Shop the model, then shop the host. Second, <strong>NVIDIA&rsquo;s Blackwell generation cut cloud inference cost roughly 10×</strong> versus the prior generation, which is why serverless open-model pricing kept falling through 2026 and why &ldquo;self-host to save money&rdquo; is a weaker argument than it was two years ago.<sup class="footnote-ref" id="fnref:nvidia"><a class="footnote-ref" href="#fn:nvidia">9</a></sup></p>
+<span class="sidenote-ref">5</span><span class="sidenote case"><span class="sn-num">5</span><span class="sn-label">In the wild</span><strong>In the wild</strong> — Groq's custom LPU hardware is purpose-built for inference throughput; teams building real-time voice and agentic loops choose it when <em>time-to-first-token</em> is the felt product quality, even when a token-for-token comparison isn't the cheapest. The lesson: the "best" inference provider is defined by your dominant constraint — cost, speed, or control — not a universal ranking.</span>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>Decouple the model from the plumbing. If switching providers costs you more than a config change and a re-run of your eval suite, you don&rsquo;t have a supplier — you have an owner.</p>
+</div>
+<h2 id="putting-it-together-route-dont-marry"><span class="secnum">7.5</span>Putting it together: route, don&rsquo;t marry<a class="anchor" href="#putting-it-together-route-dont-marry" aria-label="Link to this section">#</a></h2>
+<p>The mature 2026 pattern isn&rsquo;t &ldquo;pick the one model.&rdquo; It&rsquo;s a <strong>portfolio</strong>: a router that sends each request to the cheapest model that clears your quality bar, escalates hard cases, and fails over when a provider degrades. This is how you get frontier quality where it matters and open-weight economics everywhere else.</p>
+<p>Cortex&rsquo;s final architecture, arrived at empirically:</p>
+<ul>
+<li><strong>Tier 1 (≈80% of tickets):</strong> an open-weight model (Qwen 3.5, Apache-licensed) on a serverless host — cheap, fast, EU-clean.</li>
+<li><strong>Tier 2 (ambiguous tickets):</strong> a frontier model, called only when Tier 1&rsquo;s confidence or eval score is low.</li>
+<li><strong>Fallback:</strong> a second provider behind the same <code>Provider</code> interface, so a frontier outage degrades Cortex to &ldquo;slower and pricier,&rdquo; never &ldquo;down.&rdquo;</li>
+<li><strong>Everything measured:</strong> every routing decision logged and scored against the resolution eval, so the routing thresholds are tuned with data (Ch 6), and the unit economics are known to the cent (Ch 13).</li>
+</ul>
+<p>This gives Cortex the two things a single-vendor bet never can: <strong>negotiating leverage</strong> (a credible threat to leave) and <strong>resilience</strong> (no single point of failure). The cost is one interface and a router — cheap insurance against the fastest-moving supply market in tech.</p>
+<div class="callout takeaways">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L17 8"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg>Key takeaways</p>
+<ul>
+<li><strong>Model choice is a supplier decision, not an identity.</strong> Rent capability until a measured limit forces you rightward on the build-vs-buy spectrum.</li>
+<li><strong>Choose providers on durable dimensions</strong> — quality on <em>your</em> evals, latency, price, context, data policy, reliability, deprecation — not this week&rsquo;s leaderboard.</li>
+<li><strong>Exploit the pricing structure</strong>: cached input (~90% off), batch tiers (~50% off), and input/output ratio matter more than the headline rate.</li>
+<li><strong>On Hugging Face, read the card, the leaderboard, the format, and — above all — the license.</strong> Apache 2.0 / MIT (Qwen, DeepSeek, Gemma 4) are the clean commercial picks; Llama&rsquo;s license carries MAU and EU-multimodal traps.</li>
+<li><strong>The inference layer sets your margins.</strong> Shop the host after you shop the model; serverless open-model pricing keeps falling.</li>
+<li><strong>Route, don&rsquo;t marry.</strong> A provider-agnostic interface plus a quality-based router buys you leverage and resilience for the price of one abstraction.</li>
+</ul>
+</div>
+<div class="exercise">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Hands-on: the Provider Selection Scorecard</p>
+<p>Build a one-page scorecard for <em>your</em> product before you write a line of integration code.</p>
+<ol>
+<li><strong>Weight the seven dimensions</strong> (quality, latency, price, context, data policy, reliability, deprecation) 0–5 for your workload. Which two dominate?</li>
+<li><strong>Assemble a 100-example eval set</strong> from real or realistic inputs, with a scoring rule a stranger could apply (Chapter 6).</li>
+<li><strong>Score three candidates</strong> — one frontier API, one open-weight-on-serverless, one wildcard — on your evals, measuring quality, p95 latency, and blended cost per request at your real input/output ratio.</li>
+<li><strong>Draft your routing rule</strong>: which tier handles the common case, what triggers escalation, and what the fallback is.</li>
+<li><strong>Write the exit test</strong>: how many lines of code, and how long, to switch your primary provider? If the answer is more than &ldquo;a config change and a re-run,&rdquo; refactor behind an interface now.</li>
+</ol>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:arena">
+<p>Arena (formerly LMArena / LMSYS Chatbot Arena), live model leaderboard, 2026. <a href="https://lmarena.ai">https://lmarena.ai</a>&#160;<a class="footnote-backref" href="#fnref:arena" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cloudzero">
+<p>CloudZero, &ldquo;LLM API Pricing Comparison In 2026: Every Major Model, Ranked By Cost.&rdquo; <a href="https://www.cloudzero.com/blog/llm-api-pricing-comparison/">https://www.cloudzero.com/blog/llm-api-pricing-comparison/</a>&#160;<a class="footnote-backref" href="#fnref:cloudzero" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:cloudzero" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:finout">
+<p>Finout, &ldquo;OpenAI vs Anthropic API Pricing Comparison (2026).&rdquo; <a href="https://www.finout.io/blog/openai-vs-anthropic-api-pricing-comparison">https://www.finout.io/blog/openai-vs-anthropic-api-pricing-comparison</a>&#160;<a class="footnote-backref" href="#fnref:finout" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:finout" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:inference">
+<p>Inference.net, &ldquo;LLM API Pricing Comparison 2026: 30+ Models, Every Provider.&rdquo; <a href="https://inference.net/content/llm-api-pricing-comparison/">https://inference.net/content/llm-api-pricing-comparison/</a>&#160;<a class="footnote-backref" href="#fnref:inference" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:hfopen">
+<p>Hugging Face, &ldquo;The Best Open Source and Open-Weight LLM Models to Run Locally in 2026.&rdquo; <a href="https://huggingface.co/blog/daya-shankar/open-source-llm-models-to-run-locally">https://huggingface.co/blog/daya-shankar/open-source-llm-models-to-run-locally</a>&#160;<a class="footnote-backref" href="#fnref:hfopen" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:hflb">
+<p>Hugging Face, &ldquo;Leaderboards and Evaluations&rdquo; (docs). <a href="https://huggingface.co/docs/leaderboards/index">https://huggingface.co/docs/leaderboards/index</a>&#160;<a class="footnote-backref" href="#fnref:hflb" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:gguf">
+<p>Hugging Face, &ldquo;GGUF&rdquo; (Hub docs). <a href="https://huggingface.co/docs/hub/gguf">https://huggingface.co/docs/hub/gguf</a>&#160;<a class="footnote-backref" href="#fnref:gguf" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:presenc">
+<p>Presenc AI, &ldquo;Open-Weight License Landscape 2026.&rdquo; <a href="https://presenc.ai/research/open-weight-license-landscape-2026">https://presenc.ai/research/open-weight-license-landscape-2026</a>&#160;<a class="footnote-backref" href="#fnref:presenc" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:presenc" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:presenc" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:presenc" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:nvidia">
+<p>NVIDIA, &ldquo;NVIDIA Blackwell Cuts Cloud LLM Inference Costs 10× — The 2026 Pricing Landscape.&rdquo; <a href="https://perspectives.nvidia.com/cloud-accelerator-pricing-llm-inference-scale-2026/">https://perspectives.nvidia.com/cloud-accelerator-pricing-llm-inference-scale-2026/</a>&#160;<a class="footnote-backref" href="#fnref:nvidia" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+      <nav class="prevnext"><a class="prev" href="06-customer-validation-for-ai.html"><div class="dir">← Previous</div><div class="t">Ch 6 · Customer Validation for AI</div></a><a class="next" href="08-content-data-stack.html"><div class="dir">Next →</div><div class="t">Ch 8 · The Content &amp; Data Stack</div></a></nav>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> github.com/arubhatt</a>
+  </div>
+</footer>
+<div class="search-modal" id="search-modal">
+  <div class="scrim"></div>
+  <div class="search-box">
+    <input id="search-input" type="text" placeholder="Search the book…" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>

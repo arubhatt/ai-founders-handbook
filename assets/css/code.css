@@ -1,0 +1,31 @@
+/* Pygments token theme — tuned to the warm paper palette (light + dark). */
+:root {
+  --c-comment:#918a7b; --c-key:#9c4a2c; --c-str:#4b6b4e; --c-num:#234b7a;
+  --c-fn:#2a5c8f; --c-cls:#8a6d1f; --c-builtin:#6a4bab; --c-op:#6e675b; --c-punc:#7a7364; --c-name:#201c16;
+}
+:root[data-theme="dark"]{
+  --c-comment:#8c8674; --c-key:#e39a7c; --c-str:#9cc49b; --c-num:#9cbdec;
+  --c-fn:#a7c4ef; --c-cls:#d9bc6e; --c-builtin:#c4a9ef; --c-op:#c3baa6; --c-punc:#9a917e; --c-name:#ece4d3;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --c-comment:#8c8674; --c-key:#e39a7c; --c-str:#9cc49b; --c-num:#9cbdec;
+  --c-fn:#a7c4ef; --c-cls:#d9bc6e; --c-builtin:#c4a9ef; --c-op:#c3baa6; --c-punc:#9a917e; --c-name:#ece4d3;
+}}
+
+.codeblock pre .c, .codeblock pre .c1, .codeblock pre .cm, .codeblock pre .cs { color: var(--c-comment); font-style: italic; }
+.codeblock pre .k, .codeblock pre .kn, .codeblock pre .kd, .codeblock pre .kr { color: var(--c-key); }
+.codeblock pre .kc { color: var(--c-builtin); }               /* True/False/None */
+.codeblock pre .s, .codeblock pre .s1, .codeblock pre .s2, .codeblock pre .sb, .codeblock pre .sd, .codeblock pre .sh { color: var(--c-str); }
+.codeblock pre .se { color: var(--c-key); }                   /* escapes */
+.codeblock pre .si { color: var(--c-fn); }                    /* interpolation */
+.codeblock pre .mi, .codeblock pre .mf, .codeblock pre .mh, .codeblock pre .il, .codeblock pre .mo { color: var(--c-num); }
+.codeblock pre .nf, .codeblock pre .fm { color: var(--c-fn); }
+.codeblock pre .nc, .codeblock pre .nn { color: var(--c-cls); }
+.codeblock pre .nb, .codeblock pre .bp { color: var(--c-builtin); }
+.codeblock pre .nd { color: var(--c-cls); }                   /* decorators */
+.codeblock pre .o, .codeblock pre .ow { color: var(--c-op); }
+.codeblock pre .p { color: var(--c-punc); }
+.codeblock pre .n, .codeblock pre .nv, .codeblock pre .nx, .codeblock pre .nl, .codeblock pre .na { color: var(--c-name); }
+.codeblock pre .nt { color: var(--c-key); }                   /* html tags */
+.codeblock pre .err { color: var(--c-key); }
+.codeblock pre .gp { color: var(--c-comment); }               /* shell prompt */

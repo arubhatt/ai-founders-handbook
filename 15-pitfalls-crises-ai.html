@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pitfalls &amp; Crises in AI · The AI Founder&#x27;s Handbook</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/book.css">
+<link rel="stylesheet" href="assets/css/code.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html">The AI Founder's <b>Handbook</b></a>
+  <span class="spacer"></span>
+  <span class="byline-top hide-sm">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+  <button class="iconbtn" data-search-open aria-label="Search"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="hide-sm">Search</span> <kbd>/</kbd></button>
+  <a class="iconbtn" href="https://github.com/arubhatt" target="_blank" rel="noopener" aria-label="GitHub — arubhatt"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  <button class="iconbtn" id="theme-btn" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="toc"><a class="toc-book" href="index.html">The AI Founder&#x27;s Handbook</a>
+<div class="toc-part"><span class="pnum">I</span> Foundations</div>
+<a class="" href="01-introduction-to-ai-startups.html"><span class="cnum">01</span>Introduction to AI Startups</a>
+<a class="" href="02-ai-fundamentals-models.html"><span class="cnum">02</span>AI Fundamentals I: Models, Modalities &amp; Inference</a>
+<a class="" href="03-ai-fundamentals-rag-agents.html"><span class="cnum">03</span>AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</a>
+<div class="toc-part"><span class="pnum">II</span> Market &amp; Validation</div>
+<a class="" href="04-markets-users-product-strategy.html"><span class="cnum">04</span>Markets, Users &amp; AI Product Strategy</a>
+<a class="" href="05-data-strategy-flywheel.html"><span class="cnum">05</span>Data Strategy &amp; the Data Flywheel</a>
+<a class="" href="06-customer-validation-for-ai.html"><span class="cnum">06</span>Customer Validation for AI</a>
+<div class="toc-part"><span class="pnum">III</span> The Stack</div>
+<a class="" href="07-choosing-model-providers.html"><span class="cnum">07</span>Choosing Model Providers &amp; Hugging Face</a>
+<a class="" href="08-content-data-stack.html"><span class="cnum">08</span>The Content &amp; Data Stack</a>
+<a class="" href="09-infra-observability-llmops.html"><span class="cnum">09</span>Infrastructure, Observability &amp; LLMOps</a>
+<a class="" href="10-production-evals-monitoring.html"><span class="cnum">10</span>Production Evals &amp; Monitoring</a>
+<div class="toc-part"><span class="pnum">IV</span> Go-to-Market &amp; Moat</div>
+<a class="" href="11-selling-ai-customer-success.html"><span class="cnum">11</span>Selling AI &amp; Customer Success</a>
+<a class="" href="12-defensibility-ai-moat.html"><span class="cnum">12</span>Defensibility &amp; the AI Moat</a>
+<div class="toc-part"><span class="pnum">V</span> Company Building</div>
+<a class="" href="13-finance-unit-economics.html"><span class="cnum">13</span>Finance &amp; Unit Economics for AI</a>
+<a class="" href="14-venture-funding-for-ai.html"><span class="cnum">14</span>Venture Funding for AI</a>
+<a class="current" href="15-pitfalls-crises-ai.html"><span class="cnum">15</span>Pitfalls &amp; Crises in AI</a>
+<div class="subnav"><a href="#the-ai-specific-failure-catalog">15.1  The AI-Specific Failure Catalog</a><a href="#model-regressions-and-the-overnight-quality-drop">15.2  Model Regressions and the Overnight Quality Drop</a><a href="#cortex-meets-the-regression">Cortex meets the regression</a><a href="#hallucination-and-safety-incidents">15.3  Hallucination and Safety Incidents</a><a href="#containing-a-safety-incident">Containing a safety incident</a><a href="#provider-dependency-and-deprecation">15.4  Provider Dependency and Deprecation</a><a href="#hard-outages">Hard outages</a><a href="#deprecation">Deprecation</a><a href="#cost-blowups">Cost blowups</a><a href="#crisis-response-the-pivot-and-post-mortems">15.5  Crisis Response, the Pivot and Post-Mortems</a><a href="#communicate-the-ai-specific-comms-trap">Communicate: the AI-specific comms trap</a><a href="#post-mortem-and-harden">Post-mortem and harden</a><a href="#when-the-crisis-is-existential-the-pivot">When the crisis is existential: the pivot</a></div>
+<div class="toc-part"><span class="pnum">VI</span> People</div>
+<a class="" href="16-team-culture-leadership.html"><span class="cnum">16</span>Team, Culture &amp; Leadership for AI</a>
+<div class="toc-part"><span class="pnum">VII</span> Responsibility</div>
+<a class="" href="17-responsible-ai-regulation.html"><span class="cnum">17</span>Responsible AI: Safety, Ethics &amp; Regulation</a></nav></aside>
+  <main class="content">
+    <article class="chapter">
+      <header class="chapter-head reading">
+        <div class="kicker">Part V - Company Building · Chapter 15</div>
+        <div class="chapter-num">15</div>
+        <h1 class="chapter-title">Pitfalls &amp; Crises in AI</h1>
+        <p class="chapter-dek">The failure modes unique to AI companies - and how to survive the day the model breaks.</p>
+        <div class="chapter-meta">20 min read · Part V - Company Building</div>
+      </header>
+      <div class="reading"><div class="prose">
+<p class="lede">Every startup faces crises. AI startups face a category that did not exist a decade ago: the day your product silently gets worse and no one on your team changed a line of code. Your core dependency is a black box you rent, it mutates without warning, and when it fails it fails for you and every competitor at the same instant. This chapter is the field manual for that world - the taxonomy of AI-native failures, and the playbook to detect, contain, and recover from each.</p>
+<h2 id="the-ai-specific-failure-catalog"><span class="secnum">15.1</span>The AI-Specific Failure Catalog<a class="anchor" href="#the-ai-specific-failure-catalog" aria-label="Link to this section">#</a></h2>
+<p>Traditional software fails deterministically: a bug is a bug, a null is a null, a fix is permanent. AI systems fail <strong>probabilistically and non-locally</strong>. The same input produces a good answer on Tuesday and a lawsuit on Wednesday, and the root cause may live inside a model you neither trained nor host. Founders who carry a SaaS mental model into an AI company misdiagnose these incidents for weeks.</p>
+<span class="sidenote-ref">1</span><span class="sidenote"><span class="sn-num">1</span>The through-line: in classical software you own your failure surface. In AI you rent most of it. Every item below is a failure of something you do not fully control.</span>
+<p>Six failure classes are genuinely new, and each has a distinct signature, blast radius, and owner. Treating them as one undifferentiated &ldquo;the AI is acting weird&rdquo; bucket is the mistake - triage collapses when you cannot name what broke.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Failure class</th>
+<th>Signature</th>
+<th>Typical trigger</th>
+<th>Blast radius</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model regression</strong></td>
+<td>Quality drops overnight, no deploy</td>
+<td>Silent provider update; alias re-pointed</td>
+<td>All traffic on that model</td>
+<td>This chapter</td>
+</tr>
+<tr>
+<td><strong>Hallucination / safety</strong></td>
+<td>Confident, wrong, sometimes harmful output</td>
+<td>Edge-case prompt; RAG gap; jailbreak</td>
+<td>One user, then headlines</td>
+<td>This chapter</td>
+</tr>
+<tr>
+<td><strong>Provider dependency</strong></td>
+<td>Hard outage, deprecation, rate-limit wall</td>
+<td>Vendor incident; sunset email</td>
+<td>100% availability</td>
+<td>This chapter</td>
+</tr>
+<tr>
+<td><strong>Cost blowup</strong></td>
+<td>Bill 5-40x forecast</td>
+<td>Reasoning-token creep; retry storms; abuse</td>
+<td>Runway</td>
+<td>Ch. 13</td>
+</tr>
+<tr>
+<td><strong>Eval/monitor blind spot</strong></td>
+<td>You learn from a customer, not a dashboard</td>
+<td>Missing metric; no canary</td>
+<td>Trust, silently</td>
+<td>Ch. 10</td>
+</tr>
+<tr>
+<td><strong>Data/flywheel poisoning</strong></td>
+<td>Model degrades as it &ldquo;learns&rdquo;</td>
+<td>Feedback loop on bad labels</td>
+<td>Long-term quality</td>
+<td>Ch. 5</td>
+</tr>
+</tbody>
+</table></div>
+<p>The detection layer that catches most of these - online evals, drift monitors, canary prompts, alerting - is <strong>Chapter 10&rsquo;s</strong> domain, and we lean on it here without re-deriving it. This chapter starts the moment the pager goes off.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>In an AI company, your uptime and your quality are two different numbers, and only one of them shows up on your status page. Monitor the one that does not.</p>
+</div>
+<h2 id="model-regressions-and-the-overnight-quality-drop"><span class="secnum">15.2</span>Model Regressions and the Overnight Quality Drop<a class="anchor" href="#model-regressions-and-the-overnight-quality-drop" aria-label="Link to this section">#</a></h2>
+<p>This failure mode has no analog in classical software, so founders are least prepared for it. You wake up, nothing in your repo changed, and your product is measurably dumber. The cause is almost always upstream: the provider updated the weights behind a model alias, re-pointed a default, or shipped a new snapshot tuned for benchmarks you do not care about.</p>
+<p>It is not paranoia - it is documented. Researchers have tracked measurable behavior drift in the <em>same</em> named model across dates, with silent provider-side updates the only plausible explanation.<sup class="footnote-ref" id="fnref:drift"><a class="footnote-ref" href="#fn:drift">1</a></sup> The broader pattern is well understood: newer frontier models optimize for reasoning and safety scores over the &ldquo;helpful assistant&rdquo; behavior of the GPT-4 era, so a model that scores <em>higher</em> on standardized tests can feel <em>worse</em> on your task.<sup class="footnote-ref" id="fnref:worse"><a class="footnote-ref" href="#fn:worse">2</a></sup> GPT-5.5 at its highest reasoning setting posted the top score on the AA-Omniscience knowledge benchmark (57%) while confabulating on roughly 86% of the questions it got wrong - the highest confident-error rate of any frontier model measured.<sup class="footnote-ref" id="fnref:omni"><a class="footnote-ref" href="#fn:omni">3</a></sup> A benchmark win is not a win for your users.</p>
+<span class="sidenote-ref">2</span><span class="sidenote"><span class="sn-num">2</span>The cruelest property of a regression: it is invisible to your CI. Every test that mocks the model still passes. Only tests that hit the <em>live</em> model catch it, and most teams do not run those on a schedule.</span>
+<h3 id="cortex-meets-the-regression">Cortex meets the regression<a class="anchor" href="#cortex-meets-the-regression" aria-label="Link to this section">#</a></h3>
+<p>Our running example, <strong>Cortex</strong> - the autonomous customer-support agent for mid-market SaaS - is about to have the worst Tuesday of its corporate life. In <strong>Chapter 10</strong> we wired Cortex with an online eval harness: a golden set of 300 real tickets replayed hourly against production, scoring resolution rate and escalation correctness. At 02:14, that harness fires the alert nobody wanted. Overnight, autonomous resolution rate has fallen from 71% to 52%. No deploy. No config change. The provider pushed a new snapshot behind the model alias Cortex calls by default, and the new snapshot is chattier, quicker to punt to a human, and - worse - occasionally inventing refund policies that do not exist.</p>
+<p>This is the crisis this chapter hinges on. The rest is how the team survives it.</p>
+<p>The regression playbook, in order:</p>
+<ol>
+<li><strong>Confirm it is upstream, not you.</strong> Diff your last 48h of deploys first - 30 seconds, your CI log answers it. If clean, replay your golden set against a <em>pinned</em> prior snapshot. If pinned recovers quality, you have a confirmed provider regression.</li>
+<li><strong>Pin immediately.</strong> Never call a model by a floating alias in production. Cortex should have been calling <code>claude-sonnet-5-20260514</code>, not <code>claude-sonnet-latest</code>. The pin is your rollback lever; with no pin to roll back <em>to</em>, you have no lever.</li>
+<li><strong>Roll back to the last-good pin.</strong> This is containment: quality restored while you investigate, at the cost of running an older model.</li>
+<li><strong>File the provider ticket with evidence.</strong> Your golden-set deltas are the artifact. Providers move faster with reproducible before/after numbers.</li>
+<li><strong>Re-qualify the new snapshot deliberately.</strong> You will adopt it eventually - the old one gets deprecated (see Deprecation, below). Re-run your full eval suite, tune prompts against the new behavior, and cut over on <em>your</em> schedule.</li>
+</ol>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>If any part of your stack calls a model by a <code>-latest</code> or undated alias, you have handed a stranger the right to ship to your production without a code review. Pin every model id, everywhere, today. This single discipline converts most regression crises from outages into non-events.</p>
+</div>
+<p>The largest sunset yet shows why the calendar is non-negotiable.<sup class="footnote-ref" id="fnref:gpt4"><a class="footnote-ref" href="#fn:gpt4">4</a></sup></p>
+<span class="sidenote-ref">3</span><span class="sidenote case"><span class="sn-num">3</span><span class="sn-label">In the wild</span><strong>The GPT-4 sunset, early 2026</strong> - OpenAI retired its GPT-4-era models (GPT-4o, GPT-4.1, GPT-4.1 mini, o4-mini) from ChatGPT on February 13, 2026, with full retirement following, forcing teams onto GPT-5.x models that behaved measurably differently on production tasks. Teams that had pinned dated snapshots got a migration window; teams on floating aliases got an involuntary, uncontrolled behavior change.</span>
+<h2 id="hallucination-and-safety-incidents"><span class="secnum">15.3</span>Hallucination and Safety Incidents<a class="anchor" href="#hallucination-and-safety-incidents" aria-label="Link to this section">#</a></h2>
+<p>A regression degrades quality. A hallucination or safety incident degrades <em>trust</em> - and increasingly, exposes you to <em>liability</em>. The legal ground shifted hard, and every AI founder needs the new posture: <strong>courts now hold companies liable for what their chatbots say.</strong></p>
+<p>The precedents stacked up fast. The 2024 Air Canada tribunal ruling - the airline liable for a chatbot&rsquo;s fabricated bereavement-fare policy - was the opening.<sup class="footnote-ref" id="fnref:airc"><a class="footnote-ref" href="#fn:airc">5</a></sup> Then the doctrine hardened. In May 2025, a US federal judge in the Garcia (Setzer) case rejected the argument that chatbot output is protected speech and ruled it could be treated as a <strong>product</strong> under product-liability law;<sup class="footnote-ref" id="fnref:product"><a class="footnote-ref" href="#fn:product">6</a></sup> in January 2026, Character.AI and Google settled that case and four related suits.<sup class="footnote-ref" id="fnref:settle"><a class="footnote-ref" href="#fn:settle">7</a></sup> On May 12, 2026, Germany&rsquo;s Higher Regional Court of Hamm held a company liable for false statements its own chatbot made about its physicians&rsquo; qualifications.<sup class="footnote-ref" id="fnref:germany"><a class="footnote-ref" href="#fn:germany">8</a></sup> The insurance market has priced it in: in 2025 a Lloyd&rsquo;s-backed policy - via coverholder Armilla, underwritten by syndicate Chaucer - began covering losses from AI underperformance and hallucination.<sup class="footnote-ref" id="fnref:insurance"><a class="footnote-ref" href="#fn:insurance">9</a></sup></p>
+<span class="sidenote-ref">4</span><span class="sidenote"><span class="sn-num">4</span>"The AI said it, not us" is now a losing legal argument in multiple jurisdictions. Design as though every generated sentence is a statement your company published on its letterhead - because that is how a court reads it.</span>
+<p>For Cortex, the exposure is concrete. An autonomous support agent that invents a refund policy may be forming a binding representation to a customer, and its operator - your customer, the SaaS company - will look straight through Cortex to <em>you</em>. The refund-policy hallucination from the regression above is therefore two incidents, not one: a quality regression <em>and</em> a safety incident, and the safety half has the longer tail.</p>
+<h3 id="containing-a-safety-incident">Containing a safety incident<a class="anchor" href="#containing-a-safety-incident" aria-label="Link to this section">#</a></h3>
+<p>The mechanics differ from a regression: you cannot simply roll back and relax, because harm may already be in the wild.</p>
+<ul>
+<li><strong>Kill switch to a safe fallback.</strong> Cortex needs a hardcoded degraded mode: when confidence is low or the topic is money/legal/medical, stop generating and hand to a human with a templated, pre-approved message. This is the single most important safety primitive in an agent product. Build it before you need it.</li>
+<li><strong>Constrain, do not just prompt.</strong> Ground factual claims in retrieval (RAG, see <strong>Chapter 3</strong>) with citations, and refuse to state policy that is not in the retrieved source. &ldquo;I don&rsquo;t have that on file, let me get a human&rdquo; is a <em>feature</em>.</li>
+<li><strong>Log everything, retain the trace.</strong> When you get a legal inquiry, the full prompt/context/output trace for that interaction is your evidence. If you cannot reconstruct exactly what the model saw and said, you cannot defend it.</li>
+<li><strong>Scope the blast radius by query.</strong> Search your logs for every interaction that hit the same failure pattern, not just the one that got reported. One reported hallucination usually has dozens of silent siblings.</li>
+</ul>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>Confident wrongness</strong> - the defining hazard of generative systems: output that is fluent, plausible, and authoritative while being false. More dangerous than a crash because it does not announce itself - users extend it the trust they would give a correct answer.</p>
+</div>
+<h2 id="provider-dependency-and-deprecation"><span class="secnum">15.4</span>Provider Dependency and Deprecation<a class="anchor" href="#provider-dependency-and-deprecation" aria-label="Link to this section">#</a></h2>
+<p>Your model provider is simultaneously your most critical infrastructure and a vendor you cannot audit, cannot SLA into submission, and cannot stop from changing under you. This dependency shows up as three distinct crises: the hard outage, the planned deprecation, and the cost blowup.</p>
+<h3 id="hard-outages">Hard outages<a class="anchor" href="#hard-outages" aria-label="Link to this section">#</a></h3>
+<p>AI APIs are, empirically, among the least reliable API categories tracked.<sup class="footnote-ref" id="fnref:outage"><a class="footnote-ref" href="#fn:outage">10</a></sup> This is not hypothetical. On June 2, 2026, Anthropic&rsquo;s Claude threw 500 and 529 errors across the API, Console, and Claude Code in a global outage - one of a cluster of disruptions that month.<sup class="footnote-ref" id="fnref:claudeout"><a class="footnote-ref" href="#fn:claudeout">11</a></sup> If your product hard-depends on a single provider, your uptime ceiling is <em>theirs</em>, which is worse than you think.</p>
+<p>The architecture that survives this - a provider-abstraction layer, a warm fallback from a second vendor, graceful degradation - is <strong>Chapter 7&rsquo;s</strong> (provider choice) and <strong>Chapter 9&rsquo;s</strong> (infra and fallback) territory; we do not re-derive it. The crisis-response point is narrower: your fallback must be <em>tested in production regularly</em>, or it is decoration. A failover path exercised for the first time during an outage fails during the outage. Cortex runs a weekly game-day that forcibly disables its primary provider for ten minutes of live traffic; the first run exposed that the fallback&rsquo;s different tokenizer silently truncated context and tanked quality - exactly the thing you want to learn on a Tuesday, not during a page.</p>
+<h3 id="deprecation">Deprecation<a class="anchor" href="#deprecation" aria-label="Link to this section">#</a></h3>
+<p>Every model you build on has a scheduled death. The providers have formalized this: <strong>Anthropic commits to at least 60 days&rsquo; notice</strong> and publishes a per-model retirement date;<sup class="footnote-ref" id="fnref:anthdep"><a class="footnote-ref" href="#fn:anthdep">13</a></sup> <strong>OpenAI gives at least six months for GA models, three for specialized variants, and as little as two weeks for previews.</strong><sup class="footnote-ref" id="fnref:deprecate"><a class="footnote-ref" href="#fn:deprecate">12</a></sup> Deprecation is the one AI crisis you get advance warning for - which makes missing it inexcusable.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Min. notice (GA)</th>
+<th>Preview/specialized</th>
+<th>Signal to watch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic</td>
+<td>~60 days</td>
+<td>shorter for legacy</td>
+<td>Per-model retirement date<sup class="footnote-ref" id="fnref2:anthdep"><a class="footnote-ref" href="#fn:anthdep">13</a></sup></td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td>~6 months</td>
+<td>3 mo / 2 wk (preview)</td>
+<td>Deprecations doc + email<sup class="footnote-ref" id="fnref2:deprecate"><a class="footnote-ref" href="#fn:deprecate">12</a></sup></td>
+</tr>
+<tr>
+<td>Cloud-hosted (Bedrock/Vertex)</td>
+<td>varies by model</td>
+<td>varies</td>
+<td>Provider lifecycle calendars</td>
+</tr>
+</tbody>
+</table></div>
+<p>The discipline: subscribe to every provider&rsquo;s deprecation feed, maintain a model-lifecycle calendar as a standing artifact, and keep every model no more than one &ldquo;migration hop&rdquo; from a supported successor. Treat the sunset email as a sprint ticket the day it arrives, not the week before the deadline.</p>
+<p>Deprecation is not always confined to the <em>model</em>.<sup class="footnote-ref" id="fnref:sora"><a class="footnote-ref" href="#fn:sora">14</a></sup></p>
+<span class="sidenote-ref">5</span><span class="sidenote case"><span class="sn-num">5</span><span class="sn-label">In the wild</span><strong>The Sora shutdown, 2026</strong> - OpenAI announced on March 24, 2026 that it was winding down its standalone Sora video app (discontinued April 26, API to follow), redirecting compute toward coding and enterprise products. The pattern is the recurring existential deprecation: foundation-model companies routinely absorb the exact feature a startup was built on. Sometimes it is not your <em>model</em> that gets deprecated - it is your <em>entire product wedge</em>. This is a defensibility problem (see <strong>Chapter 12</strong>) that arrives dressed as a deprecation crisis.</span>
+<h3 id="cost-blowups">Cost blowups<a class="anchor" href="#cost-blowups" aria-label="Link to this section">#</a></h3>
+<p>The bill becomes a crisis when it outruns revenue, and 2026&rsquo;s fragmented, per-token-type pricing means two teams building similar apps can land 10x apart on cost.<sup class="footnote-ref" id="fnref:pricing"><a class="footnote-ref" href="#fn:pricing">15</a></sup> The economics - unit economics, gross-margin math, cost controls - are <strong>Chapter 13&rsquo;s</strong> to own. The only crisis-response point here: treat a cost spike as an <em>incident with its own runbook</em> - per-tenant token-budget circuit breaker, hard caps on output and reasoning tokens, retry-storm detection, and alerting on cost-per-resolution, not just total spend. Cortex bills per resolved ticket; the day the regression made the model chattier, cost-per-resolution jumped 30% <em>while</em> quality fell - one event, two crises.</p>
+<h2 id="crisis-response-the-pivot-and-post-mortems"><span class="secnum">15.5</span>Crisis Response, the Pivot and Post-Mortems<a class="anchor" href="#crisis-response-the-pivot-and-post-mortems" aria-label="Link to this section">#</a></h2>
+<p>Naming failures is table stakes. What separates companies that survive AI crises is a <em>rehearsed response loop</em>. When Cortex&rsquo;s resolution rate cratered at 02:14, the difference between a two-hour incident and a two-week trust collapse was whether the team ran a process or improvised one.</p>
+<p>The loop has five stages, and every AI incident - regression, hallucination, outage, cost - runs the same path.</p>
+<figure class="diagram">
+<svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI incident response flow: detect, contain, communicate, post-mortem, harden">
+  <style>.dg text{font-family:var(--sans);fill:var(--ink);font-size:13px} .dg .box{fill:var(--paper-2);stroke:var(--rule-2)} .dg .accent{fill:var(--accent-bg);stroke:var(--accent)} .dg .rec{fill:var(--sage-bg);stroke:var(--sage)} .dg .lbl{fill:var(--muted);font-size:11px;font-weight:600} .dg .flow{stroke:var(--rule-2);stroke-width:1.6;fill:none}</style>
+  <defs><marker id="arrow15" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2)"/></marker></defs>
+  <g class="dg">
+    <rect class="accent" x="8" y="70" width="118" height="56" rx="9"/>
+    <text x="67" y="94" text-anchor="middle">Detect</text>
+    <text class="lbl" x="67" y="112" text-anchor="middle">Ch.10 evals</text>
+    <rect class="box" x="156" y="70" width="122" height="56" rx="9"/>
+    <text x="217" y="94" text-anchor="middle">Contain</text>
+    <text class="lbl" x="217" y="112" text-anchor="middle">rollback / pin</text>
+    <rect class="box" x="308" y="70" width="122" height="56" rx="9"/>
+    <text x="369" y="94" text-anchor="middle">Communicate</text>
+    <text class="lbl" x="369" y="112" text-anchor="middle">customers first</text>
+    <rect class="box" x="460" y="70" width="122" height="56" rx="9"/>
+    <text x="521" y="98" text-anchor="middle">Post-mortem</text>
+    <rect class="rec" x="612" y="70" width="100" height="56" rx="9"/>
+    <text x="662" y="98" text-anchor="middle">Harden</text>
+    <path class="flow" d="M126 98 L156 98" marker-end="url(#arrow15)"/>
+    <path class="flow" d="M278 98 L308 98" marker-end="url(#arrow15)"/>
+    <path class="flow" d="M430 98 L460 98" marker-end="url(#arrow15)"/>
+    <path class="flow" d="M582 98 L612 98" marker-end="url(#arrow15)"/>
+    <path class="flow" d="M662 70 C662 30, 67 30, 67 70" marker-end="url(#arrow15)"/>
+    <text class="lbl" x="365" y="24" text-anchor="middle">harden feeds new detectors back to Detect</text>
+  </g>
+</svg>
+<figcaption><strong>Figure 15.1</strong> - The AI incident response loop: detection feeds containment, and hardening closes the loop by feeding new detectors back to the top.</figcaption>
+</figure>
+
+<p><strong>Detect</strong> is Chapter 10&rsquo;s job and the reason to invest there before you need it. <strong>Contain</strong> is the rollback/pin/kill-switch action - restore a known-good state <em>before</em> you understand root cause. Resist the engineer&rsquo;s urge to debug first; containment and diagnosis are separate phases, and inverting them extends the outage.</p>
+<h3 id="communicate-the-ai-specific-comms-trap">Communicate: the AI-specific comms trap<a class="anchor" href="#communicate-the-ai-specific-comms-trap" aria-label="Link to this section">#</a></h3>
+<p><strong>Communicate</strong> is where AI companies uniquely self-destruct. The instinct is silence - hope customers do not notice the quality dip. It fails twice: customers <em>do</em> notice (2026 saw visible subscription churn tied directly to quality complaints<sup class="footnote-ref" id="fnref2:worse"><a class="footnote-ref" href="#fn:worse">2</a></sup>), and silence during a <em>safety</em> incident converts a bug into a cover-up. The rule: <strong>communicate the quality incident to affected customers before they raise it, and never blame the model as if it were an act of God.</strong> &ldquo;Our upstream provider shipped a regression; we detected it in 12 minutes, rolled back, and here is the resolution-rate graph&rdquo; builds trust. &ldquo;The AI had a hiccup&rdquo; destroys it. When the incident touches safety or a potentially harmful output, involve counsel early - given the 2026 liability rulings, your incident comms may become discovery.</p>
+<span class="sidenote-ref">6</span><span class="sidenote"><span class="sn-num">6</span>A public, numeric, slightly-too-honest incident report is the best trust-building content an AI startup can publish. It signals you <em>measure</em> quality - which most of your competitors cannot claim.</span>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>Contain before you diagnose. Communicate before you&rsquo;re asked. Customers will forgive a model that broke; they will not forgive a vendor who hid it.</p>
+</div>
+<h3 id="post-mortem-and-harden">Post-mortem and harden<a class="anchor" href="#post-mortem-and-harden" aria-label="Link to this section">#</a></h3>
+<p>The <strong>post-mortem</strong> is blameless and mechanical: timeline, root cause, detection latency, time-to-contain, customer impact in real units (resolutions lost, tickets mis-answered). The <strong>harden</strong> stage closes the loop - and here is the AI-specific twist: <em>every incident must produce at least one new eval case</em>. Cortex&rsquo;s refund-policy hallucination becomes a permanent adversarial test in the golden set, so that exact failure can never silently return. This is how an AI company&rsquo;s quality moat compounds (see <strong>Chapter 5</strong> on the data flywheel and <strong>Chapter 12</strong> on moats): not from never failing, but from converting each failure into a detector that makes the next one impossible.</p>
+<h3 id="when-the-crisis-is-existential-the-pivot">When the crisis is existential: the pivot<a class="anchor" href="#when-the-crisis-is-existential-the-pivot" aria-label="Link to this section">#</a></h3>
+<p>Some crises are not incidents you recover from - they are signals to change the company. In 2026, roughly <strong>80% of the thin-wrapper AI startups launched from 2023-2025 were on track to shut down</strong>, most because they had no proprietary data or moat and foundation models shipped their feature natively.<sup class="footnote-ref" id="fnref:wrapper"><a class="footnote-ref" href="#fn:wrapper">16</a></sup> If your recurring crisis is &ldquo;the provider just launched what we do, for free,&rdquo; no runbook saves you - that is a strategy failure wearing a crisis costume. The tell is diagnostic: a <em>quality</em> or <em>cost</em> crisis is operational and survivable with the loop above; a <em>displacement</em> crisis - your wedge got absorbed, your differentiation evaporated - demands a pivot toward proprietary data, a defensible workflow, or a vertical the incumbents will not chase (see <strong>Chapters 4 and 12</strong>). The founders who die slowly are the ones who run the incident loop faster and faster on a business the loop cannot save.</p>
+<div class="callout takeaways">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L17 8"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg>Key Takeaways</p>
+<p><strong>Key takeaways</strong>
+- AI has six native failure classes - regression, hallucination/safety, provider dependency, cost blowup, monitoring blind spot, flywheel poisoning. Name them separately or triage collapses.
+- Model regression is the failure with no classical analog: quality drops with zero deploys. Pin every model id; a floating alias hands a stranger commit access to your production.
+- 2025-2026 case law treats chatbot output as a <em>product</em> your company is liable for. Build a kill-switch to a safe human fallback, ground claims in retrieval, and retain full traces.
+- Deprecation is the one crisis with advance notice - Anthropic ~60 days, OpenAI ~6 months for GA. Missing it is inexcusable; treat every sunset email as a sprint ticket.
+- Run one incident loop for every crisis: detect -&gt; contain -&gt; communicate -&gt; post-mortem -&gt; harden. Contain before you diagnose; communicate before you&rsquo;re asked.
+- Every incident must mint a new eval case. That is how quality compounds - not by never failing, but by making each failure un-repeatable.
+- Distinguish an operational crisis (survive it with the loop) from a displacement crisis (your wedge got absorbed - that needs a pivot, not a runbook).</p>
+</div>
+<div class="exercise">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Exercise</p>
+<p><strong>Hands-on: Run a model-regression game-day</strong>
+1. Pick your most critical model call. Confirm it uses a <em>pinned, dated snapshot</em> id, not a floating alias. If it doesn&rsquo;t, fix that first - the rest of this exercise assumes a pin exists to roll back to.
+2. Assemble a golden set of 50-100 real production inputs with known-good expected behavior. Score your current model on it and record the baseline.
+3. Simulate the regression: point the call at a <em>different</em> snapshot (newer or older) and re-score. Measure the quality delta and the cost-per-call delta.
+4. Time your containment: from &ldquo;alert fires&rdquo; to &ldquo;rolled back to last-good pin,&rdquo; how many minutes? Anything over 15 means your rollback isn&rsquo;t a one-command operation - fix that.
+5. Draft the customer comms you&rsquo;d send, with a real metric and no blame-the-model language. Have someone outside engineering read it cold.
+6. Convert the failure you found into one permanent eval case and add it to your monitoring (Chapter 10). You&rsquo;ve hardened the loop once - now schedule this game-day monthly.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:drift">
+<p>Chen, Zaharia &amp; Zou, &ldquo;How Is ChatGPT&rsquo;s Behavior Changing over Time?&rdquo; (Stanford/Berkeley), documenting measurable drift in a fixed model across dates. <a href="https://arxiv.org/abs/2307.09009">https://arxiv.org/abs/2307.09009</a>&#160;<a class="footnote-backref" href="#fnref:drift" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:worse">
+<p>Is ChatGPT Getting Worse in 2026? What Changed. NxCode. <a href="https://www.nxcode.io/resources/news/chatgpt-getting-worse-2026-what-changed-alternatives">https://www.nxcode.io/resources/news/chatgpt-getting-worse-2026-what-changed-alternatives</a>&#160;<a class="footnote-backref" href="#fnref:worse" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:worse" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:omni">
+<p>AA-Omniscience: Knowledge and Hallucination Benchmark. Artificial Analysis. <a href="https://artificialanalysis.ai/evaluations/omniscience">https://artificialanalysis.ai/evaluations/omniscience</a>&#160;<a class="footnote-backref" href="#fnref:omni" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:gpt4">
+<p>Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini. OpenAI. <a href="https://openai.com/index/retiring-gpt-4o-and-older-models/">https://openai.com/index/retiring-gpt-4o-and-older-models/</a>&#160;<a class="footnote-backref" href="#fnref:gpt4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:airc">
+<p>B.C. man wins case against Air Canada after chatbot gave him bad advice. CBC News. <a href="https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416">https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416</a>&#160;<a class="footnote-backref" href="#fnref:airc" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:product">
+<p>In early ruling, federal judge defines Character.AI chatbot as a product, not speech. Transparency Coalition. <a href="https://www.transparencycoalition.ai/news/important-early-ruling-in-characterai-case-this-chatbot-is-a-product-not-speech">https://www.transparencycoalition.ai/news/important-early-ruling-in-characterai-case-this-chatbot-is-a-product-not-speech</a>&#160;<a class="footnote-backref" href="#fnref:product" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:settle">
+<p>Character.AI Lawsuit (2026 update): Garcia settlement and related suits. Wisner Baum. <a href="https://www.wisnerbaum.com/ai-chatbot-lawsuit/character-ai-lawsuit/">https://www.wisnerbaum.com/ai-chatbot-lawsuit/character-ai-lawsuit/</a>&#160;<a class="footnote-backref" href="#fnref:settle" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:germany">
+<p>Germany: Court Rules Chatbot Operators Are Liable for AI Hallucinations. Library of Congress. <a href="https://www.loc.gov/item/global-legal-monitor/2026-06-09/germany-court-rules-chatbot-operators-are-liable-for-ai-hallucinations/">https://www.loc.gov/item/global-legal-monitor/2026-06-09/germany-court-rules-chatbot-operators-are-liable-for-ai-hallucinations/</a>&#160;<a class="footnote-backref" href="#fnref:germany" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:insurance">
+<p>Armilla reveals purpose-built AI liability insurance with Lloyd&rsquo;s underwriter Chaucer. Reinsurance News. <a href="https://www.reinsurancene.ws/armilla-reveals-purpose-built-ai-liability-insurance-amid-rising-legal-and-regulatory-pressures/">https://www.reinsurancene.ws/armilla-reveals-purpose-built-ai-liability-insurance-amid-rising-legal-and-regulatory-pressures/</a>&#160;<a class="footnote-backref" href="#fnref:insurance" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:outage">
+<p>Your AI Provider Had Outages Last Month. Now What? TierZero. <a href="https://www.tierzero.ai/blog/ai-provider-outages-2026/">https://www.tierzero.ai/blog/ai-provider-outages-2026/</a>&#160;<a class="footnote-backref" href="#fnref:outage" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:claudeout">
+<p>Anthropic confirms Claude is down worldwide. BleepingComputer. <a href="https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-confirms-claude-is-down-worldwide/">https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-confirms-claude-is-down-worldwide/</a>&#160;<a class="footnote-backref" href="#fnref:claudeout" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:deprecate">
+<p>Deprecations - OpenAI API. <a href="https://developers.openai.com/api/docs/deprecations">https://developers.openai.com/api/docs/deprecations</a>&#160;<a class="footnote-backref" href="#fnref:deprecate" title="Jump back to footnote 12 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:deprecate" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:anthdep">
+<p>Model deprecations. Claude Docs (Anthropic). <a href="https://docs.claude.com/en/docs/about-claude/model-deprecations">https://docs.claude.com/en/docs/about-claude/model-deprecations</a>&#160;<a class="footnote-backref" href="#fnref:anthdep" title="Jump back to footnote 13 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:anthdep" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:sora">
+<p>OpenAI sets two-stage Sora shutdown with app closing April 2026 and API following in September. The Decoder. <a href="https://the-decoder.com/openai-sets-two-stage-sora-shutdown-with-app-closing-april-2026-and-api-following-in-september/">https://the-decoder.com/openai-sets-two-stage-sora-shutdown-with-app-closing-april-2026-and-api-following-in-september/</a>&#160;<a class="footnote-backref" href="#fnref:sora" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:pricing">
+<p>LLM API Pricing in 2026: The Complete Cost Comparison. AI Magicx. <a href="https://www.aimagicx.com/blog/llm-api-pricing-comparison-2026">https://www.aimagicx.com/blog/llm-api-pricing-comparison-2026</a>&#160;<a class="footnote-backref" href="#fnref:pricing" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:wrapper">
+<p>Startup Strategy in the AI Era: Why 80% of Wrappers Die and 5 Moats That Survive. Value Add VC. <a href="https://valueaddvc.com/blog/how-to-build-a-startup-in-a-market-where-ai-will-eventually-do-what-you-do">https://valueaddvc.com/blog/how-to-build-a-startup-in-a-market-where-ai-will-eventually-do-what-you-do</a>&#160;<a class="footnote-backref" href="#fnref:wrapper" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+      <nav class="prevnext"><a class="prev" href="14-venture-funding-for-ai.html"><div class="dir">← Previous</div><div class="t">Ch 14 · Venture Funding for AI</div></a><a class="next" href="16-team-culture-leadership.html"><div class="dir">Next →</div><div class="t">Ch 16 · Team, Culture &amp; Leadership for AI</div></a></nav>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> github.com/arubhatt</a>
+  </div>
+</footer>
+<div class="search-modal" id="search-modal">
+  <div class="scrim"></div>
+  <div class="search-box">
+    <input id="search-input" type="text" placeholder="Search the book…" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>

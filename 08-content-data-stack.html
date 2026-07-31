@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Content &amp; Data Stack · The AI Founder&#x27;s Handbook</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/book.css">
+<link rel="stylesheet" href="assets/css/code.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html">The AI Founder's <b>Handbook</b></a>
+  <span class="spacer"></span>
+  <span class="byline-top hide-sm">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+  <button class="iconbtn" data-search-open aria-label="Search"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="hide-sm">Search</span> <kbd>/</kbd></button>
+  <a class="iconbtn" href="https://github.com/arubhatt" target="_blank" rel="noopener" aria-label="GitHub — arubhatt"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  <button class="iconbtn" id="theme-btn" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="toc"><a class="toc-book" href="index.html">The AI Founder&#x27;s Handbook</a>
+<div class="toc-part"><span class="pnum">I</span> Foundations</div>
+<a class="" href="01-introduction-to-ai-startups.html"><span class="cnum">01</span>Introduction to AI Startups</a>
+<a class="" href="02-ai-fundamentals-models.html"><span class="cnum">02</span>AI Fundamentals I: Models, Modalities &amp; Inference</a>
+<a class="" href="03-ai-fundamentals-rag-agents.html"><span class="cnum">03</span>AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</a>
+<div class="toc-part"><span class="pnum">II</span> Market &amp; Validation</div>
+<a class="" href="04-markets-users-product-strategy.html"><span class="cnum">04</span>Markets, Users &amp; AI Product Strategy</a>
+<a class="" href="05-data-strategy-flywheel.html"><span class="cnum">05</span>Data Strategy &amp; the Data Flywheel</a>
+<a class="" href="06-customer-validation-for-ai.html"><span class="cnum">06</span>Customer Validation for AI</a>
+<div class="toc-part"><span class="pnum">III</span> The Stack</div>
+<a class="" href="07-choosing-model-providers.html"><span class="cnum">07</span>Choosing Model Providers &amp; Hugging Face</a>
+<a class="current" href="08-content-data-stack.html"><span class="cnum">08</span>The Content &amp; Data Stack</a>
+<div class="subnav"><a href="#embeddings-and-chunking-done-right">8.1  Embeddings and chunking done right</a><a href="#choosing-a-vector-database-or-store">8.2  Choosing a vector database or store</a><a href="#rag-architecture-patterns-in-production">8.3  RAG architecture patterns in production</a><a href="#data-pipelines-freshness-and-sync">8.4  Data pipelines, freshness and sync</a><a href="#reranking-hybrid-search-and-retrieval-quality">8.5  Reranking, hybrid search and retrieval quality</a></div>
+<a class="" href="09-infra-observability-llmops.html"><span class="cnum">09</span>Infrastructure, Observability &amp; LLMOps</a>
+<a class="" href="10-production-evals-monitoring.html"><span class="cnum">10</span>Production Evals &amp; Monitoring</a>
+<div class="toc-part"><span class="pnum">IV</span> Go-to-Market &amp; Moat</div>
+<a class="" href="11-selling-ai-customer-success.html"><span class="cnum">11</span>Selling AI &amp; Customer Success</a>
+<a class="" href="12-defensibility-ai-moat.html"><span class="cnum">12</span>Defensibility &amp; the AI Moat</a>
+<div class="toc-part"><span class="pnum">V</span> Company Building</div>
+<a class="" href="13-finance-unit-economics.html"><span class="cnum">13</span>Finance &amp; Unit Economics for AI</a>
+<a class="" href="14-venture-funding-for-ai.html"><span class="cnum">14</span>Venture Funding for AI</a>
+<a class="" href="15-pitfalls-crises-ai.html"><span class="cnum">15</span>Pitfalls &amp; Crises in AI</a>
+<div class="toc-part"><span class="pnum">VI</span> People</div>
+<a class="" href="16-team-culture-leadership.html"><span class="cnum">16</span>Team, Culture &amp; Leadership for AI</a>
+<div class="toc-part"><span class="pnum">VII</span> Responsibility</div>
+<a class="" href="17-responsible-ai-regulation.html"><span class="cnum">17</span>Responsible AI: Safety, Ethics &amp; Regulation</a></nav></aside>
+  <main class="content">
+    <article class="chapter">
+      <header class="chapter-head reading">
+        <div class="kicker">Part III - The Stack · Chapter 8</div>
+        <div class="chapter-num">08</div>
+        <h1 class="chapter-title">The Content &amp; Data Stack</h1>
+        <p class="chapter-dek">The retrieval plumbing behind every good AI product — embeddings, vector stores, and the pipelines that keep them honest.</p>
+        <div class="chapter-meta">20 min read · Part III - The Stack</div>
+      </header>
+      <div class="reading"><div class="prose">
+<p class="lede">Your model is a commodity; your context is not. Two startups can call the same frontier model with the same prompt and ship products that feel a generation apart, and the difference is almost never the prompt — it is what got retrieved and stuffed into the window before generation began. This chapter is about that machinery: how you turn a messy corpus of documents into vectors, where you keep them, how you search them well, and how you stop the whole thing from silently rotting the day after you launch.</p>
+<p>We assume you already know what RAG <em>is</em> and how the retrieved context lands in a prompt (see Chapter 3), which embedding provider you lean toward (see Chapter 7), and that the infrastructure to run all this is Chapter 9&rsquo;s problem. Here we go deep on the plumbing itself, and we do it through <strong>Cortex</strong>, our running example: an autonomous customer-support agent for mid-market SaaS companies. Cortex ingests each customer&rsquo;s help center, product docs, and historical support tickets, then answers live conversations. If its retrieval is wrong, it hallucinates a refund policy that does not exist — so for Cortex, the content stack is not a supporting system. It <em>is</em> the product.</p>
+<h2 id="embeddings-and-chunking-done-right"><span class="secnum">8.1</span>Embeddings and chunking done right<a class="anchor" href="#embeddings-and-chunking-done-right" aria-label="Link to this section">#</a></h2>
+<p>An embedding turns a span of text into a vector so that semantically similar spans land near each other. The <strong>chunk</strong> — the unit of text you embed and later retrieve — is the single most consequential design decision in the stack, and the one teams most often get wrong. One systematic 2026 analysis attributed roughly 80% of RAG failures to the ingestion and chunking layer rather than the LLM.<sup class="footnote-ref" id="fnref:prem"><a class="footnote-ref" href="#fn:prem">1</a></sup> When retrieval fails, you are not debugging the model; you are debugging how you cut up your documents nine steps upstream.</p>
+<p>The naive move — split every document into fixed 1,000-token blocks — destroys meaning at the boundaries and buries the signal. The 2026 production default is narrower and smarter: start with a recursive splitter at <strong>400–512 tokens with 10–20% overlap</strong>, respecting natural boundaries (headings, paragraphs, list items), and escalate to semantic or page-level chunking only when your retrieval evals (see Chapter 10) prove you need it.<sup class="footnote-ref" id="fnref:firecrawl"><a class="footnote-ref" href="#fn:firecrawl">2</a></sup> Two nuances matter. First, overlap is not free: a January 2026 study found it often provided <em>no measurable benefit</em> while inflating index size and cost, so treat it as a knob to test, not a default to trust.<sup class="footnote-ref" id="fnref2:firecrawl"><a class="footnote-ref" href="#fn:firecrawl">2</a></sup> Second, there is a <strong>context cliff</strong> around 2,500 tokens where answer quality degrades as chunks get bigger — bigger is not safer.<sup class="footnote-ref" id="fnref3:firecrawl"><a class="footnote-ref" href="#fn:firecrawl">2</a></sup></p>
+<span class="sidenote-ref">1</span><span class="sidenote"><span class="sn-num">1</span>The precision/context tension: small chunks retrieve precisely but starve the model of surrounding meaning; big chunks give context but dilute the vector so it matches everything and nothing. You cannot win both with one chunk size.</span>
+<p>The pattern that resolves the tension is <strong>hierarchical (or parent-document) chunking</strong>: embed small child chunks for precise matching, but return the larger parent section to the model for context. You find with a scalpel and feed with a ladle. This is now the most widely adopted production pattern.<sup class="footnote-ref" id="fnref4:firecrawl"><a class="footnote-ref" href="#fn:firecrawl">2</a></sup> For Cortex, a child chunk is a single paragraph of a help article; the parent is the whole article section, so a hit on &ldquo;how do I rotate my API key&rdquo; retrieves the exact sentence but hands the model the full key-management section.</p>
+<p>The highest-leverage upgrade to embeddings is <strong>contextual retrieval</strong>: before embedding each chunk, prepend a short, LLM-generated sentence situating it in its source document (&ldquo;This chunk is from the <em>Billing</em> article, section <em>Refunds</em>, and describes the 30-day window&rdquo;). Anthropic reported that contextual embeddings alone cut retrieval failures ~35%; pairing them with contextual BM25 (hybrid search, covered below) reaches ~49%; adding reranking reaches ~67%.<sup class="footnote-ref" id="fnref:anthropic"><a class="footnote-ref" href="#fn:anthropic">3</a></sup> It costs one cheap LLM call per chunk at ingest time — trivially amortized against every future query.</p>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>Contextual retrieval</strong> — Augmenting each chunk with document-level context (title, section, a one-line summary) <em>before</em> embedding, so the vector encodes not just the chunk&rsquo;s words but where it lives. The disambiguation happens at index time, once, instead of failing silently at query time, forever.</p>
+</div>
+<p>On the embedding model itself — a Chapter 7 decision — two 2026 facts shape your chunking economics. <strong>Matryoshka</strong> representation lets one model emit 2048/1024/512/256-dimensional vectors from a single pass, so you can truncate to smaller dimensions and shrink storage without re-embedding.<sup class="footnote-ref" id="fnref:voyage"><a class="footnote-ref" href="#fn:voyage">4</a></sup> And <strong>quantization</strong> is dramatic: <code>voyage-3-large</code> at int8 precision and 512 dimensions scored ~8.6% higher than OpenAI&rsquo;s full 3,072-dim float32 vectors while using roughly one-twenty-fourth the storage.<sup class="footnote-ref" id="fnref2:voyage"><a class="footnote-ref" href="#fn:voyage">4</a></sup> Binary quantization cuts storage a further 32× versus float32 at equal dimensions.<sup class="footnote-ref" id="fnref:cohere"><a class="footnote-ref" href="#fn:cohere">5</a></sup> The lesson: default to 768–1,024 dimensions, reach for quantization early, and never pay to store 3,072-dim float32 vectors unless an eval says you must.</p>
+<h2 id="choosing-a-vector-database-or-store"><span class="secnum">8.2</span>Choosing a vector database or store<a class="anchor" href="#choosing-a-vector-database-or-store" aria-label="Link to this section">#</a></h2>
+<p>The market has fragmented into good options, so the wrong-answer surface has shrunk — but the &ldquo;defensible default&rdquo; question is sharper than ever. Do not start by asking which vector database is best. Ask how many vectors you will have, whether you already run Postgres, and whether you need to filter retrieval by metadata (tenant, product, recency) — for a multi-tenant product like Cortex, that last one is non-negotiable.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p><strong>The Founder&rsquo;s Rule of Vector Stores:</strong> if you have fewer than a few million vectors and already run Postgres, the right vector database is Postgres. Adopt a dedicated store only when a metric — latency, recall, or scale — forces you to.</p>
+</div>
+<p>For most workloads under a few million vectors, <strong>pgvector</strong> inside your existing Postgres is the strongest choice: embeddings, source documents, and metadata live in one database you query with ordinary SQL joins, and with the <code>pgvectorscale</code> extension it stays competitive with dedicated engines up to roughly 50–100M vectors.<sup class="footnote-ref" id="fnref:firecrawl_vdb"><a class="footnote-ref" href="#fn:firecrawl_vdb">6</a></sup> You avoid a second datastore, a second consistency model, and a second thing to back up. The moment you outgrow it is a <em>good</em> problem, and the migration is mechanical.</p>
+<span class="sidenote-ref">2</span><span class="sidenote case"><span class="sn-num">2</span><span class="sn-label">In the wild</span><strong>Turbopuffer's object-storage economics (2026)</strong> - Object-storage-native engines like Turbopuffer and LanceDB decouple storage from compute, and for write-heavy or very large corpora they can be an order of magnitude cheaper than memory-resident engines. Turbopuffer's floor is about $64/month but sits under $10 for a million reads and writes at standard dimensions — attractive when a corpus is huge but query volume is spiky.</span>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Store</th>
+<th>Best fit</th>
+<th>Hybrid search</th>
+<th>Ops burden</th>
+<th>2026 economics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>pgvector</strong> (+pgvectorscale)</td>
+<td>&lt;50–100M vectors, already on Postgres</td>
+<td>Via extensions / SQL</td>
+<td>Lowest (no new system)</td>
+<td>Free; you pay for Postgres you already run<sup class="footnote-ref" id="fnref2:firecrawl_vdb"><a class="footnote-ref" href="#fn:firecrawl_vdb">6</a></sup></td>
+</tr>
+<tr>
+<td><strong>Qdrant</strong></td>
+<td>Latency-sensitive OSS, self-host</td>
+<td>Native</td>
+<td>Medium (Rust, self-host or cloud)</td>
+<td>1GB free tier; latency leader among OSS<sup class="footnote-ref" id="fnref3:firecrawl_vdb"><a class="footnote-ref" href="#fn:firecrawl_vdb">6</a></sup></td>
+</tr>
+<tr>
+<td><strong>Pinecone</strong></td>
+<td>Managed, don&rsquo;t-touch-infra teams</td>
+<td>Native</td>
+<td>Lowest managed</td>
+<td>Usage-based, free tier; closed-source<sup class="footnote-ref" id="fnref4:firecrawl_vdb"><a class="footnote-ref" href="#fn:firecrawl_vdb">6</a></sup></td>
+</tr>
+<tr>
+<td><strong>Weaviate</strong></td>
+<td>Native hybrid + rich filtering</td>
+<td>Native (built-in)</td>
+<td>Medium</td>
+<td>OSS + managed cloud<sup class="footnote-ref" id="fnref5:firecrawl_vdb"><a class="footnote-ref" href="#fn:firecrawl_vdb">6</a></sup></td>
+</tr>
+<tr>
+<td><strong>Turbopuffer / LanceDB</strong></td>
+<td>100M+ or write-heavy, cost-sensitive</td>
+<td>Native (Turbopuffer)</td>
+<td>Medium</td>
+<td>~10× cheaper on object storage<sup class="footnote-ref" id="fnref6:firecrawl_vdb"><a class="footnote-ref" href="#fn:firecrawl_vdb">6</a></sup></td>
+</tr>
+<tr>
+<td><strong>Milvus / Zilliz, Vespa</strong></td>
+<td>100M+ at scale, hybrid at scale</td>
+<td>Native</td>
+<td>Higher</td>
+<td>Enterprise-grade scale<sup class="footnote-ref" id="fnref7:firecrawl_vdb"><a class="footnote-ref" href="#fn:firecrawl_vdb">6</a></sup></td>
+</tr>
+</tbody>
+</table></div>
+<p>The load-bearing column is <strong>hybrid search</strong> — Weaviate, Qdrant, Turbopuffer, and Elasticsearch support it natively.<sup class="footnote-ref" id="fnref:appscale"><a class="footnote-ref" href="#fn:appscale">7</a></sup> If your product hinges on retrieval quality (it does), pick a store whose hybrid support is native rather than bolted on, or accept that you will run a separate keyword index alongside your vectors. Cortex runs pgvector per-tenant in early stage — each customer&rsquo;s corpus is small, and Postgres row-level security gives clean tenant isolation for free — with a documented path to Turbopuffer once any single tenant crosses tens of millions of vectors.</p>
+<h2 id="rag-architecture-patterns-in-production"><span class="secnum">8.3</span>RAG architecture patterns in production<a class="anchor" href="#rag-architecture-patterns-in-production" aria-label="Link to this section">#</a></h2>
+<p>A demo RAG pipeline is <code>embed(query) → top-k → prompt</code>. A production one is a graph with an ingestion side and a serving side that share nothing but the index, and the diagram below is the spine every serious system converges on.</p>
+<figure class="diagram">
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Production RAG pipeline from ingestion through generation">
+  <style>.dg text{font-family:var(--sans);fill:var(--ink);font-size:13px} .dg .box{fill:var(--paper-2);stroke:var(--rule-2)} .dg .accent{fill:var(--accent-bg);stroke:var(--accent)} .dg .rec{fill:var(--sage-bg);stroke:var(--sage)} .dg .lbl{fill:var(--muted);font-size:11px;font-weight:600} .dg .flow{stroke:var(--rule-2);stroke-width:1.6;fill:none}</style>
+  <defs><marker id="ragArrow08" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2)"/></marker></defs>
+  <g class="dg">
+    <text class="lbl" x="20" y="26">INGEST (offline, event-driven)</text>
+    <rect class="box" x="20" y="36" width="120" height="42" rx="9"/><text x="80" y="62" text-anchor="middle">Ingest + chunk</text>
+    <rect class="box" x="170" y="36" width="120" height="42" rx="9"/><text x="230" y="55" text-anchor="middle">Embed</text><text x="230" y="70" text-anchor="middle" class="lbl">+context</text>
+    <rect class="accent" x="320" y="36" width="120" height="42" rx="9"/><text x="380" y="62" text-anchor="middle">Store (index)</text>
+    <path class="flow" d="M140 57 H168" marker-end="url(#ragArrow08)"/>
+    <path class="flow" d="M290 57 H318" marker-end="url(#ragArrow08)"/>
+    <text class="lbl" x="20" y="132">SERVE (online, per query)</text>
+    <rect class="box" x="20" y="142" width="120" height="42" rx="9"/><text x="80" y="168" text-anchor="middle">Retrieve (hybrid)</text>
+    <rect class="rec" x="170" y="142" width="120" height="42" rx="9"/><text x="230" y="168" text-anchor="middle">Rerank</text>
+    <rect class="box" x="320" y="142" width="120" height="42" rx="9"/><text x="380" y="168" text-anchor="middle">Generate</text>
+    <rect class="box" x="470" y="142" width="130" height="42" rx="9"/><text x="535" y="161" text-anchor="middle">Answer +</text><text x="535" y="176" text-anchor="middle" class="lbl">citations</text>
+    <path class="flow" d="M380 78 V142" marker-end="url(#ragArrow08)"/>
+    <path class="flow" d="M140 163 H168" marker-end="url(#ragArrow08)"/>
+    <path class="flow" d="M290 163 H318" marker-end="url(#ragArrow08)"/>
+    <path class="flow" d="M440 163 H468" marker-end="url(#ragArrow08)"/>
+  </g>
+</svg>
+<figcaption><strong>Figure 8.1</strong> - The production RAG spine: an event-driven ingest path and a per-query serve path, sharing only the index.</figcaption>
+</figure>
+
+<p>Three patterns separate production from prototype. First, <strong>retrieve more than you send.</strong> Pull 50–100 candidates from hybrid retrieval, then let a reranker (below) cut to the 5–10 that actually enter the prompt. Cheap recall up front, expensive precision at the end. Second, <strong>always return citations.</strong> Every generated claim should carry the chunk ID it came from, both so users can verify and so you can trace failures back to a specific document. For Cortex, an answer without a citation to a help article is a bug, not a stylistic choice — it is how a support agent earns trust instead of confidently inventing policy. Third, <strong>filter before you search, not after.</strong> Push tenant, product-version, and recency filters into the vector query so you never rank a chunk you would have to discard — critical when tenant B must never see tenant A&rsquo;s tickets.</p>
+<p>Beyond baseline retrieval, two patterns are worth knowing but not defaulting to. <strong>Query rewriting</strong> — having a cheap model rephrase or decompose the user&rsquo;s question before retrieval — reliably helps on conversational and multi-part queries; Cortex uses it to turn &ldquo;it&rsquo;s still broken&rdquo; into a self-contained search query using conversation history. <strong>Agentic / corrective RAG</strong>, where the system retrieves, judges the result, and re-retrieves if confidence is low, buys accuracy at the cost of latency and token spend; reserve it for high-stakes answers, not every &ldquo;where&rsquo;s my invoice.&rdquo; Benchmarks on text-and-table corpora confirm the two-stage hybrid-plus-reranker pipeline as the recommended baseline, with corrective loops as an upgrade, not a starting point.<sup class="footnote-ref" id="fnref:arxiv_bm25"><a class="footnote-ref" href="#fn:arxiv_bm25">9</a></sup></p>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>Do not skip citations and provenance to ship faster. Retrofitting chunk-level attribution into a live RAG system means re-plumbing your generation layer and often re-ingesting your corpus. Every chunk should carry stable metadata — source URI, section, version, ingest timestamp — from the very first ingest run.</p>
+</div>
+<h2 id="data-pipelines-freshness-and-sync"><span class="secnum">8.4</span>Data pipelines, freshness and sync<a class="anchor" href="#data-pipelines-freshness-and-sync" aria-label="Link to this section">#</a></h2>
+<p>The demo indexes a corpus once. The product indexes a corpus that <em>changes</em> — help articles get edited, policies get rewritten, tickets get resolved — and here is the failure mode nobody sees coming: <strong>semantic similarity has no temporal dimension.</strong> A stale embedding scores exactly as high as a fresh one, so an out-of-date chunk gets retrieved with full confidence and the model answers from last quarter&rsquo;s refund policy. There is no error, no exception, no red line on a dashboard. Retrieval quality decays silently, and teams solve freshness last, usually after a customer catches a wrong answer.<sup class="footnote-ref" id="fnref:tianpan"><a class="footnote-ref" href="#fn:tianpan">10</a></sup></p>
+<span class="sidenote-ref">3</span><span class="sidenote case"><span class="sn-num">3</span><span class="sn-label">In the wild</span><strong>The RAG staleness problem named (April 2026)</strong> - A widely-cited 2026 analysis dubbed this <em>index rot</em>: because stale and fresh vectors are indistinguishable to cosine similarity, knowledge bases degrade invisibly, and the fix is change-detection at ingest plus temporal metadata on every chunk so recency can be a retrieval signal rather than an afterthought.</span>
+<p>The batch answer — re-embed the whole corpus nightly — is wasteful and always a few hours stale. The 2026 production answer is <strong>event-driven incremental sync via change data capture (CDC)</strong>: tools like Debezium or Striim mine the database transaction log, and every insert, update, and delete emits a change event that flows through a streaming layer to re-embed <em>only</em> what changed, reflecting edits in the index within seconds.<sup class="footnote-ref" id="fnref2:tianpan"><a class="footnote-ref" href="#fn:tianpan">10</a></sup> You process deltas, not the corpus.</p>
+<p>The operation everyone forgets is <strong>deletes.</strong> When a help article is retired, its chunks must leave the index immediately, or Cortex will keep citing a page that 404s. Your pipeline needs an explicit tombstone path — a delete event removes every chunk whose <code>source_id</code> matches — and updates must be handled as delete-then-insert so old chunk versions do not linger as ghosts alongside new ones. This is why stable, deterministic chunk IDs derived from source identity are not optional.</p>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>Index rot</strong> — The silent divergence between what your vector index contains and what your source of truth actually says, caused by edits and deletions that never propagated. Undetectable by similarity scores; only source-linked freshness metadata and reconciliation catch it.</p>
+</div>
+<p>A practical ingest contract for Cortex, expressed as the record every chunk carries:</p>
+<div class="codeblock"><div class="codehead"><span class="lang">python</span><button class="copy" type="button">Copy</button></div><pre><code><span class="c1"># Every chunk is idempotent, source-linked, and versioned.</span>
+<span class="n">chunk</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">stable_hash</span><span class="p">(</span><span class="n">source_id</span><span class="p">,</span> <span class="n">chunk_index</span><span class="p">,</span> <span class="n">content_version</span><span class="p">),</span>
+    <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">contextualized_text</span><span class="p">,</span>      <span class="c1"># child chunk + prepended context</span>
+    <span class="s2">&quot;embedding&quot;</span><span class="p">:</span> <span class="n">embed</span><span class="p">(</span><span class="n">contextualized_text</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int8&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;tenant_id&quot;</span><span class="p">:</span> <span class="s2">&quot;acme&quot;</span><span class="p">,</span>          <span class="c1"># filter before search — hard isolation</span>
+        <span class="s2">&quot;source_id&quot;</span><span class="p">:</span> <span class="s2">&quot;help/refunds&quot;</span><span class="p">,</span>  <span class="c1"># enables delete + reconcile</span>
+        <span class="s2">&quot;source_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://...&quot;</span><span class="p">,</span>  <span class="c1"># citation target</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">content_version</span><span class="p">,</span>   <span class="c1"># supersede old chunks on update</span>
+        <span class="s2">&quot;updated_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2026-07-30&quot;</span><span class="p">,</span>   <span class="c1"># temporal signal against index rot</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="c1"># On a CDC update event: delete WHERE source_id, then upsert new chunks.</span></code></pre></div>
+<p>Run a periodic <strong>reconciliation</strong> job regardless of how good your event stream is: walk the source of truth, confirm every live document has current chunks and every retired one has none. Streams drop messages; reconciliation is the backstop that turns silent rot into a caught discrepancy. Budget for it before you launch, not after the first embarrassing answer.</p>
+<h2 id="reranking-hybrid-search-and-retrieval-quality"><span class="secnum">8.5</span>Reranking, hybrid search and retrieval quality<a class="anchor" href="#reranking-hybrid-search-and-retrieval-quality" aria-label="Link to this section">#</a></h2>
+<p>Pure vector search has a blind spot that surprises people: it does not know words. Dense embeddings capture meaning, so they nail &ldquo;automobile repair&rdquo; ≈ &ldquo;car maintenance&rdquo; — but they fumble the exact tokens that matter most in support: product SKUs, error codes, API method names, version strings, a specific customer&rsquo;s account ID. On these, the decades-old keyword algorithm <strong>BM25</strong> beats dense retrieval, and 2026 benchmarks confirm BM25 outperforming even strong commercial embedding models on most metrics when queries contain rare, distinctive terms.<sup class="footnote-ref" id="fnref2:appscale"><a class="footnote-ref" href="#fn:appscale">7</a></sup> For a Cortex ticket that says &ldquo;getting <code>ERR_QUOTA_402</code> on the v3 batch endpoint,&rdquo; you want the chunk with that exact error code, and keyword search finds it while pure vectors drift toward &ldquo;quota-related billing issues&rdquo; in general.</p>
+<p><strong>Hybrid search</strong> runs both — dense and BM25 — and fuses the rankings, typically with <strong>reciprocal rank fusion (RRF)</strong>, which combines result lists without needing to normalize incompatible score scales. You get semantic recall and exact-match precision from the same query. This is the recall stage.</p>
+<p>The precision stage is a <strong>reranker</strong>: a cross-encoder that scores each candidate against the query jointly (reading query and document together, not as two independent vectors), which is far more accurate but too slow to run over a whole corpus — so you run it over only the ~50–100 candidates hybrid search surfaced. The 2026 numbers make the case unambiguous. Hybrid retrieval plus a Cohere reranker delivered a <strong>+17.4% relative Recall@5 over hybrid RRF alone and +39% over dense-only</strong> on a text-and-table benchmark.<sup class="footnote-ref" id="fnref2:arxiv_bm25"><a class="footnote-ref" href="#fn:arxiv_bm25">9</a></sup> On a financial dataset, Cohere Rerank 3.5 scored +23.4% over hybrid search and +30.8% over BM25 alone.<sup class="footnote-ref" id="fnref:denser"><a class="footnote-ref" href="#fn:denser">8</a></sup> The tax is latency: reranking adds roughly <strong>100–300ms per query</strong> (a hybrid-plus-Cohere top-50 pipeline measured p50 ≈ 230ms, p95 ≈ 410ms).<sup class="footnote-ref" id="fnref3:appscale"><a class="footnote-ref" href="#fn:appscale">7</a></sup></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What it does</th>
+<th>Adds</th>
+<th>When it earns its place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dense only</strong></td>
+<td>Semantic recall</td>
+<td>Baseline</td>
+<td>Prototype; homogeneous prose</td>
+</tr>
+<tr>
+<td><strong>+ BM25 (hybrid/RRF)</strong></td>
+<td>Exact-term precision</td>
+<td>~small</td>
+<td>Codes, SKUs, names, versions — i.e. support</td>
+</tr>
+<tr>
+<td><strong>+ Reranker</strong></td>
+<td>Cross-encoder precision cut</td>
+<td>~100–300ms<sup class="footnote-ref" id="fnref4:appscale"><a class="footnote-ref" href="#fn:appscale">7</a></sup></td>
+<td>Quality-critical answers; large candidate sets</td>
+</tr>
+<tr>
+<td><strong>+ Corrective loop</strong></td>
+<td>Retrieve-judge-retry</td>
+<td>1+ extra round-trips</td>
+<td>High-stakes; only when evals justify the cost</td>
+</tr>
+</tbody>
+</table></div>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p><strong>Recall is cheap, precision is expensive — so buy them in that order.</strong> Cast a wide, cheap net with hybrid search, then spend your latency and dollars reranking the shortlist. Never run your expensive stage over your whole corpus.</p>
+</div>
+<p>For Cortex the full serving path is: rewrite the query using conversation context → hybrid retrieve 50 candidates (dense + BM25, RRF-fused, tenant-filtered) → rerank to the top 8 → generate with citations. The reranker is where quality is won: it is the difference between surfacing the article that <em>mentions</em> refunds and the one that <em>states the 30-day window</em>. Whether that pipeline actually improves answers — versus just feeling more sophisticated — is a question only retrieval evals can settle, and that is Chapter 10&rsquo;s domain. Build the pipeline here; prove it there.</p>
+<div class="callout takeaways">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L17 8"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg>Key Takeaways</p>
+<p><strong>Key takeaways</strong>
+- Chunking is the highest-leverage decision in the stack — ~80% of RAG failures originate there, not in the model. Start at 400–512 tokens, test overlap rather than assuming it, and adopt hierarchical (parent-document) chunking to resolve the precision/context trade-off.
+- Contextual retrieval — prepending document context before embedding — cuts retrieval failures ~35% alone (up to ~49% with contextual BM25, ~67% with reranking) for one cheap LLM call per chunk at index time.
+- Default your vector store to pgvector if you&rsquo;re under ~50–100M vectors and already on Postgres; graduate to a dedicated or object-storage-native engine only when a metric forces it.
+- Use Matryoshka dimensions and int8/binary quantization to cut vector storage by more than an order of magnitude with negligible quality loss; never store 3,072-dim float32 by default.
+- Freshness fails silently — stale embeddings score as high as fresh ones. Use CDC-driven incremental sync, handle deletes with tombstones, carry temporal metadata, and run reconciliation as a backstop against index rot.
+- Retrieval quality is a two-stage problem: hybrid (dense + BM25/RRF) for cheap recall, then a cross-encoder reranker for expensive precision. It reliably beats dense-only by 30%+ on recall, at ~100–300ms.</p>
+</div>
+<div class="exercise">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Exercise</p>
+<p><strong>Hands-on: Build and stress-test Cortex&rsquo;s retrieval core</strong>
+1. Take a real 50–200 page documentation set (your own product docs, or a public help center). Chunk it two ways: fixed 1,000-token blocks, and hierarchical 400-token child chunks with parent-section return. Embed both with a 1,024-dim model.
+2. Add contextual retrieval to the hierarchical version: for each chunk, generate a one-line context header with a cheap model and prepend it before embedding.
+3. Load all three indexes into pgvector with metadata columns for <code>source_id</code>, <code>version</code>, and <code>updated_at</code>. Add a BM25 index (Postgres full-text or a keyword engine) over the same chunks.
+4. Write 20 realistic support queries — deliberately include 5 that hinge on exact tokens (error codes, SKUs, method names). Run each through: dense-only, hybrid (RRF), and hybrid + a reranker. Record which config retrieves the correct source chunk in the top 5.
+5. Simulate index rot: edit 3 source documents and delete 1. Implement a delete-then-upsert path keyed on <code>source_id</code>, re-run the affected queries, and confirm no stale or ghost chunks are retrieved. Note how many queries would have returned wrong answers without the sync step.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:prem">
+<p>Building Production RAG: Architecture, Chunking, Evaluation &amp; Monitoring (2026 Guide). PremAI. <a href="https://blog.premai.io/building-production-rag-architecture-chunking-evaluation-monitoring-2026-guide/">https://blog.premai.io/building-production-rag-architecture-chunking-evaluation-monitoring-2026-guide/</a>&#160;<a class="footnote-backref" href="#fnref:prem" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:firecrawl">
+<p>Best Chunking Strategies for RAG (and LLMs) in 2026. Firecrawl. <a href="https://www.firecrawl.dev/blog/best-chunking-strategies-rag">https://www.firecrawl.dev/blog/best-chunking-strategies-rag</a>&#160;<a class="footnote-backref" href="#fnref:firecrawl" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:firecrawl" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:firecrawl" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:firecrawl" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:anthropic">
+<p>Introducing Contextual Retrieval. Anthropic. <a href="https://www.anthropic.com/engineering/contextual-retrieval">https://www.anthropic.com/engineering/contextual-retrieval</a>&#160;<a class="footnote-backref" href="#fnref:anthropic" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:voyage">
+<p>voyage-3-large: the new state-of-the-art general-purpose embedding model. Voyage AI. <a href="https://blog.voyageai.com/2025/01/07/voyage-3-large/">https://blog.voyageai.com/2025/01/07/voyage-3-large/</a>&#160;<a class="footnote-backref" href="#fnref:voyage" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:voyage" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cohere">
+<p>Best Embedding Models for RAG (2026): Ranked by MTEB Score, Cost, and Self-Hosting. PremAI. <a href="https://www.premai.io/blog/best-embedding-models-for-rag-2026-ranked-by-mteb-score-cost-and-self-hosting/">https://www.premai.io/blog/best-embedding-models-for-rag-2026-ranked-by-mteb-score-cost-and-self-hosting/</a>&#160;<a class="footnote-backref" href="#fnref:cohere" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:firecrawl_vdb">
+<p>Best Vector Databases in 2026: A Complete Comparison Guide. Firecrawl. <a href="https://www.firecrawl.dev/blog/best-vector-databases">https://www.firecrawl.dev/blog/best-vector-databases</a>&#160;<a class="footnote-backref" href="#fnref:firecrawl_vdb" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:firecrawl_vdb" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:firecrawl_vdb" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:firecrawl_vdb" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:firecrawl_vdb" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:firecrawl_vdb" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:firecrawl_vdb" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:appscale">
+<p>Hybrid Search and Re-ranking in Production RAG 2026: BM25, Dense, Cross-encoders, Fusion. AppScale Blog. <a href="https://appscale.blog/en/blog/hybrid-search-and-reranking-production-rag-bm25-dense-cross-encoder-2026">https://appscale.blog/en/blog/hybrid-search-and-reranking-production-rag-bm25-dense-cross-encoder-2026</a>&#160;<a class="footnote-backref" href="#fnref:appscale" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:appscale" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:appscale" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:appscale" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:denser">
+<p>Hybrid Search for RAG: Combining BM25 and Dense Vector Search (2026 Guide). Denser.ai. <a href="https://denser.ai/blog/hybrid-search-for-rag/">https://denser.ai/blog/hybrid-search-for-rag/</a>&#160;<a class="footnote-backref" href="#fnref:denser" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:arxiv_bm25">
+<p>From BM25 to Corrective RAG: Benchmarking Retrieval Strategies for Text-and-Table Documents. arXiv. <a href="https://arxiv.org/html/2604.01733v1">https://arxiv.org/html/2604.01733v1</a>&#160;<a class="footnote-backref" href="#fnref:arxiv_bm25" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:arxiv_bm25" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:tianpan">
+<p>The RAG Freshness Problem: How Stale Embeddings Silently Wreck Retrieval Quality. TianPan.co. <a href="https://tianpan.co/blog/2026-04-10-rag-freshness-problem-stale-embeddings-silent-failure">https://tianpan.co/blog/2026-04-10-rag-freshness-problem-stale-embeddings-silent-failure</a>&#160;<a class="footnote-backref" href="#fnref:tianpan" title="Jump back to footnote 10 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:tianpan" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+      <nav class="prevnext"><a class="prev" href="07-choosing-model-providers.html"><div class="dir">← Previous</div><div class="t">Ch 7 · Choosing Model Providers &amp; Hugging Face</div></a><a class="next" href="09-infra-observability-llmops.html"><div class="dir">Next →</div><div class="t">Ch 9 · Infrastructure, Observability &amp; LLMOps</div></a></nav>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> github.com/arubhatt</a>
+  </div>
+</footer>
+<div class="search-modal" id="search-modal">
+  <div class="scrim"></div>
+  <div class="search-box">
+    <input id="search-input" type="text" placeholder="Search the book…" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>

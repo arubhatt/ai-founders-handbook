@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Fundamentals I: Models, Modalities &amp; Inference · The AI Founder&#x27;s Handbook</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/book.css">
+<link rel="stylesheet" href="assets/css/code.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html">The AI Founder's <b>Handbook</b></a>
+  <span class="spacer"></span>
+  <span class="byline-top hide-sm">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+  <button class="iconbtn" data-search-open aria-label="Search"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="hide-sm">Search</span> <kbd>/</kbd></button>
+  <a class="iconbtn" href="https://github.com/arubhatt" target="_blank" rel="noopener" aria-label="GitHub — arubhatt"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  <button class="iconbtn" id="theme-btn" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="toc"><a class="toc-book" href="index.html">The AI Founder&#x27;s Handbook</a>
+<div class="toc-part"><span class="pnum">I</span> Foundations</div>
+<a class="" href="01-introduction-to-ai-startups.html"><span class="cnum">01</span>Introduction to AI Startups</a>
+<a class="current" href="02-ai-fundamentals-models.html"><span class="cnum">02</span>AI Fundamentals I: Models, Modalities &amp; Inference</a>
+<div class="subnav"><a href="#from-tokens-to-transformers-for-founders">2.1  From tokens to transformers, for founders</a><a href="#modalities-text-vision-audio-multimodal">2.2  Modalities: text, vision, audio, multimodal</a><a href="#open-vs-closed-dense-vs-mixture-of-experts-reasoning-models">2.3  Open vs closed, dense vs mixture-of-experts, reasoning models</a><a href="#axis-1-open-weights-vs-closed-api">Axis 1: open-weights vs closed / API</a><a href="#axis-2-dense-vs-mixture-of-experts">Axis 2: dense vs mixture-of-experts</a><a href="#axis-3-reasoning-vs-fast">Axis 3: reasoning vs fast</a><a href="#context-windows-tokens-and-the-economics-of-inference">2.4  Context windows, tokens and the economics of inference</a><a href="#latency-throughput-and-where-the-compute-goes">2.5  Latency, throughput and where the compute goes</a></div>
+<a class="" href="03-ai-fundamentals-rag-agents.html"><span class="cnum">03</span>AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</a>
+<div class="toc-part"><span class="pnum">II</span> Market &amp; Validation</div>
+<a class="" href="04-markets-users-product-strategy.html"><span class="cnum">04</span>Markets, Users &amp; AI Product Strategy</a>
+<a class="" href="05-data-strategy-flywheel.html"><span class="cnum">05</span>Data Strategy &amp; the Data Flywheel</a>
+<a class="" href="06-customer-validation-for-ai.html"><span class="cnum">06</span>Customer Validation for AI</a>
+<div class="toc-part"><span class="pnum">III</span> The Stack</div>
+<a class="" href="07-choosing-model-providers.html"><span class="cnum">07</span>Choosing Model Providers &amp; Hugging Face</a>
+<a class="" href="08-content-data-stack.html"><span class="cnum">08</span>The Content &amp; Data Stack</a>
+<a class="" href="09-infra-observability-llmops.html"><span class="cnum">09</span>Infrastructure, Observability &amp; LLMOps</a>
+<a class="" href="10-production-evals-monitoring.html"><span class="cnum">10</span>Production Evals &amp; Monitoring</a>
+<div class="toc-part"><span class="pnum">IV</span> Go-to-Market &amp; Moat</div>
+<a class="" href="11-selling-ai-customer-success.html"><span class="cnum">11</span>Selling AI &amp; Customer Success</a>
+<a class="" href="12-defensibility-ai-moat.html"><span class="cnum">12</span>Defensibility &amp; the AI Moat</a>
+<div class="toc-part"><span class="pnum">V</span> Company Building</div>
+<a class="" href="13-finance-unit-economics.html"><span class="cnum">13</span>Finance &amp; Unit Economics for AI</a>
+<a class="" href="14-venture-funding-for-ai.html"><span class="cnum">14</span>Venture Funding for AI</a>
+<a class="" href="15-pitfalls-crises-ai.html"><span class="cnum">15</span>Pitfalls &amp; Crises in AI</a>
+<div class="toc-part"><span class="pnum">VI</span> People</div>
+<a class="" href="16-team-culture-leadership.html"><span class="cnum">16</span>Team, Culture &amp; Leadership for AI</a>
+<div class="toc-part"><span class="pnum">VII</span> Responsibility</div>
+<a class="" href="17-responsible-ai-regulation.html"><span class="cnum">17</span>Responsible AI: Safety, Ethics &amp; Regulation</a></nav></aside>
+  <main class="content">
+    <article class="chapter">
+      <header class="chapter-head reading">
+        <div class="kicker">Part I - Foundations · Chapter 2</div>
+        <div class="chapter-num">02</div>
+        <h1 class="chapter-title">AI Fundamentals I: Models, Modalities &amp; Inference</h1>
+        <p class="chapter-dek">The technical bedrock every founder must hold in their head: what these models are, and what it actually costs to run them.</p>
+        <div class="chapter-meta">18 min read · Part I - Foundations</div>
+      </header>
+      <div class="reading"><div class="prose">
+<p class="lede">You do not need to derive backpropagation to build an AI company, but you do need a mechanical model of what happens between a user&rsquo;s request and a billed invoice — because that model is your product&rsquo;s cost structure, its latency budget, and half its defensibility. This chapter is that physics: the smallest complete set of ideas about models, modalities, and inference that lets a non-researcher founder make correct architecture and cost decisions under pressure.</p>
+<p>We build the picture bottom-up — tokens, transformers, modalities, the taxonomy of models you actually choose between, and the economics of running them — and we keep coming back to <strong>Cortex</strong>, our running example: an autonomous customer-support agent for mid-market SaaS companies. Cortex reads a support ticket, checks the customer&rsquo;s account, and either resolves it or escalates. Every abstract idea here becomes, for Cortex, a line on a cost sheet.</p>
+<h2 id="from-tokens-to-transformers-for-founders"><span class="secnum">2.1</span>From tokens to transformers, for founders<a class="anchor" href="#from-tokens-to-transformers-for-founders" aria-label="Link to this section">#</a></h2>
+<p>A <strong>language model</strong> does exactly one thing: given a sequence of <strong>tokens</strong>, it predicts a probability distribution over the next token. Everything else — chat, code, agents — is scaffolding around that single primitive, repeated. This loop is where your bill comes from.</p>
+<p>A token is a chunk of text, roughly 3-4 characters or about 0.75 English words. <span class="sidenote-ref">1</span><span class="sidenote"><span class="sn-num">1</span>A blunt but load-bearing heuristic: <strong>1 token ≈ 4 characters ≈ 0.75 words</strong>. 1,000 English words ≈ 1,350 tokens. Code, JSON, and non-Latin scripts tokenize <em>worse</em> — often 1.5-3x more tokens per visible character.</span> The model never sees letters; it sees integer token IDs produced by a <strong>tokenizer</strong>. This matters commercially for two reasons. First, <strong>you are billed per token, not per word or per request</strong> — so the shape of your data determines your margin. Cortex&rsquo;s tickets are cheap prose, but the account JSON, API logs, and knowledge-base articles it stuffs into context are token-dense; a naive &ldquo;just include everything&rdquo; prompt can quadruple the input bill. Second, tokenization is language- and format-specific: the same Cortex flow costs materially more to serve a German or Japanese customer than an English one, purely from tokenization overhead. Bake that into pricing before a design partner in Munich becomes your worst-margin account.</p>
+<p>The dominant architecture remains the <strong>transformer</strong>, and the one mechanism a founder must internalize is <strong>attention</strong>: to predict the next token, the model weighs its relevance against <em>every</em> prior token in the sequence. That &ldquo;against every prior token&rdquo; is the source of both the technology&rsquo;s magic and its cost curve. It is why context is powerful — the model can genuinely reason over a whole ticket thread — and why long context is expensive and slow, a tension we quantify later in this chapter.</p>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>Autoregressive generation</strong> - The model produces output one token at a time, and each new token is fed back in as input to produce the next. A 500-token answer is 500 sequential forward passes through the network. This serial dependency, not raw model size, is why generation feels like typing rather than appearing instantly — and it is the single most important fact about inference cost.</p>
+</div>
+<p>Two facts fall out of autoregression and govern your entire cost model. <strong>Input tokens are cheap; output tokens are expensive</strong> — typically 4-5x the price — because input is processed in one parallel pass while output must be generated serially. And <strong>you cannot fully predict a request&rsquo;s cost in advance</strong>, because output length is emergent. A support agent that &ldquo;thinks out loud&rdquo; or over-explains is not just annoying; it is a variable-cost leak on every ticket.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p><strong>Founder&rsquo;s Rule 2.1</strong> - Every product decision is a token decision. If you cannot estimate the input and output tokens of your core action on the back of a napkin, you do not yet understand your unit economics.</p>
+</div>
+<h2 id="modalities-text-vision-audio-multimodal"><span class="secnum">2.2</span>Modalities: text, vision, audio, multimodal<a class="anchor" href="#modalities-text-vision-audio-multimodal" aria-label="Link to this section">#</a></h2>
+<p>A <strong>modality</strong> is a type of data the model can consume or produce: text, images, audio, video. The 2026 frontier is <strong>natively multimodal</strong> — a single model that ingests and reasons across text, images, and audio in one forward pass, rather than bolting a separate vision or speech model onto a text core. This is a genuine capability shift, and it reshapes what products are buildable.</p>
+<p>Modalities are priced and metered differently, and conflating them is a classic founder error. Images are converted to tokens by tile — a high-resolution screenshot can cost hundreds to low-thousands of input tokens. Audio is metered per <strong>audio token</strong> or per minute of stream, at a steep premium over text. OpenAI&rsquo;s <strong>GPT-Realtime-2</strong>, shipped May 2026, runs roughly <strong>$32 per million audio-input tokens and $64 per million audio-output tokens</strong> — an order of magnitude above text — with cached audio input far cheaper.<sup class="footnote-ref" id="fnref:realtime"><a class="footnote-ref" href="#fn:realtime">1</a></sup> Google&rsquo;s <strong>Gemini 3.1 Flash</strong> exposes a Live API for streaming voice and vision, with audio output around <strong>$20 per million tokens</strong>.<sup class="footnote-ref" id="fnref:gemini-live"><a class="footnote-ref" href="#fn:gemini-live">2</a></sup> Voice is not &ldquo;text with a microphone&rdquo;; it is a different cost class.</p>
+<span class="sidenote-ref">2</span><span class="sidenote"><span class="sn-num">2</span>Rule of thumb for 2026: <strong>audio ≈ 10-30x text per token, images ≈ hundreds-to-thousands of tokens each, video ≈ don't, unless it's the product.</strong> Price the modality before you promise the feature.</span>
+<p>For Cortex, the modality decision is concrete. Most tickets are <strong>text</strong>: chat transcripts, emails, form fields — the cheap, obvious backbone. But a meaningful slice include a <strong>screenshot</strong> (&ldquo;here&rsquo;s the error I&rsquo;m seeing&rdquo;), and a native-vision model that reads the screenshot directly, versus a human tagging it or a separate OCR service, is the difference between one-pass resolution and a multi-hop pipeline. The team&rsquo;s decision: text is the default path; <strong>vision is invoked conditionally</strong>, only when an image is attached, so the expensive modality is billed only when it earns its keep. <strong>Voice</strong> — a customer phoning support and Cortex answering live over a real number, now trivial via the Realtime API over SIP — is deferred to a later phase, precisely because at $32/$64 per million audio tokens it would dominate the cost model before the text product is proven.</p>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>Native multimodality makes new features <em>technically</em> free to attempt and <em>financially</em> dangerous to ship by default. &ldquo;Cortex can now answer phone calls&rdquo; is a one-line API change and a 10-30x per-interaction cost increase. Modality expansion is a pricing decision disguised as a feature.</p>
+</div>
+<h2 id="open-vs-closed-dense-vs-mixture-of-experts-reasoning-models"><span class="secnum">2.3</span>Open vs closed, dense vs mixture-of-experts, reasoning models<a class="anchor" href="#open-vs-closed-dense-vs-mixture-of-experts-reasoning-models" aria-label="Link to this section">#</a></h2>
+<p>You are not choosing &ldquo;an AI.&rdquo; You are choosing a point in a three-axis taxonomy, and each axis independently moves cost, control, and capability. (Which <em>specific</em> provider and model to sign with is Chapter 7&rsquo;s job; here we build the map so that choice is informed.)</p>
+<h3 id="axis-1-open-weights-vs-closed-api">Axis 1: open-weights vs closed / API<a class="anchor" href="#axis-1-open-weights-vs-closed-api" aria-label="Link to this section">#</a></h3>
+<p><strong>Closed models</strong> (accessed only via a paid API — the frontier Claude, GPT, and Gemini families) give you top capability with zero infrastructure, but you rent them: the vendor sets the price, owns the roadmap, can deprecate a model under you, and sees your traffic. <strong>Open-weights models</strong> (weights you download and self-host — the DeepSeek, Qwen, Llama, GLM, and Kimi families) give you control, data residency, and a per-token cost that trends toward raw compute, but you own the serving problem: GPUs, autoscaling, evals (see Chapter 6), uptime. The 2026 reality is that the open-weights frontier is genuinely close on many tasks. The gap is no longer &ldquo;toy vs frontier&rdquo;; it is &ldquo;who carries the operational burden.&rdquo;</p>
+<span class="sidenote-ref">3</span><span class="sidenote case"><span class="sn-num">3</span><span class="sn-label">In the wild</span><strong>GLM-5.2, June 2026</strong> - Z.ai released <a href="https://wavect.io/blog/open-weight-llm-comparison-2026/">GLM-5.2</a>, a 744B-parameter mixture-of-experts model with ~40B active parameters, a 1M-token context window, MIT-licensed weights, and selectable reasoning-effort levels — a credible open-weights alternative to closed frontier models for teams willing to self-host or use a hosting provider.</span>
+<h3 id="axis-2-dense-vs-mixture-of-experts">Axis 2: dense vs mixture-of-experts<a class="anchor" href="#axis-2-dense-vs-mixture-of-experts" aria-label="Link to this section">#</a></h3>
+<p>A <strong>dense</strong> model activates all its parameters for every token. A <strong>mixture-of-experts (MoE)</strong> model is partitioned into many &ldquo;expert&rdquo; sub-networks, and a lightweight <strong>router</strong> activates only a few per token — so a model can be huge in total knowledge yet cheap per token to run. DeepSeek&rsquo;s V3-lineage models are the canonical illustration: <strong>671B total parameters but only ~37B active per token</strong>.<sup class="footnote-ref" id="fnref:moe"><a class="footnote-ref" href="#fn:moe">4</a></sup> GLM-5.2&rsquo;s 744B total run with ~40B active.<sup class="footnote-ref" id="fnref:glm"><a class="footnote-ref" href="#fn:glm">3</a></sup> For a founder this is not trivia: <strong>MoE is why a &ldquo;very large&rdquo; model can be economically servable.</strong> The total parameter count tells you roughly how much the model <em>knows</em>; the active count tells you roughly what it <em>costs and how fast it runs</em>. When you read specs, look for both.</p>
+<h3 id="axis-3-reasoning-vs-fast">Axis 3: reasoning vs fast<a class="anchor" href="#axis-3-reasoning-vs-fast" aria-label="Link to this section">#</a></h3>
+<p>The most important 2026 axis. A <strong>reasoning model</strong> spends extra inference compute — generating hidden or visible <strong>&ldquo;thinking&rdquo; tokens</strong> — before its final answer, trading latency and cost for accuracy on hard, multi-step problems. This is <strong>test-time compute</strong>: for genuinely hard tasks, accuracy scales with thinking budget, and a smaller model given room to think can beat a larger one that answers instantly.<sup class="footnote-ref" id="fnref:ttc"><a class="footnote-ref" href="#fn:ttc">5</a></sup> Every major lab now exposes this as a knob — Claude via a <code>budget_tokens</code> parameter, Gemini via a <code>thinkingBudget</code> — so reasoning is a dial you set per request, not a separate product.<sup class="footnote-ref" id="fnref2:ttc"><a class="footnote-ref" href="#fn:ttc">5</a></sup> Latency has come down hard: reasoning queries that took 30-120 seconds in early 2025 now resolve in 3-15 seconds for mid-tier models.<sup class="footnote-ref" id="fnref3:ttc"><a class="footnote-ref" href="#fn:ttc">5</a></sup> But the thinking tokens are billed, and <strong>the single biggest cost mistake of 2026 is routing every request through a reasoning model</strong> when a fast model would have nailed it.<sup class="footnote-ref" id="fnref4:ttc"><a class="footnote-ref" href="#fn:ttc">5</a></sup></p>
+<figure class="diagram">
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anatomy of an inference request from tokens in through prefill and decode to tokens out">
+  <style>.dg text{font-family:var(--sans);fill:var(--ink);font-size:13px} .dg .box{fill:var(--paper-2);stroke:var(--rule-2)} .dg .accent{fill:var(--accent-bg);stroke:var(--accent)} .dg .rec{fill:var(--sage-bg);stroke:var(--sage)} .dg .lbl{fill:var(--muted);font-size:11px;font-weight:600} .dg .flow{stroke:var(--rule-2);stroke-width:1.6;fill:none}</style>
+  <defs><marker id="arw2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2)"/></marker></defs>
+  <g class="dg">
+    <rect class="box" x="10" y="90" width="120" height="56" rx="9"/>
+    <text x="70" y="114" text-anchor="middle">Tokens in</text>
+    <text x="70" y="132" text-anchor="middle" class="lbl">prompt + context</text>
+    <rect class="accent" x="190" y="90" width="150" height="56" rx="9"/>
+    <text x="265" y="114" text-anchor="middle">Prefill</text>
+    <text x="265" y="132" text-anchor="middle" class="lbl">parallel, 1 pass</text>
+    <rect class="rec" x="400" y="90" width="150" height="56" rx="9"/>
+    <text x="475" y="114" text-anchor="middle">Decode</text>
+    <text x="475" y="132" text-anchor="middle" class="lbl">serial, N passes</text>
+    <rect class="box" x="610" y="90" width="100" height="56" rx="9"/>
+    <text x="660" y="114" text-anchor="middle">Tokens</text>
+    <text x="660" y="132" text-anchor="middle">out</text>
+    <path class="flow" d="M130 118 L188 118" marker-end="url(#arw2)"/>
+    <path class="flow" d="M340 118 L398 118" marker-end="url(#arw2)"/>
+    <path class="flow" d="M550 118 L608 118" marker-end="url(#arw2)"/>
+    <text x="265" y="60" text-anchor="middle" class="lbl">drives TTFT · scales with input length</text>
+    <path class="flow" d="M265 68 L265 88" marker-end="url(#arw2)"/>
+    <text x="475" y="60" text-anchor="middle" class="lbl">drives total latency + cost · scales with output</text>
+    <path class="flow" d="M475 68 L475 88" marker-end="url(#arw2)"/>
+    <text x="475" y="200" text-anchor="middle" class="lbl">reasoning "thinking" tokens live here — billed, invisible</text>
+    <path class="flow" d="M475 172 L475 190" marker-end="url(#arw2)"/>
+    <rect class="box" x="400" y="158" width="150" height="14" rx="7" opacity="0.5"/>
+  </g>
+</svg>
+<figcaption><strong>Figure 2.1</strong> - Anatomy of an inference request: input tokens are processed in one parallel prefill pass, then output is generated one token at a time in decode, where reasoning tokens and most of the cost live.</figcaption>
+</figure>
+
+<p>Here is where Cortex&rsquo;s team makes its central technical bet. They <strong>segment tickets by difficulty and route accordingly.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ticket class</th>
+<th>Share</th>
+<th>Model class</th>
+<th>Why</th>
+<th>Illustrative unit cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FAQ / password / billing lookup</td>
+<td>~55%</td>
+<td>Fast, small (e.g. Haiku-tier, ~$1/$5 per M)</td>
+<td>Answer is in the KB; no multi-step reasoning</td>
+<td>Fractions of a cent</td>
+</tr>
+<tr>
+<td>Standard troubleshooting</td>
+<td>~30%</td>
+<td>Fast, mid (e.g. Sonnet-tier, ~$3/$15 per M)</td>
+<td>Needs account context + a couple of steps</td>
+<td>~1-3 cents</td>
+</tr>
+<tr>
+<td>Gnarly multi-system / edge case</td>
+<td>~12%</td>
+<td>Reasoning model, budget on</td>
+<td>Genuinely hard; wrong answer is costly</td>
+<td>~10-25 cents</td>
+</tr>
+<tr>
+<td>Ambiguous / risky → human</td>
+<td>~3%</td>
+<td>Escalate, no model spend</td>
+<td>Not worth the risk</td>
+<td>Human cost</td>
+</tr>
+</tbody>
+</table></div>
+<span class="sidenote-ref">4</span><span class="sidenote"><span class="sn-num">4</span>The router that decides <em>which</em> class a ticket belongs to is itself a cheap fast-model call — a few hundred tokens to classify before committing to an expensive path. Classifier-first routing is one of the highest-ROI patterns in applied AI, and it is Cortex's margin.</span>
+<p>The lesson generalizes: <strong>do not pick &ldquo;a model&rdquo; for your product; build a routing layer and pick a model per request class.</strong> Reasoning is a scalpel, not a default. Running all of Cortex&rsquo;s tickets through a reasoning model would roughly 5-10x the blended cost for a single-digit accuracy gain on the easy 85% — the definition of burning money and latency.<sup class="footnote-ref" id="fnref5:ttc"><a class="footnote-ref" href="#fn:ttc">5</a></sup></p>
+<h2 id="context-windows-tokens-and-the-economics-of-inference"><span class="secnum">2.4</span>Context windows, tokens and the economics of inference<a class="anchor" href="#context-windows-tokens-and-the-economics-of-inference" aria-label="Link to this section">#</a></h2>
+<p>The <strong>context window</strong> is the maximum number of tokens — input plus output — the model can attend to at once. Frontier and leading open models now reach <strong>1M tokens</strong>.<sup class="footnote-ref" id="fnref2:glm"><a class="footnote-ref" href="#fn:glm">3</a></sup> A million-token window sounds like an invitation to stop thinking about what you include. It is a trap.</p>
+<p>Three costs scale with how much context you actually use. <strong>Money</strong>, because you pay per input token every call. <strong>Latency</strong>, because prefill time grows with input length. And <strong>quality</strong>, because models exhibit degraded recall in the middle of very long contexts — the &ldquo;lost in the middle&rdquo; effect — so more context can mean <em>worse</em> answers, not better. A 1M-token window is a capability ceiling, not an operating point.</p>
+<p>The economics of a single request decompose cleanly, and this is the mental model to carry:</p>
+<div class="codeblock plain"><div class="codehead"><span class="lang">text</span><button class="copy" type="button">Copy</button></div><pre><code>request cost ≈ (input_tokens  × input_price)
+             + (output_tokens × output_price)   # incl. reasoning tokens
+             + (cached_tokens × cache_read_price)  # if caching</code></pre></div>
+<p>Two levers dominate real bills. <strong>Prompt caching</strong>: providers let you cache a stable prefix — a long system prompt, a fixed knowledge base — and pay a deep discount, typically ~90% off, on subsequent reads of those tokens. Anthropic charges roughly 1.25x the base rate to <em>write</em> a 5-minute cache and <strong>0.10x to read</strong> it thereafter.<sup class="footnote-ref" id="fnref:cache"><a class="footnote-ref" href="#fn:cache">6</a></sup> <strong>Batch APIs</strong>: non-realtime work run through a batch endpoint runs <strong>~50% off</strong> input and output at both major closed providers, and critically <strong>the discounts stack</strong> — Sonnet-tier batch-plus-cache-read has been quoted around <strong>$0.15 per million input tokens, ~95% off list.</strong><sup class="footnote-ref" id="fnref2:cache"><a class="footnote-ref" href="#fn:cache">6</a></sup></p>
+<span class="sidenote-ref">5</span><span class="sidenote case"><span class="sn-num">5</span><span class="sn-label">In the wild</span><strong>Stacking discounts, 2026</strong> - Providers now let caching and batch discounts <em>combine</em>. Anthropic documents that a <a href="https://usagebox.com/articles/prompt-caching-cost-optimization-claude-gpt-gemini-2026">Sonnet-tier batch + cache-read</a> request lands near $0.15 per million input tokens — roughly 95% below list — turning "process our whole knowledge base nightly" from a budget line into a rounding error.</span>
+<p>For Cortex this is decisive. Every ticket call includes a large, near-identical preamble: policies, tone guidance, tool schemas, and top knowledge-base articles — easily 8,000-15,000 stable tokens. Caching that prefix turns it from a full-price cost on every one of tens of thousands of daily tickets into a ~90%-discounted read. And the nightly job that re-embeds the knowledge base and back-tests Cortex against yesterday&rsquo;s resolved tickets is pure batch work — no user is waiting — so it runs at half price. The team&rsquo;s rule: <strong>realtime, uncacheable tokens are the only truly expensive tokens; engineer everything else toward cache reads and batch windows.</strong> (The full unit-economics build-out — blended cost per resolved ticket, gross margin, the effect of a bad-answer escalation — is Chapter 13.)</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p><strong>Founder&rsquo;s Rule 2.2</strong> - The context window is a budget, not a target. Cheap tokens are cached tokens and batched tokens; expensive tokens are realtime, uncached output tokens. Architect to convert the second kind into the first.</p>
+</div>
+<h2 id="latency-throughput-and-where-the-compute-goes"><span class="secnum">2.5</span>Latency, throughput and where the compute goes<a class="anchor" href="#latency-throughput-and-where-the-compute-goes" aria-label="Link to this section">#</a></h2>
+<p>Users feel latency; your CFO feels throughput. Both are governed by the two-phase structure of inference, and this is the section most founders skip and later regret.</p>
+<p>An inference request runs in two phases with completely different physics (Figure 2.1). <strong>Prefill</strong> processes the entire input prompt in a single parallel pass to build the model&rsquo;s internal state; it is <strong>compute-bound</strong> and its duration sets your <strong>time to first token (TTFT)</strong> — the &ldquo;is it alive?&rdquo; delay before anything appears.<sup class="footnote-ref" id="fnref:prefill"><a class="footnote-ref" href="#fn:prefill">7</a></sup> <strong>Decode</strong> then generates output tokens one at a time; each step is <strong>memory-bandwidth-bound</strong> (the whole model must be read from GPU memory per token) and its speed is measured as <strong>time per output token (TPOT)</strong> or its inverse, <strong>tokens per second</strong>.<sup class="footnote-ref" id="fnref2:prefill"><a class="footnote-ref" href="#fn:prefill">7</a></sup></p>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>TTFT vs TPOT</strong> - <strong>TTFT</strong> (time to first token) is set by prefill and scales with <em>input</em> length: long context = slow start. <strong>TPOT</strong> (time per output token) is set by decode and is roughly constant per token: long answers = long total wait. Total latency ≈ TTFT + (output_tokens × TPOT). Optimize the wrong one and you fix the wrong problem.</p>
+</div>
+<p>The founder consequences are direct. <strong>Long inputs hurt TTFT</strong> — Cortex stuffing a giant knowledge base into every prompt makes the agent feel sluggish before it says a word, which is exactly what caching (which lets prefill reuse cached state) and retrieval (fetch only relevant chunks — see Chapter 3) exist to fix. <strong>Long outputs hurt total latency and cost linearly</strong>, so a terse, well-instructed Cortex is both faster and cheaper than a chatty one — a rare case where the better UX is also the better margin. And <strong>reasoning models pay their tax in the decode phase</strong>: those thinking tokens are decode-phase output, which is why reasoning simultaneously raises latency and cost (Figure 2.1).</p>
+<p>Throughput is the other side of the same coin. Providers serve many requests at once by <strong>batching</strong> them through the GPU, which is why your per-token price can be low despite frontier hardware — the vendor amortizes each GPU across many concurrent users. The 2026 landscape has specialized silicon competing hard on these numbers: <strong>Groq&rsquo;s LPUs</strong> lead on consistent low-latency decode for open models, <strong>Cerebras</strong> leads raw tokens-per-second on small-to-mid models, and GPUs dominate compute-heavy prefill and high-batch decode.<sup class="footnote-ref" id="fnref:inference"><a class="footnote-ref" href="#fn:inference">8</a></sup> You will rarely touch this on a closed API — but the moment Cortex considers self-hosting an open-weights model (Chapter 7), TTFT, TPOT, and achievable batch size <em>are</em> the build, and the choice of accelerator is a first-order cost decision.</p>
+<p>The synthesis for a founder: <strong>your latency and your cost are the same physics viewed from two ends.</strong> Input length drives prefill, TTFT, and input cost. Output length drives decode, total latency, and output cost. Caching attacks prefill; brevity and routing attack decode; batching attacks throughput. Cortex&rsquo;s entire performance-and-margin strategy is those four moves applied to those two phases — nothing more exotic. Master this loop and you can reason about any model, any provider, and any bill you will ever see.</p>
+<div class="callout takeaways">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L17 8"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg>Key Takeaways</p>
+<p><strong>Key takeaways</strong>
+- Models predict one token at a time; <strong>you are billed per token, and output tokens cost 4-5x input tokens</strong> because decode is serial while prefill is parallel.
+- <strong>Modality is a pricing decision</strong>: audio runs ~10-30x text per token and images cost hundreds-to-thousands of tokens — invoke expensive modalities conditionally, never by default.
+- Choose along three axes — <strong>open vs closed, dense vs MoE, reasoning vs fast</strong> — and read <em>both</em> total and active parameters; MoE is why huge models can be cheap to serve.
+- <strong>Don&rsquo;t pick a model; build a router.</strong> Segment requests by difficulty and reserve reasoning models for the genuinely hard minority — routing every request through reasoning is the top 2026 cost mistake.
+- The context window is a <strong>budget, not a target</strong>; caching (~90% off reads) and batch APIs (~50% off, stackable) turn expensive realtime tokens into cheap ones.
+- <strong>Latency and cost are one physics:</strong> input length → prefill → TTFT + input cost; output length → decode → total latency + output cost. Cache, shorten, route, batch.</p>
+</div>
+<div class="exercise">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Exercise</p>
+<p><strong>Hands-on: Model your core action&rsquo;s inference economics</strong>
+1. Write down your product&rsquo;s single most important AI action (for Cortex: &ldquo;resolve one support ticket&rdquo;). State it as one sentence.
+2. Estimate its tokens: input (prompt + context + retrieved data) and output (the answer, plus a reasoning budget if you&rsquo;d use a reasoning model). Use ~4 characters per token; count your JSON and non-English cases separately.
+3. Segment the action into 3-4 difficulty classes and assign a model tier to each (fast-small, fast-mid, reasoning, human-escalate). Estimate the percentage share of each class from real or expected traffic.
+4. Compute a <strong>blended per-action cost</strong>: for each class, <code>(input×input_price)+(output×output_price)</code>, then weight by share. Use current published 2026 prices for two candidate providers.
+5. Now apply the levers: mark which input tokens are a stable, cacheable prefix (apply ~90% off) and which work could run in a batch window (apply ~50% off). Recompute the blended cost.
+6. Compare the naive &ldquo;everything through one frontier reasoning model&rdquo; cost to your routed-plus-cached cost. The ratio is your architecture&rsquo;s margin — and your Chapter 13 starting point.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:realtime">
+<p>Model Drop: GPT-Realtime-2. <a href="https://handyai.substack.com/p/model-drop-gpt-realtime-2">https://handyai.substack.com/p/model-drop-gpt-realtime-2</a>&#160;<a class="footnote-backref" href="#fnref:realtime" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:gemini-live">
+<p>Best Realtime AI API for Developers (2026). <a href="https://inworld.ai/resources/best-realtime-ai-api">https://inworld.ai/resources/best-realtime-ai-api</a>&#160;<a class="footnote-backref" href="#fnref:gemini-live" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:glm">
+<p>Open-Weight LLM Showdown 2026: DeepSeek vs Qwen vs Kimi vs GLM vs Llama. <a href="https://wavect.io/blog/open-weight-llm-comparison-2026/">https://wavect.io/blog/open-weight-llm-comparison-2026/</a>&#160;<a class="footnote-backref" href="#fnref:glm" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:glm" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:moe">
+<p>7 Top Mixture of Experts AI Models for Developers in 2026. <a href="https://www.labellerr.com/blog/top-open-source-moe-llms/">https://www.labellerr.com/blog/top-open-source-moe-llms/</a>&#160;<a class="footnote-backref" href="#fnref:moe" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ttc">
+<p>Test-Time Compute Explained: Why the Best AI Models Now &ldquo;Think&rdquo; Before Answering. <a href="https://www.aimagicx.com/blog/test-time-compute-explained-ai-thinking-models-2026">https://www.aimagicx.com/blog/test-time-compute-explained-ai-thinking-models-2026</a>&#160;<a class="footnote-backref" href="#fnref:ttc" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ttc" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:ttc" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:ttc" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:ttc" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cache">
+<p>Cut Your AI API Bill 70-90% with Prompt Caching: The 2026 Cost Math. <a href="https://usagebox.com/articles/prompt-caching-cost-optimization-claude-gpt-gemini-2026">https://usagebox.com/articles/prompt-caching-cost-optimization-claude-gpt-gemini-2026</a>&#160;<a class="footnote-backref" href="#fnref:cache" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:cache" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:prefill">
+<p>Prefill, Decode, and TTFT: The Three Numbers That Should Drive Your Inference Engine Choice. <a href="https://automatosx.medium.com/prefill-decode-and-ttft-the-three-numbers-that-should-drive-your-inference-engine-choice-b9acdf7cd81a">https://automatosx.medium.com/prefill-decode-and-ttft-the-three-numbers-that-should-drive-your-inference-engine-choice-b9acdf7cd81a</a>&#160;<a class="footnote-backref" href="#fnref:prefill" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:prefill" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:inference">
+<p>Fastest LLM Inference APIs in 2026: TTFT and Throughput Guide. <a href="https://inworld.ai/resources/fastest-llm-inference-api">https://inworld.ai/resources/fastest-llm-inference-api</a>&#160;<a class="footnote-backref" href="#fnref:inference" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+      <nav class="prevnext"><a class="prev" href="01-introduction-to-ai-startups.html"><div class="dir">← Previous</div><div class="t">Ch 1 · Introduction to AI Startups</div></a><a class="next" href="03-ai-fundamentals-rag-agents.html"><div class="dir">Next →</div><div class="t">Ch 3 · AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</div></a></nav>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> github.com/arubhatt</a>
+  </div>
+</footer>
+<div class="search-modal" id="search-modal">
+  <div class="scrim"></div>
+  <div class="search-box">
+    <input id="search-input" type="text" placeholder="Search the book…" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>

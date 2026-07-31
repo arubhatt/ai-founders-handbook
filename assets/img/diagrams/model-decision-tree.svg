@@ -1,0 +1,88 @@
+<svg viewBox="0 0 720 566" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Decision tree for sourcing an AI model, from renting a frontier API to pretraining your own.">
+  <style>
+    .dg text { font-family: var(--sans, sans-serif); fill: var(--ink, #201c16); }
+    .dg .q      { fill: var(--paper-2, #f3ecdd); stroke: var(--rule-2, #d7cbb2); }
+    .dg .qaccent{ fill: var(--accent, #234b7a); }
+    .dg .out    { fill: var(--accent-bg, #e9eef5); stroke: var(--accent, #234b7a); }
+    .dg .rec    { fill: var(--sage-bg, #e6ede2); stroke: var(--sage, #4b6b4e); }
+    .dg .start  { fill: var(--accent, #234b7a); stroke: var(--accent, #234b7a); }
+    .dg .start text, .dg .startlabel { fill: var(--paper, #faf7f0); }
+    .dg .faded  { fill: var(--paper, #faf7f0); stroke: var(--rule-2, #d7cbb2); opacity: .55; }
+    .dg .qt   { font-size: 13.5px; font-weight: 500; }
+    .dg .ot   { font-size: 13.5px; font-weight: 600; }
+    .dg .num  { font-size: 13.5px; font-weight: 700; fill: var(--accent, #234b7a); }
+    .dg .yes  { font-size: 11px; font-weight: 700; fill: var(--sage, #4b6b4e); letter-spacing: .05em; }
+    .dg .no   { font-size: 11px; font-weight: 700; fill: var(--muted, #6e675b); letter-spacing: .05em; }
+    .dg .cap  { font-size: 11px; font-weight: 600; fill: var(--muted, #6e675b); letter-spacing: .12em; }
+    .dg .flow { stroke: var(--rule-2, #d7cbb2); stroke-width: 1.6; fill: none; }
+  </style>
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2, #d7cbb2)"/>
+    </marker>
+  </defs>
+
+  <g class="dg">
+    <!-- axis caption -->
+    <text class="cap" x="80" y="16">RENT</text>
+    <text class="cap" x="640" y="16" text-anchor="end">OWN</text>
+
+    <!-- flow lines (drawn first, under boxes) -->
+    <path class="flow" d="M230 54 V88"   marker-end="url(#arw)"/>
+    <path class="flow" d="M230 152 V200" marker-end="url(#arw)"/>
+    <path class="flow" d="M230 264 V312" marker-end="url(#arw)"/>
+    <path class="flow" d="M230 376 V414" marker-end="url(#arw)"/>
+    <path class="flow" d="M230 466 V498" marker-end="url(#arw)"/>
+    <path class="flow" d="M380 120 H470" marker-end="url(#arw)"/>
+    <path class="flow" d="M380 232 H470" marker-end="url(#arw)"/>
+    <path class="flow" d="M380 344 H470" marker-end="url(#arw)"/>
+
+    <!-- edge labels -->
+    <text class="yes" x="420" y="114" text-anchor="middle">YES</text>
+    <text class="yes" x="420" y="226" text-anchor="middle">YES</text>
+    <text class="yes" x="420" y="338" text-anchor="middle">YES</text>
+    <text class="no"  x="242" y="180">NO</text>
+    <text class="no"  x="242" y="292">NO</text>
+    <text class="no"  x="242" y="404">NO</text>
+
+    <!-- start -->
+    <rect class="start" x="100" y="10" width="260" height="44" rx="22"/>
+    <text class="ot startlabel" x="230" y="37" text-anchor="middle">Your feature needs a model</text>
+
+    <!-- Q1 -->
+    <rect class="q" x="80" y="88" width="300" height="64" rx="9"/>
+    <text class="qt" x="230" y="114" text-anchor="middle">Can a hosted API clear quality,</text>
+    <text class="qt" x="230" y="132" text-anchor="middle">latency, cost &amp; privacy?</text>
+    <!-- Out 1 (recommended) -->
+    <rect class="rec" x="470" y="92" width="232" height="56" rx="9"/>
+    <text class="ot" x="486" y="125"><tspan class="num">①</tspan> Frontier API — rent</text>
+
+    <!-- Q2 -->
+    <rect class="q" x="80" y="200" width="300" height="64" rx="9"/>
+    <text class="qt" x="230" y="226" text-anchor="middle">Is the wall cost / volume /</text>
+    <text class="qt" x="230" y="244" text-anchor="middle">residency — not quality?</text>
+    <!-- Out 2 -->
+    <rect class="out" x="470" y="204" width="232" height="56" rx="9"/>
+    <text class="ot" x="486" y="230"><tspan class="num">②</tspan> Open weights on an</text>
+    <text class="ot" x="486" y="248" >     inference host</text>
+
+    <!-- Q3 -->
+    <rect class="q" x="80" y="312" width="300" height="64" rx="9"/>
+    <text class="qt" x="230" y="338" text-anchor="middle">Proprietary data + ML</text>
+    <text class="qt" x="230" y="356" text-anchor="middle">talent to adapt a model?</text>
+    <!-- Out 3 -->
+    <rect class="out" x="470" y="316" width="232" height="56" rx="9"/>
+    <text class="ot" x="486" y="342"><tspan class="num">③</tspan> Fine-tune / adapt</text>
+    <text class="ot" x="486" y="360">     open weights</text>
+
+    <!-- scope box -->
+    <rect class="q" x="80" y="414" width="300" height="52" rx="9"/>
+    <text class="qt" x="230" y="438" text-anchor="middle">Sharpen scope · push</text>
+    <text class="qt" x="230" y="456" text-anchor="middle">prompting + RAG harder (Ch 8)</text>
+
+    <!-- pretrain (faded) -->
+    <rect class="faded" x="40" y="498" width="380" height="44" rx="9"/>
+    <text class="qt" x="230" y="525" text-anchor="middle">④ Pretrain your own — rarely correct for a startup</text>
+  </g>
+</svg>

@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infrastructure, Observability &amp; LLMOps · The AI Founder&#x27;s Handbook</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/book.css">
+<link rel="stylesheet" href="assets/css/code.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html">The AI Founder's <b>Handbook</b></a>
+  <span class="spacer"></span>
+  <span class="byline-top hide-sm">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+  <button class="iconbtn" data-search-open aria-label="Search"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="hide-sm">Search</span> <kbd>/</kbd></button>
+  <a class="iconbtn" href="https://github.com/arubhatt" target="_blank" rel="noopener" aria-label="GitHub — arubhatt"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  <button class="iconbtn" id="theme-btn" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="toc"><a class="toc-book" href="index.html">The AI Founder&#x27;s Handbook</a>
+<div class="toc-part"><span class="pnum">I</span> Foundations</div>
+<a class="" href="01-introduction-to-ai-startups.html"><span class="cnum">01</span>Introduction to AI Startups</a>
+<a class="" href="02-ai-fundamentals-models.html"><span class="cnum">02</span>AI Fundamentals I: Models, Modalities &amp; Inference</a>
+<a class="" href="03-ai-fundamentals-rag-agents.html"><span class="cnum">03</span>AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</a>
+<div class="toc-part"><span class="pnum">II</span> Market &amp; Validation</div>
+<a class="" href="04-markets-users-product-strategy.html"><span class="cnum">04</span>Markets, Users &amp; AI Product Strategy</a>
+<a class="" href="05-data-strategy-flywheel.html"><span class="cnum">05</span>Data Strategy &amp; the Data Flywheel</a>
+<a class="" href="06-customer-validation-for-ai.html"><span class="cnum">06</span>Customer Validation for AI</a>
+<div class="toc-part"><span class="pnum">III</span> The Stack</div>
+<a class="" href="07-choosing-model-providers.html"><span class="cnum">07</span>Choosing Model Providers &amp; Hugging Face</a>
+<a class="" href="08-content-data-stack.html"><span class="cnum">08</span>The Content &amp; Data Stack</a>
+<a class="current" href="09-infra-observability-llmops.html"><span class="cnum">09</span>Infrastructure, Observability &amp; LLMOps</a>
+<div class="subnav"><a href="#llmops-vs-mlops-vs-devops">9.1  LLMOps vs MLOps vs DevOps</a><a href="#prompt-and-config-versioning-and-deploys">9.2  Prompt and config versioning and deploys</a><a href="#observability-tracing-logs-token-and-cost-metrics">9.3  Observability: tracing, logs, token and cost metrics</a><a href="#caching-routing-and-fallbacks-in-production">9.4  Caching, routing and fallbacks in production</a><a href="#reliability-rate-limits-and-incident-readiness">9.5  Reliability, rate limits and incident readiness</a></div>
+<a class="" href="10-production-evals-monitoring.html"><span class="cnum">10</span>Production Evals &amp; Monitoring</a>
+<div class="toc-part"><span class="pnum">IV</span> Go-to-Market &amp; Moat</div>
+<a class="" href="11-selling-ai-customer-success.html"><span class="cnum">11</span>Selling AI &amp; Customer Success</a>
+<a class="" href="12-defensibility-ai-moat.html"><span class="cnum">12</span>Defensibility &amp; the AI Moat</a>
+<div class="toc-part"><span class="pnum">V</span> Company Building</div>
+<a class="" href="13-finance-unit-economics.html"><span class="cnum">13</span>Finance &amp; Unit Economics for AI</a>
+<a class="" href="14-venture-funding-for-ai.html"><span class="cnum">14</span>Venture Funding for AI</a>
+<a class="" href="15-pitfalls-crises-ai.html"><span class="cnum">15</span>Pitfalls &amp; Crises in AI</a>
+<div class="toc-part"><span class="pnum">VI</span> People</div>
+<a class="" href="16-team-culture-leadership.html"><span class="cnum">16</span>Team, Culture &amp; Leadership for AI</a>
+<div class="toc-part"><span class="pnum">VII</span> Responsibility</div>
+<a class="" href="17-responsible-ai-regulation.html"><span class="cnum">17</span>Responsible AI: Safety, Ethics &amp; Regulation</a></nav></aside>
+  <main class="content">
+    <article class="chapter">
+      <header class="chapter-head reading">
+        <div class="kicker">Part III - The Stack · Chapter 9</div>
+        <div class="chapter-num">09</div>
+        <h1 class="chapter-title">Infrastructure, Observability &amp; LLMOps</h1>
+        <p class="chapter-dek">Running models like a grown-up — deploys, versioning, tracing, and the on-call that AI demands.</p>
+        <div class="chapter-meta">20 min read · Part III - The Stack</div>
+      </header>
+      <div class="reading"><div class="prose">
+<p class="lede">The first time Cortex silently regressed, no test failed and no alarm fired. A one-word edit to a system prompt — &ldquo;concise&rdquo; swapped for &ldquo;brief&rdquo; — dropped ticket-resolution quality by nine points across a single mid-market tenant, and it took nineteen hours and an angry Slack from the customer before anyone noticed. Nothing was down. Everything was worse. That gap between &ldquo;up&rdquo; and &ldquo;correct&rdquo; is the entire discipline of this chapter, and it is why an AI startup cannot run on the DevOps playbook alone.</p>
+<h2 id="llmops-vs-mlops-vs-devops"><span class="secnum">9.1</span>LLMOps vs MLOps vs DevOps<a class="anchor" href="#llmops-vs-mlops-vs-devops" aria-label="Link to this section">#</a></h2>
+<p>Every generation of software operations inherited the last one&rsquo;s tools and then found a failure mode the old tools were blind to. <strong>DevOps</strong> made deploys fast, reversible, and observable, but it assumed the code you shipped was the code that ran: deterministic, testable with assertions, green or red. <strong>MLOps</strong> added the model as a versioned artifact — training pipelines, feature stores, drift detection — because a model&rsquo;s behavior lives in weights, not source, and weights rot as the world shifts underneath them.<sup class="footnote-ref" id="fnref:mlops"><a class="footnote-ref" href="#fn:mlops">1</a></sup> <strong>LLMOps</strong> is the third layer, and it exists because the thing you operate is neither your code nor your model: it is a <strong>prompt-plus-context-plus-frontier-API</strong> system whose most important component you did not train, cannot inspect, and do not control.<sup class="footnote-ref" id="fnref:llmops"><a class="footnote-ref" href="#fn:llmops">2</a></sup></p>
+<span class="sidenote-ref">1</span><span class="sidenote"><span class="sn-num">1</span>The uncomfortable truth of LLMOps is that your core dependency ships a new version on its own schedule, deprecates the old one, and never guarantees the numbers stay the same. You are operating someone else's model in production.</span>
+<p>Three properties break the inherited playbook. First, <strong>non-determinism</strong>: the same input yields different outputs, so <code>assertEqual</code> is useless and &ldquo;correctness&rdquo; is a distribution, not a boolean.<sup class="footnote-ref" id="fnref:nondeterm"><a class="footnote-ref" href="#fn:nondeterm">3</a></sup> Second, <strong>cost is per-token and unbounded at request time</strong>: a single malformed prompt or a runaway agent loop can 10x a bill in an afternoon, so spend is a first-class runtime signal, not a monthly finance report.<sup class="footnote-ref" id="fnref:cost"><a class="footnote-ref" href="#fn:cost">4</a></sup> Third, <strong>the model is exogenous</strong>: providers deprecate <code>gpt-5.2</code>, silently re-tune a safety filter, or degrade under load, and your quality moves without a single line of your code changing. DevOps has nothing to say about any of these. LLMOps is the practice of making a non-deterministic, metered, externally-controlled system behave like production infrastructure anyway.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>DevOps</th>
+<th>MLOps</th>
+<th>LLMOps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary artifact</td>
+<td>Code</td>
+<td>Trained model + data</td>
+<td>Prompt, config, context, tool defs</td>
+</tr>
+<tr>
+<td>Versioned unit</td>
+<td>Git commit</td>
+<td>Model + dataset hash</td>
+<td>Prompt version + model pin + params</td>
+</tr>
+<tr>
+<td>Correctness</td>
+<td>Deterministic tests</td>
+<td>Offline metrics (AUC, F1)</td>
+<td>Eval distributions, LLM-as-judge (Ch 10)</td>
+</tr>
+<tr>
+<td>Failure mode</td>
+<td>Crash, 500</td>
+<td>Drift, stale features</td>
+<td>Silent quality regression, hallucination</td>
+</tr>
+<tr>
+<td>Runtime cost</td>
+<td>~Fixed per box</td>
+<td>Batch/GPU training cost</td>
+<td>Per-token, per-request, unbounded</td>
+</tr>
+<tr>
+<td>Rollback</td>
+<td>Redeploy prior build</td>
+<td>Repromote prior model</td>
+<td>Re-pin prompt + model version instantly</td>
+</tr>
+<tr>
+<td>Core dependency</td>
+<td>Yours</td>
+<td>Yours</td>
+<td><strong>Someone else&rsquo;s frontier model</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>Treat the prompt as production code and the model as a third-party dependency you can neither test nor trust. Version both, pin both, and monitor the boundary between them.</p>
+</div>
+<p>The founder mistake is assuming LLMOps is a tool you buy. It is a discipline spanning four surfaces — versioning, observability, the caching/routing gateway, and reliability engineering — and the rest of this chapter is those four surfaces. For the model-routing <em>strategy</em> (which model for which job, buy-vs-host) see Chapter 7; for the eval <em>metrics</em> that decide whether a change is better see Chapter 10; for unit economics see Chapter 13. This chapter owns the plumbing.</p>
+<h2 id="prompt-and-config-versioning-and-deploys"><span class="secnum">9.2</span>Prompt and config versioning and deploys<a class="anchor" href="#prompt-and-config-versioning-and-deploys" aria-label="Link to this section">#</a></h2>
+<p>A prompt is code. It has inputs, control flow (few-shot examples, conditionals baked into templates), a runtime contract with the model, and it breaks silently when edited. Yet the default failure of early-stage AI teams is to treat prompts as content — a string edited in a dashboard, a Notion doc pasted into a config, a value someone changed on a Friday. Cortex&rsquo;s nineteen-hour regression was exactly this: an untracked, unversioned, un-evaluated edit to production behavior. The fix is <strong>prompt CI/CD</strong>: every prompt change is versioned, evaluated against a fixed dataset, gated on quality, and rolled out progressively — the same lifecycle as a code deploy.<sup class="footnote-ref" id="fnref:promptcicd"><a class="footnote-ref" href="#fn:promptcicd">5</a></sup></p>
+<span class="sidenote-ref">2</span><span class="sidenote"><span class="sn-num">2</span>The versioned unit is never the prompt alone. It is the <em>tuple</em>: prompt text + model id (<code>claude-opus-4-6</code>, not <code>claude-opus</code>) + temperature + tool schema + max tokens. Change any element and behavior can move. Pin all of them together or you have versioned nothing.</span>
+<p>Two architectures exist, and you will use both. <strong>Prompts-in-Git</strong> stores prompt templates as files (YAML or plain text) in your repo, syncs them to a registry, and pins versions in production for reproducible builds — LangWatch&rsquo;s Prompts CLI and PromptHub&rsquo;s Git-style branch/commit/merge model are built for this.<sup class="footnote-ref" id="fnref:langwatch"><a class="footnote-ref" href="#fn:langwatch">6</a></sup><sup class="footnote-ref" id="fnref:prompthub"><a class="footnote-ref" href="#fn:prompthub">7</a></sup> <strong>Prompts-in-registry</strong> stores them in a managed system (Langfuse, Braintrust) that non-engineers edit through a UI, with the runtime fetching by label (<code>production</code>, <code>staging</code>) at call time.<sup class="footnote-ref" id="fnref:langfuse"><a class="footnote-ref" href="#fn:langfuse">8</a></sup> Git gives you review, blame, and atomic rollback tied to code; the registry gives you fast iteration without a deploy and lets a support lead fix a prompt at 2 a.m. The right answer for most startups: <strong>author in Git, deploy through a registry</strong>, treating the registry as a cache of what Git already reviewed.</p>
+<p>The non-negotiable is the <strong>quality gate</strong>. When a prompt changes, an automated eval runs against a golden dataset and reports which cases improved and which regressed; the merge blocks if quality falls below threshold.<sup class="footnote-ref" id="fnref2:promptcicd"><a class="footnote-ref" href="#fn:promptcicd">5</a></sup> Langfuse emits a <code>repository_dispatch</code> event (or a signed webhook) on every prompt version change, triggering your CI to run that eval before the new version is allowed to carry the <code>production</code> label.<sup class="footnote-ref" id="fnref:langfusecicd"><a class="footnote-ref" href="#fn:langfusecicd">9</a></sup> This is the wall that would have stopped Cortex&rsquo;s &ldquo;concise → brief&rdquo; edit.</p>
+<span class="sidenote-ref">3</span><span class="sidenote case"><span class="sn-num">3</span><span class="sn-label">In the wild</span><strong>Langfuse 4</strong> - In 2026 Langfuse shipped OpenTelemetry-native tracing and formalized a prompt CI/CD flow where a <code>production</code> label is applied only after a webhook-triggered eval passes, making "promote the prompt" a gated pipeline step rather than a dropdown change. See <a href="https://langfuse.com/resources/engineering/prompt-cicd">langfuse.com</a>.</span>
+<p>Deploy the same way you deploy code: <strong>canary</strong> a new prompt version to a small traffic slice, watch the eval and cost signals, then widen; <strong>A/B</strong> two versions live when you are choosing between them; keep the prior version one label-flip away for instant rollback.<sup class="footnote-ref" id="fnref:launchdarkly"><a class="footnote-ref" href="#fn:launchdarkly">10</a></sup> Cortex now ships prompts like code: each version is a Git-reviewed YAML file with a pinned model and params, promoted through staging → 5% canary → 100% only after the golden-set eval clears, and any tenant can be pinned to a known-good version if their traffic regresses. The nineteen-hour incident is now a five-minute label revert.</p>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>&ldquo;Config&rdquo; is not safe just because it lives outside your prompt. Temperature, <code>max_tokens</code>, tool JSON schemas, retrieval <code>top_k</code>, and the model id are all behavior. A team that versions prompts but lets an engineer bump temperature from 0.2 to 0.7 in an env var has an unversioned production change waiting to happen.</p>
+</div>
+<h2 id="observability-tracing-logs-token-and-cost-metrics"><span class="secnum">9.3</span>Observability: tracing, logs, token and cost metrics<a class="anchor" href="#observability-tracing-logs-token-and-cost-metrics" aria-label="Link to this section">#</a></h2>
+<p>You cannot debug what you cannot see, and an LLM request is nearly opaque by default: a string goes in, a string comes out, and everything that determined quality — which prompt version, which retrieved chunks, which tool calls, how many tokens, at what cost, in how many milliseconds — is invisible unless you instrument it. The unit of observability is the <strong>trace</strong>: a tree of spans covering the full request path, where each span carries the model, token counts, latency, and cost of one operation.<sup class="footnote-ref" id="fnref:tracing"><a class="footnote-ref" href="#fn:tracing">11</a></sup> For an agent like Cortex a single ticket is one trace with a dozen child spans — retrieve knowledge-base docs, call the LLM to plan, invoke the refund tool, call the LLM again to draft the reply — and the trace is the only way to answer &ldquo;why was this answer wrong and this one expensive.&rdquo;</p>
+<p>The 2026 standard that makes this portable is the <strong>OpenTelemetry GenAI semantic conventions</strong>. The GenAI SIG defined a common vocabulary of <code>gen_ai.*</code> attributes — model name, input/output token counts, finish reason, tool calls — so a span from a LangGraph agent looks identical to one from a raw Anthropic call. OpenTelemetry&rsquo;s CNCF graduation in May 2026, plus OTLP ingestion across vendors like Datadog and Grafana, made it the default wire format rather than a niche choice.<sup class="footnote-ref" id="fnref:otelgenai"><a class="footnote-ref" href="#fn:otelgenai">12</a></sup><sup class="footnote-ref" id="fnref:otelgrad"><a class="footnote-ref" href="#fn:otelgrad">13</a></sup> Most conventions are still experimental, but they are stable enough to build on, and standardizing here means you can swap observability backends without re-instrumenting your code. Instrument with an open standard — OpenLLMetry or OpenLIT emit OTel spans into whatever backend you already run — and you are not locked to one vendor&rsquo;s SDK.<sup class="footnote-ref" id="fnref:openllmetry"><a class="footnote-ref" href="#fn:openllmetry">14</a></sup></p>
+<span class="sidenote-ref">4</span><span class="sidenote"><span class="sn-num">4</span>Emit OTel GenAI spans, not vendor-proprietary events. The instrumentation is the expensive, invasive part; the backend is a commodity. Own the former, rent the latter, and keep the freedom to move.</span>
+<figure class="diagram">
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The LLMOps request path from gateway through cache and router to providers, with tracing and evals branching off">
+  <style>.dg text{font-family:var(--sans);fill:var(--ink);font-size:13px} .dg .box{fill:var(--paper-2);stroke:var(--rule-2)} .dg .accent{fill:var(--accent-bg);stroke:var(--accent)} .dg .rec{fill:var(--sage-bg);stroke:var(--sage)} .dg .lbl{fill:var(--muted);font-size:11px;font-weight:600} .dg .flow{stroke:var(--rule-2);stroke-width:1.6;fill:none}</style>
+  <defs><marker id="arrowCh9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2)"/></marker></defs>
+  <g class="dg">
+    <rect class="accent" x="8" y="52" width="96" height="44" rx="9"/>
+    <text x="56" y="79" text-anchor="middle">Gateway</text>
+    <rect class="box" x="140" y="52" width="96" height="44" rx="9"/>
+    <text x="188" y="72" text-anchor="middle">Cache</text>
+    <text class="lbl" x="188" y="88" text-anchor="middle">exact + semantic</text>
+    <rect class="box" x="272" y="52" width="96" height="44" rx="9"/>
+    <text x="320" y="72" text-anchor="middle">Router</text>
+    <text class="lbl" x="320" y="88" text-anchor="middle">+ fallback</text>
+    <rect class="box" x="404" y="24" width="120" height="40" rx="9"/>
+    <text x="464" y="49" text-anchor="middle">Provider A</text>
+    <rect class="box" x="404" y="84" width="120" height="40" rx="9"/>
+    <text x="464" y="109" text-anchor="middle">Provider B</text>
+    <rect class="rec" x="272" y="176" width="130" height="44" rx="9"/>
+    <text x="337" y="203" text-anchor="middle">Tracing / obs</text>
+    <rect class="rec" x="440" y="176" width="120" height="44" rx="9"/>
+    <text x="500" y="203" text-anchor="middle">Evals (Ch 10)</text>
+    <path class="flow" d="M104 74 H140" marker-end="url(#arrowCh9)"/>
+    <path class="flow" d="M236 74 H272" marker-end="url(#arrowCh9)"/>
+    <path class="flow" d="M368 66 L404 48" marker-end="url(#arrowCh9)"/>
+    <path class="flow" d="M368 82 L404 100" marker-end="url(#arrowCh9)"/>
+    <path class="flow" d="M56 96 V198 H272" marker-end="url(#arrowCh9)"/>
+    <path class="flow" d="M402 198 H440" marker-end="url(#arrowCh9)"/>
+    <text class="lbl" x="120" y="150" text-anchor="middle">every span emitted as OTel gen_ai.*</text>
+  </g>
+</svg>
+<figcaption><strong>Figure 9.1</strong> - The LLMOps request path: one gateway fronts cache, router, and providers, and every hop emits a traced span into observability and evals.</figcaption>
+</figure>
+
+<p>Three signals matter above all. <strong>Traces</strong> for debugging causality. <strong>Token metrics</strong> — input, output, and cached tokens per span — because tokens are the currency of both cost and latency. And <strong>cost</strong>, computed from tokens times the per-model rate and attributed down to per-user, per-tenant, and per-feature.<sup class="footnote-ref" id="fnref:costtrack"><a class="footnote-ref" href="#fn:costtrack">15</a></sup> A production LLMOps dashboard shows total spend and calls, cost over time, cost by model, cost by operation, average cost per call, and cost per user — the last of which catches the one tenant whose usage pattern is quietly eating your margin.<sup class="footnote-ref" id="fnref:dashboard"><a class="footnote-ref" href="#fn:dashboard">16</a></sup> Cortex dashboards cost per resolved ticket per tenant and pings sales when a tenant&rsquo;s number crosses its plan price; the profitability math itself is Chapter 13&rsquo;s.</p>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>Span</strong> — one timed, attributed operation inside a trace (an LLM call, a tool invocation, a retrieval). <strong>Trace</strong> — the full tree of spans for one end-to-end request. In OTel GenAI conventions, each LLM span carries <code>gen_ai.request.model</code>, <code>gen_ai.usage.input_tokens</code>, <code>gen_ai.usage.output_tokens</code>, and <code>gen_ai.response.finish_reason</code> as standard attributes.</p>
+</div>
+<h2 id="caching-routing-and-fallbacks-in-production"><span class="secnum">9.4</span>Caching, routing and fallbacks in production<a class="anchor" href="#caching-routing-and-fallbacks-in-production" aria-label="Link to this section">#</a></h2>
+<p>Between your application and the frontier providers belongs exactly one component: an <strong>LLM gateway</strong>. It puts a single OpenAI-compatible endpoint in front of many providers and centralizes caching, routing, fallback, spend limits, and observability, so those concerns live in one governed place instead of being reimplemented in every service.<sup class="footnote-ref" id="fnref:gateway"><a class="footnote-ref" href="#fn:gateway">17</a></sup> Building these piecemeal across your codebase is the most common infrastructure mistake an AI startup makes; the gateway is the correction.</p>
+<p><strong>Caching</strong> is the highest-leverage cost lever you own, and there are two kinds. <em>Provider prompt caching</em> discounts the repeated prefix of a request — a large system prompt, a fixed knowledge base — and in 2026 the economics are dramatic: Anthropic charges 1.25x base input for a 5-minute cache write and just <strong>0.10x for every cache read, a 90% discount</strong>, with OpenAI&rsquo;s automatic caching matching that 90% read discount on its newest flagships.<sup class="footnote-ref" id="fnref:anthropiccache"><a class="footnote-ref" href="#fn:anthropiccache">18</a></sup><sup class="footnote-ref" id="fnref:cachecompare"><a class="footnote-ref" href="#fn:cachecompare">19</a></sup> For an agent like Cortex, whose every call carries the same multi-thousand-token support playbook and tenant context, structuring the prompt so stable content sits in the cacheable prefix is the difference between viable and ruinous margins. <em>Gateway caching</em> adds <strong>exact-match</strong> caching (identical request → stored response) and <strong>semantic caching</strong> (a fuzzy-matched, near-identical prompt served from cache) — Portkey and Cloudflare AI Gateway have the most mature implementations, while LiteLLM notably does not do semantic caching.<sup class="footnote-ref" id="fnref2:cachecompare"><a class="footnote-ref" href="#fn:cachecompare">19</a></sup><sup class="footnote-ref" id="fnref:litellm"><a class="footnote-ref" href="#fn:litellm">20</a></sup></p>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>Semantic caching trades correctness for cost. Two prompts that embed as &ldquo;similar&rdquo; are not always answer-equivalent — &ldquo;cancel my subscription&rdquo; and &ldquo;pause my subscription&rdquo; sit close in vector space and want opposite actions. Never semantically cache anything that triggers a side-effecting tool call. For Cortex, informational answers are cacheable; refunds and cancellations never are.</p>
+</div>
+<p><strong>Routing</strong> decides which provider serves each request — by price, latency, throughput, or capability — and <strong>fallback</strong> decides what happens when the first choice fails. The strategy is Chapter 7&rsquo;s territory; the <em>mechanism</em> is the gateway&rsquo;s, and it is what turns provider fragility into a non-event. Configure an ordered fallback chain (primary model → same model on a second provider → a different model family) with a tight health-detection window and idempotency keys to avoid double-charging on retries.<sup class="footnote-ref" id="fnref:failover"><a class="footnote-ref" href="#fn:failover">21</a></sup> The arithmetic is compelling: two providers each at 99.53% availability, combined with automatic failover, reach above 99.99% — cutting expected downtime from roughly 41 hours a year to about 12 minutes.<sup class="footnote-ref" id="fnref2:failover"><a class="footnote-ref" href="#fn:failover">21</a></sup></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Gateway</th>
+<th>License</th>
+<th>Semantic cache</th>
+<th>Fallback/routing</th>
+<th>Prompt mgmt</th>
+<th>Best when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Portkey</strong></td>
+<td>Apache 2.0 (open-sourced Mar 2026)</td>
+<td>Yes (fuzzy)</td>
+<td>Conditional, fine-grained</td>
+<td>Yes, versioned</td>
+<td>You need production governance + guardrails</td>
+</tr>
+<tr>
+<td><strong>LiteLLM</strong></td>
+<td>Open source (self-host)</td>
+<td>No</td>
+<td>Yes</td>
+<td>Basic</td>
+<td>You want to own the proxy on your infra</td>
+</tr>
+<tr>
+<td><strong>OpenRouter</strong></td>
+<td>Managed SaaS</td>
+<td>No</td>
+<td>Load-balance, price/latency sort</td>
+<td>No</td>
+<td>Fast access to 400+ models, one key</td>
+</tr>
+<tr>
+<td><strong>Cloudflare AI Gateway</strong></td>
+<td>Managed SaaS</td>
+<td>Yes (edge)</td>
+<td>Yes</td>
+<td>No</td>
+<td>You are already on Cloudflare&rsquo;s edge</td>
+</tr>
+</tbody>
+</table></div>
+<span class="sidenote-ref">5</span><span class="sidenote case"><span class="sn-num">5</span><span class="sn-label">In the wild</span><strong>Portkey open-sources the gateway</strong> - In March 2026 Portkey released its full production gateway under Apache 2.0, and by May 2026 it was the most feature-complete open-source option — 1,600+ models across 250+ providers, semantic caching, guardrails (PII redaction, jailbreak and prompt-injection filters), and versioned prompt management in one self-hostable proxy. See <a href="https://wavect.io/blog/llm-gateway-router-comparison-2026/">wavect.io</a>.</span>
+<p>Cortex fronts everything with a self-hosted gateway: exact + semantic cache on informational queries, provider prompt caching on the fixed playbook prefix, and a fallback chain that fails over between Anthropic and a second provider on a 5–15 second health signal, with idempotency keys so a mid-flight retry never issues a refund twice.</p>
+<h2 id="reliability-rate-limits-and-incident-readiness"><span class="secnum">9.5</span>Reliability, rate limits and incident readiness<a class="anchor" href="#reliability-rate-limits-and-incident-readiness" aria-label="Link to this section">#</a></h2>
+<p>AI is now infrastructure, and it fails like infrastructure — except the failures are stranger. 2026 made this concrete: on June 2, Anthropic&rsquo;s Claude had a major global disruption with elevated error rates across Opus 4.6, the API, and Claude Code; in the nine months to July 2026 OpenAI logged roughly 166 incidents, averaging about 18 a month, with four outages inside a single four-day window in July.<sup class="footnote-ref" id="fnref:claudeoutage"><a class="footnote-ref" href="#fn:claudeoutage">22</a></sup><sup class="footnote-ref" id="fnref:openaioutage"><a class="footnote-ref" href="#fn:openaioutage">23</a></sup> If your product&rsquo;s core loop runs through one provider&rsquo;s API, your uptime is capped by theirs, and theirs is not 99.99%. The multi-provider failover of the previous section is not a nice-to-have; it is the only way to offer an SLA you can keep.</p>
+<span class="sidenote-ref">6</span><span class="sidenote"><span class="sn-num">6</span>The June 2026 Claude outage is the industry's "AWS us-east-1" moment for AI — the day a critical mass of companies discovered that a single provider's incident was now <em>their</em> incident, with no failover in place. Do not learn this lesson in production.</span>
+<p><strong>Rate limits</strong> are the failure you will hit first and most often. Providers meter you across usage tiers that rise with spend, and a traffic spike or a retry storm will hit <code>429</code> long before an actual outage.<sup class="footnote-ref" id="fnref:ratelimits"><a class="footnote-ref" href="#fn:ratelimits">24</a></sup> Handle them at the gateway: exponential backoff with jitter, a token-bucket limiter you enforce yourself so you throttle gracefully instead of hammering a limit, request queuing for non-interactive work, and load-balancing across multiple provider accounts or regions to widen your effective ceiling. Naive retry-on-<code>429</code> without backoff makes the incident worse — you DDoS your own provider relationship.</p>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>The lazy retry loop — &ldquo;on error, try again immediately&rdquo; — is an outage amplifier. Under a partial provider degradation it converts one slow request into a retry storm that exhausts your rate limit and takes down the requests that would have succeeded. Always jittered backoff, always a retry budget, always a circuit breaker that fails over rather than hammering.</p>
+</div>
+<p>Then there is the failure mode unique to AI: <strong>the model is up but wrong</strong>. Latency crept up, a provider silently swapped a model revision, a prompt regressed, hallucination rate climbed — none of it trips a <code>500</code>. This is why the three alerts every LLM team needs by tomorrow are not the classic ones: alert on <strong>cost-per-request spiking</strong> (a runaway agent loop or a prompt-injection attack), on <strong>latency-per-token degrading</strong> (provider trouble before it becomes an outage), and on <strong>quality/eval score dropping</strong> on live traffic (the silent regression).<sup class="footnote-ref" id="fnref:alerts"><a class="footnote-ref" href="#fn:alerts">25</a></sup> Standard APM watches for down; LLMOps must also watch for <em>worse</em>.</p>
+<p>Be sober about putting an LLM in your own on-call loop. Many 2026 reliability teams wired a model into triage and alert summarization, but research shows most frontier models degrade significantly within roughly 1,000 tokens of input — long before their advertised context limit — so a model asked to reason over a fat incident dump is wrong more often than teams assume.<sup class="footnote-ref" id="fnref:oncall"><a class="footnote-ref" href="#fn:oncall">26</a></sup> Use LLMs to summarize and suggest in your incident response; keep a human on the decision.</p>
+<span class="sidenote-ref">7</span><span class="sidenote case"><span class="sn-num">7</span><span class="sn-label">In the wild</span><strong>The four-day July 2026 OpenAI cluster</strong> - Four significant OpenAI outages landed inside a single four-day window in July 2026, part of ~166 incidents over nine months. Teams with a configured fallback chain rode them out as elevated latency; single-provider teams took the full downtime. See <a href="https://thenextweb.com/news/openai-outage-chatgpt-codex-api-july-2026">thenextweb.com</a>.</span>
+<p>Incident readiness for an AI product means a runbook that assumes provider failure as a <em>when</em>, not an <em>if</em>: documented failover you have actually rehearsed (a fire drill that forces traffic to the secondary), a per-tenant kill switch to pin or disable a misbehaving prompt version, cached and degraded-mode responses for when everything upstream is down, and a status page that distinguishes &ldquo;down&rdquo; from &ldquo;degraded.&rdquo; Cortex&rsquo;s runbook does all four; when Anthropic degraded on June 2, Cortex&rsquo;s traffic shifted to its secondary provider inside the health-check window and customers saw slower replies, not silence. Full crisis management — comms, postmortems, customer trust — is Chapter 15&rsquo;s subject; the <em>engineering</em> readiness is yours to build before the crisis, not during it.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>Design for the provider outage you will definitely have, not the uptime the provider promises. If a single API&rsquo;s bad day is your bad day, you have not built infrastructure — you have built a dependency with extra steps.</p>
+</div>
+<div class="callout takeaways">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L17 8"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg>Key Takeaways</p>
+<p><strong>Key takeaways</strong>
+- LLMOps is a distinct discipline because the system is non-deterministic, metered per token, and built on a model you do not control — DevOps and MLOps tooling is necessary but not sufficient.
+- The versioned unit is the tuple of prompt + model id + params + tool schema; run prompt CI/CD with golden-set quality gates, canary rollout, and instant label rollback.
+- Instrument with OpenTelemetry GenAI conventions so traces, token metrics, and per-user cost are portable across backends; own the instrumentation, rent the backend.
+- One gateway fronts caching (provider prompt cache at 0.10x reads, plus exact and semantic), routing, and fallback — never reimplement these per service, and never semantic-cache a side-effecting call.
+- Multi-provider failover turns two ~99.5% providers into 99.99%; alert on cost, latency-per-token, and eval score — the failures that leave the API &ldquo;up&rdquo; but the product wrong.</p>
+</div>
+<div class="exercise">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Exercise</p>
+<p><strong>Hands-on: Build your LLMOps spine in a weekend</strong>
+1. Put a gateway (Portkey self-hosted or LiteLLM) in front of every model call so one endpoint owns caching, routing, and fallback.
+2. Move your top three prompts into version control as pinned tuples (text + model id + params), and wire a webhook so any change triggers a golden-set eval before it can carry the <code>production</code> label.
+3. Instrument every call to emit OpenTelemetry <code>gen_ai.*</code> spans into one backend (Langfuse, or Grafana/Datadog via OpenLLMetry); confirm you can open a single request as a full trace.
+4. Build a dashboard with cost-per-request and cost-per-tenant, and set the three alerts: cost spike, latency-per-token degradation, live eval-score drop.
+5. Configure an ordered fallback chain across two providers with jittered backoff and idempotency keys, then run a fire drill — force-fail the primary and confirm traffic shifts inside your health-check window with no double-charged side effects.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:mlops">
+<p>Top LLM Observability Tools in 2026: A Pro Guide. MLflow. <a href="https://mlflow.org/articles/top-llm-observability-tools-in-2026-a-pro-guide/">https://mlflow.org/articles/top-llm-observability-tools-in-2026-a-pro-guide/</a>&#160;<a class="footnote-backref" href="#fnref:mlops" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:llmops">
+<p>LLMOps Explained: The Complete 2026 Guide to LLM Operations. <a href="https://zedtreeo.com/llmops-explained-guide-2026/">https://zedtreeo.com/llmops-explained-guide-2026/</a>&#160;<a class="footnote-backref" href="#fnref:llmops" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:nondeterm">
+<p>LLMOps vs MLOps: Complete 2026 Guide. Neil Dave. <a href="https://theneildave.in/blog/llmops-vs-mlops.html">https://theneildave.in/blog/llmops-vs-mlops.html</a>&#160;<a class="footnote-backref" href="#fnref:nondeterm" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cost">
+<p>Tracking LLM Operational Costs. APXML. <a href="https://apxml.com/courses/mlops-for-large-models-llmops/chapter-5-llm-monitoring-observability-maintenance/tracking-llm-costs">https://apxml.com/courses/mlops-for-large-models-llmops/chapter-5-llm-monitoring-observability-maintenance/tracking-llm-costs</a>&#160;<a class="footnote-backref" href="#fnref:cost" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:promptcicd">
+<p>Prompt CI/CD: version, gate, and roll out prompts like code. Langfuse. <a href="https://langfuse.com/resources/engineering/prompt-cicd">https://langfuse.com/resources/engineering/prompt-cicd</a>&#160;<a class="footnote-backref" href="#fnref:promptcicd" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:promptcicd" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:langwatch">
+<p>Prompt Management: Version &amp; Deploy Prompts in Production. LangWatch. <a href="https://langwatch.ai/blog/what-is-prompt-management-and-how-to-version-control-deploy-prompts-in-productions">https://langwatch.ai/blog/what-is-prompt-management-and-how-to-version-control-deploy-prompts-in-productions</a>&#160;<a class="footnote-backref" href="#fnref:langwatch" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:prompthub">
+<p>Best prompt management tools in 2026 (tested and compared). Braintrust. <a href="https://www.braintrust.dev/articles/best-prompt-management-tools-2026">https://www.braintrust.dev/articles/best-prompt-management-tools-2026</a>&#160;<a class="footnote-backref" href="#fnref:prompthub" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:langfuse">
+<p>What is prompt management? Versioning, collaboration, and deployment for prompts. Braintrust. <a href="https://www.braintrust.dev/articles/what-is-prompt-management">https://www.braintrust.dev/articles/what-is-prompt-management</a>&#160;<a class="footnote-backref" href="#fnref:langfuse" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:langfusecicd">
+<p>Prompt CI/CD: version, gate, and roll out prompts like code. Langfuse. <a href="https://langfuse.com/resources/engineering/prompt-cicd">https://langfuse.com/resources/engineering/prompt-cicd</a>&#160;<a class="footnote-backref" href="#fnref:langfusecicd" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:launchdarkly">
+<p>Prompt Versioning &amp; Management Guide for Building AI Features. LaunchDarkly. <a href="https://launchdarkly.com/blog/prompt-versioning-and-management/">https://launchdarkly.com/blog/prompt-versioning-and-management/</a>&#160;<a class="footnote-backref" href="#fnref:launchdarkly" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:tracing">
+<p>LLM Monitoring Best Practices: Complete Guide for 2026. OpenObserve. <a href="https://openobserve.ai/blog/llm-monitoring-best-practices/">https://openobserve.ai/blog/llm-monitoring-best-practices/</a>&#160;<a class="footnote-backref" href="#fnref:tracing" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:otelgenai">
+<p>How OpenTelemetry Traces LLM Calls, Agent Reasoning, and MCP Tools. Greptime. <a href="https://greptime.com/blogs/2026-05-09-opentelemetry-genai-semantic-conventions">https://greptime.com/blogs/2026-05-09-opentelemetry-genai-semantic-conventions</a>&#160;<a class="footnote-backref" href="#fnref:otelgenai" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:otelgrad">
+<p>Cloud Native Computing Foundation Announces OpenTelemetry&rsquo;s Graduation. CNCF. <a href="https://www.cncf.io/announcements/2026/05/21/cloud-native-computing-foundation-announces-opentelemetrys-graduation-solidifying-status-as-the-de-facto-observability-standard/">https://www.cncf.io/announcements/2026/05/21/cloud-native-computing-foundation-announces-opentelemetrys-graduation-solidifying-status-as-the-de-facto-observability-standard/</a>&#160;<a class="footnote-backref" href="#fnref:otelgrad" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:openllmetry">
+<p>OpenTelemetry for LLMs: Complete SRE Guide for 2026. OpenObserve. <a href="https://openobserve.ai/blog/opentelemetry-for-llms/">https://openobserve.ai/blog/opentelemetry-for-llms/</a>&#160;<a class="footnote-backref" href="#fnref:openllmetry" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:costtrack">
+<p>From Bills to Budgets: How to Track LLM Token Usage and Cost Per User. Traceloop. <a href="https://www.traceloop.com/blog/from-bills-to-budgets-how-to-track-llm-token-usage-and-cost">https://www.traceloop.com/blog/from-bills-to-budgets-how-to-track-llm-token-usage-and-cost</a>&#160;<a class="footnote-backref" href="#fnref:costtrack" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:dashboard">
+<p>LLM Cost Monitoring with OpenObserve: Track Token Usage &amp; Control AI Spend. OpenObserve. <a href="https://openobserve.ai/blog/llm-cost-monitoring/">https://openobserve.ai/blog/llm-cost-monitoring/</a>&#160;<a class="footnote-backref" href="#fnref:dashboard" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:gateway">
+<p>LLM Gateways Compared 2026: LiteLLM vs OpenRouter vs Portkey vs RouteLLM. Wavect. <a href="https://wavect.io/blog/llm-gateway-router-comparison-2026/">https://wavect.io/blog/llm-gateway-router-comparison-2026/</a>&#160;<a class="footnote-backref" href="#fnref:gateway" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+<li id="fn:anthropiccache">
+<p>Anthropic API Pricing in 2026: Complete Guide — Models, Caching, Batch &amp; Optimization. Finout. <a href="https://www.finout.io/blog/anthropic-api-pricing">https://www.finout.io/blog/anthropic-api-pricing</a>&#160;<a class="footnote-backref" href="#fnref:anthropiccache" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cachecompare">
+<p>Prompt Caching in 2026: Anthropic, OpenAI, Azure Compared. Technspire. <a href="https://technspire.com/en/blog/prompt-caching-2026-real-cost-wins">https://technspire.com/en/blog/prompt-caching-2026-real-cost-wins</a>&#160;<a class="footnote-backref" href="#fnref:cachecompare" title="Jump back to footnote 19 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:cachecompare" title="Jump back to footnote 19 in the text">&#8617;</a></p>
+</li>
+<li id="fn:litellm">
+<p>LLM Gateways Compared 2026: LiteLLM vs OpenRouter vs Portkey vs RouteLLM. Wavect. <a href="https://wavect.io/blog/llm-gateway-router-comparison-2026/">https://wavect.io/blog/llm-gateway-router-comparison-2026/</a>&#160;<a class="footnote-backref" href="#fnref:litellm" title="Jump back to footnote 20 in the text">&#8617;</a></p>
+</li>
+<li id="fn:failover">
+<p>Best 5 AI Gateways for LLM Failover and Fallback in 2026. Future AGI. <a href="https://futureagi.com/blog/best-ai-gateways-llm-failover-fallback-2026/">https://futureagi.com/blog/best-ai-gateways-llm-failover-fallback-2026/</a>&#160;<a class="footnote-backref" href="#fnref:failover" title="Jump back to footnote 21 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:failover" title="Jump back to footnote 21 in the text">&#8617;</a></p>
+</li>
+<li id="fn:claudeoutage">
+<p>Claude outage, June 2026: Reckoning with AI&rsquo;s increasing status as infrastructure. Thoughtworks. <a href="https://www.thoughtworks.com/insights/blog/generative-ai/claude-outage-june-2026">https://www.thoughtworks.com/insights/blog/generative-ai/claude-outage-june-2026</a>&#160;<a class="footnote-backref" href="#fnref:claudeoutage" title="Jump back to footnote 22 in the text">&#8617;</a></p>
+</li>
+<li id="fn:openaioutage">
+<p>OpenAI Outage: Reliability Concerns and 2026 Crisis. SynapNews. <a href="https://www.synapnews.com/articles/openai-outage-reliability-concerns">https://www.synapnews.com/articles/openai-outage-reliability-concerns</a>&#160;<a class="footnote-backref" href="#fnref:openaioutage" title="Jump back to footnote 23 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ratelimits">
+<p>Handling LLM API Failures: Rate Limits &amp; Failover. MixRoute. <a href="https://mixroute.ai/blog/handle-llm-api-failures/">https://mixroute.ai/blog/handle-llm-api-failures/</a>&#160;<a class="footnote-backref" href="#fnref:ratelimits" title="Jump back to footnote 24 in the text">&#8617;</a></p>
+</li>
+<li id="fn:alerts">
+<p>Essential Observability: 3 Critical Alerts for LLM Systems. Dev|Journal. <a href="https://earezki.com/ai-news/2026-04-26-the-3-alerts-every-llm-team-should-have-set-up-by-tomorrow/">https://earezki.com/ai-news/2026-04-26-the-3-alerts-every-llm-team-should-have-set-up-by-tomorrow/</a>&#160;<a class="footnote-backref" href="#fnref:alerts" title="Jump back to footnote 25 in the text">&#8617;</a></p>
+</li>
+<li id="fn:oncall">
+<p>Your on-call AI agent is wrong more than you think. Causely. <a href="https://causely-blog.ghost.io/your-on-call-ai-agent-is-wrong-more-than-you-think/">https://causely-blog.ghost.io/your-on-call-ai-agent-is-wrong-more-than-you-think/</a>&#160;<a class="footnote-backref" href="#fnref:oncall" title="Jump back to footnote 26 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+      <nav class="prevnext"><a class="prev" href="08-content-data-stack.html"><div class="dir">← Previous</div><div class="t">Ch 8 · The Content &amp; Data Stack</div></a><a class="next" href="10-production-evals-monitoring.html"><div class="dir">Next →</div><div class="t">Ch 10 · Production Evals &amp; Monitoring</div></a></nav>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> github.com/arubhatt</a>
+  </div>
+</footer>
+<div class="search-modal" id="search-modal">
+  <div class="scrim"></div>
+  <div class="search-box">
+    <input id="search-input" type="text" placeholder="Search the book…" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>

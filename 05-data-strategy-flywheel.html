@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Strategy &amp; the Data Flywheel · The AI Founder&#x27;s Handbook</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/book.css">
+<link rel="stylesheet" href="assets/css/code.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html">The AI Founder's <b>Handbook</b></a>
+  <span class="spacer"></span>
+  <span class="byline-top hide-sm">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+  <button class="iconbtn" data-search-open aria-label="Search"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="hide-sm">Search</span> <kbd>/</kbd></button>
+  <a class="iconbtn" href="https://github.com/arubhatt" target="_blank" rel="noopener" aria-label="GitHub — arubhatt"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  <button class="iconbtn" id="theme-btn" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="toc"><a class="toc-book" href="index.html">The AI Founder&#x27;s Handbook</a>
+<div class="toc-part"><span class="pnum">I</span> Foundations</div>
+<a class="" href="01-introduction-to-ai-startups.html"><span class="cnum">01</span>Introduction to AI Startups</a>
+<a class="" href="02-ai-fundamentals-models.html"><span class="cnum">02</span>AI Fundamentals I: Models, Modalities &amp; Inference</a>
+<a class="" href="03-ai-fundamentals-rag-agents.html"><span class="cnum">03</span>AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</a>
+<div class="toc-part"><span class="pnum">II</span> Market &amp; Validation</div>
+<a class="" href="04-markets-users-product-strategy.html"><span class="cnum">04</span>Markets, Users &amp; AI Product Strategy</a>
+<a class="current" href="05-data-strategy-flywheel.html"><span class="cnum">05</span>Data Strategy &amp; the Data Flywheel</a>
+<div class="subnav"><a href="#data-as-the-ai-moat">5.1  Data as the AI moat</a><a href="#acquiring-and-labeling-data-including-synthetic">5.2  Acquiring and labeling data, including synthetic</a><a href="#designing-the-data-flywheel">5.3  Designing the data flywheel</a><a href="#capturing-feedback-and-implicit-signals">5.4  Capturing feedback and implicit signals</a><a href="#privacy-governance-and-data-rights">5.5  Privacy, governance and data rights</a></div>
+<a class="" href="06-customer-validation-for-ai.html"><span class="cnum">06</span>Customer Validation for AI</a>
+<div class="toc-part"><span class="pnum">III</span> The Stack</div>
+<a class="" href="07-choosing-model-providers.html"><span class="cnum">07</span>Choosing Model Providers &amp; Hugging Face</a>
+<a class="" href="08-content-data-stack.html"><span class="cnum">08</span>The Content &amp; Data Stack</a>
+<a class="" href="09-infra-observability-llmops.html"><span class="cnum">09</span>Infrastructure, Observability &amp; LLMOps</a>
+<a class="" href="10-production-evals-monitoring.html"><span class="cnum">10</span>Production Evals &amp; Monitoring</a>
+<div class="toc-part"><span class="pnum">IV</span> Go-to-Market &amp; Moat</div>
+<a class="" href="11-selling-ai-customer-success.html"><span class="cnum">11</span>Selling AI &amp; Customer Success</a>
+<a class="" href="12-defensibility-ai-moat.html"><span class="cnum">12</span>Defensibility &amp; the AI Moat</a>
+<div class="toc-part"><span class="pnum">V</span> Company Building</div>
+<a class="" href="13-finance-unit-economics.html"><span class="cnum">13</span>Finance &amp; Unit Economics for AI</a>
+<a class="" href="14-venture-funding-for-ai.html"><span class="cnum">14</span>Venture Funding for AI</a>
+<a class="" href="15-pitfalls-crises-ai.html"><span class="cnum">15</span>Pitfalls &amp; Crises in AI</a>
+<div class="toc-part"><span class="pnum">VI</span> People</div>
+<a class="" href="16-team-culture-leadership.html"><span class="cnum">16</span>Team, Culture &amp; Leadership for AI</a>
+<div class="toc-part"><span class="pnum">VII</span> Responsibility</div>
+<a class="" href="17-responsible-ai-regulation.html"><span class="cnum">17</span>Responsible AI: Safety, Ethics &amp; Regulation</a></nav></aside>
+  <main class="content">
+    <article class="chapter">
+      <header class="chapter-head reading">
+        <div class="kicker">Part II - Market and Validation · Chapter 5</div>
+        <div class="chapter-num">05</div>
+        <h1 class="chapter-title">Data Strategy &amp; the Data Flywheel</h1>
+        <p class="chapter-dek">Your compounding advantage is not the model - it is the data loop only your product can spin.</p>
+        <div class="chapter-meta">18 min read · Part II - Market and Validation</div>
+      </header>
+      <div class="reading"><div class="prose">
+<p class="lede">Every founder in 2026 rents the same frontier models from the same three or four labs. The weights are a commodity you cannot own and cannot hide. What you <em>can</em> own is the proprietary data exhaust your product generates while doing real work for real customers - and the machinery that turns that exhaust back into a better product. This chapter is about building that machinery deliberately, from day one, because a data flywheel that starts spinning in month three is worth more than a model architecture nobody can replicate but everybody can rent.</p>
+<h2 id="data-as-the-ai-moat"><span class="secnum">5.1</span>Data as the AI moat<a class="anchor" href="#data-as-the-ai-moat" aria-label="Link to this section">#</a></h2>
+<p>Model quality is converging and renting it is trivial. When your competitor can call the same Claude, Gemini, or GPT endpoint you can, the base intelligence is table stakes. The durable asset is <strong>proprietary feedback data from real users doing real tasks</strong> - data that is expensive to collect, slow to accumulate, and structurally impossible for an outsider to buy or scrape.<sup class="footnote-ref" id="fnref:flywheel"><a class="footnote-ref" href="#fn:flywheel">1</a></sup> We treat moat <em>strategy</em> as Chapter 12&rsquo;s domain; here we care about the one moat made of data, and how you manufacture it.</p>
+<p>Not all data is a moat. Draw a hard line between three tiers. <strong>Commodity data</strong> - public web text, generic images, anything scrapable - confers no advantage, because everyone has it and it is exactly what the labs already trained on. <strong>Purchased data</strong> - a Surge AI or Scale AI annotation contract - narrows the gap but is available to anyone with a budget, so it buys parity, not defensibility.<sup class="footnote-ref" id="fnref:scale"><a class="footnote-ref" href="#fn:scale">2</a></sup> Only <strong>process-generated data</strong> - the signal that exists solely because your specific product mediated a specific real interaction - compounds into a moat. <span class="sidenote-ref">1</span><span class="sidenote"><span class="sn-num">1</span>A useful test: if a well-funded competitor could recreate your dataset in ninety days with a checkbook, it is not a moat. It is an expense.</span></p>
+<p>The compounding is the whole point. Each turn of the loop makes the product incrementally better, which draws more usage, which yields more proprietary data, which sharpens the next turn. Practitioners peg the time to a <em>defensible</em> flywheel at 18 to 36 months - long enough that late starters cannot out-spend their way in, because they cannot buy back the calendar.<sup class="footnote-ref" id="fnref2:flywheel"><a class="footnote-ref" href="#fn:flywheel">1</a></sup></p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>The model is rented. The data loop is owned. Optimize relentlessly for the thing you own.</p>
+</div>
+<p>Consider <strong>Cortex</strong>, our running example: an autonomous AI customer-support agent for mid-market SaaS companies. Cortex&rsquo;s base reasoning comes from a frontier model any competitor can license. Its edge is that every ticket it has ever resolved or escalated - across hundreds of B2B SaaS deployments - carries a label for what a <em>correct</em> resolution looked like in that exact product&rsquo;s context. No competitor starting today can conjure that corpus, because it exists only as a byproduct of Cortex having done the work.</p>
+<h2 id="acquiring-and-labeling-data-including-synthetic"><span class="secnum">5.2</span>Acquiring and labeling data, including synthetic<a class="anchor" href="#acquiring-and-labeling-data-including-synthetic" aria-label="Link to this section">#</a></h2>
+<p>Before the flywheel spins on its own, you have a cold-start problem: you need enough data to make the product good enough that people will use it and generate more. There are four levers, and mature teams pull all four in sequence.</p>
+<p><strong>Bootstrap from the founding team.</strong> The first few hundred labeled examples should come from you and your domain experts, by hand. This is not beneath you; it is the highest-leverage labeling you will ever do, because you are simultaneously defining the label schema and discovering what &ldquo;good&rdquo; even means. For Cortex, that meant the founders sitting with three design-partner support teams and hand-resolving a few hundred tickets while writing down the decision rules.</p>
+<p><strong>Buy expert labels for what you cannot self-generate.</strong> The labeling market has bifurcated sharply. Commodity annotation - bounding boxes, basic classification - is being eaten alive by AI-assisted pre-labeling and synthetic generation, and prices are collapsing. The durable, expensive work is <strong>expert human data</strong>: domain specialists producing the nuanced judgments a model cannot yet make.<sup class="footnote-ref" id="fnref2:scale"><a class="footnote-ref" href="#fn:scale">2</a></sup> The vendor landscape reshuffled violently in 2025: after Meta took a 49% stake in Scale AI for $14.3 billion, rival labs including Google, OpenAI, and xAI pulled contracts within days over conflict-of-interest concerns, and independents captured the flight - Surge AI (bootstrapped, $1.2B 2024 revenue), Mercor, and Turing became the fastest-growing alternatives.<sup class="footnote-ref" id="fnref3:scale"><a class="footnote-ref" href="#fn:scale">2</a></sup> <span class="sidenote-ref">2</span><span class="sidenote"><span class="sn-num">2</span>The lesson for founders is second-order: your labeling vendor can become your competitor's parent overnight. Never let a single annotation supplier see your full label schema <em>and</em> your task distribution.</span></p>
+<span class="sidenote-ref">3</span><span class="sidenote case"><span class="sn-num">3</span><span class="sn-label">In the wild</span><strong>The Scale-Meta fracture (June-July 2025)</strong> - Meta's $14.3B for 49% of Scale AI triggered an exodus: rival labs cut ties within days, and Scale laid off roughly 14% of staff in July 2025. Surge AI, Mercor, and Turing absorbed the displaced demand. It is a live case study in supplier-concentration risk for any AI startup dependent on outsourced labels.</span>
+<p><strong>Generate synthetic data - carefully.</strong> By 2026 synthetic data is mainstream: Gartner&rsquo;s much-cited projection - 75% of businesses using generative AI to create synthetic data by end of 2026, up from under 5% in 2023 - now looks conservative.<sup class="footnote-ref" id="fnref:synth"><a class="footnote-ref" href="#fn:synth">3</a></sup> Tooling matured accordingly - NVIDIA acquired Gretel in a reported nine-figure deal, and Gretel Navigator&rsquo;s &ldquo;Text to Dataset&rdquo; lets you type <em>&ldquo;generate 5,000 flood-damage insurance claims in Florida&rdquo;</em> and get a populated schema back.<sup class="footnote-ref" id="fnref2:synth"><a class="footnote-ref" href="#fn:synth">3</a></sup> Synthetic data is superb for rare edge cases, adversarial examples, privacy-safe pipelines, and bootstrapping eval suites (evals are Chapter 6&rsquo;s turf). But there is a hard failure mode: <strong>model collapse</strong>, the degenerative drift that occurs when models train on their own outputs across generations. The mitigations are empirical - retain real anchors; even a modest real-data floor, on the order of 10%, sharply reduces perplexity drift.<sup class="footnote-ref" id="fnref3:synth"><a class="footnote-ref" href="#fn:synth">3</a></sup> For Cortex, synthetic tickets fill the long tail (the once-a-quarter refund-dispute-during-an-outage scenario) but never replace the real, human-verified resolutions that anchor the model.</p>
+<p><strong>Use programmatic and weak supervision</strong> (Snorkel-style labeling functions) to turn expert heuristics into labels at scale, then have humans review only the low-confidence and disagreement cases. This is the highest-ROI middle path once you have enough hand labels to write good rules.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Cost</th>
+<th>Defensibility</th>
+<th>Best for</th>
+<th>Key risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Founder hand-labeling</td>
+<td>Very high per unit</td>
+<td>High (defines schema)</td>
+<td>Cold start, schema design</td>
+<td>Doesn&rsquo;t scale</td>
+</tr>
+<tr>
+<td>Expert vendor labels</td>
+<td>High</td>
+<td>Low-medium (buyable)</td>
+<td>Domain nuance you lack</td>
+<td>Supplier = future rival</td>
+</tr>
+<tr>
+<td>Commodity vendor labels</td>
+<td>Low &amp; falling</td>
+<td>None</td>
+<td>Bulk classification</td>
+<td>Being eaten by synthetic</td>
+</tr>
+<tr>
+<td>Synthetic generation</td>
+<td>Very low</td>
+<td>Low alone</td>
+<td>Edge cases, privacy, evals</td>
+<td>Model collapse</td>
+</tr>
+<tr>
+<td>Programmatic / weak supervision</td>
+<td>Low</td>
+<td>Medium</td>
+<td>Scaling expert heuristics</td>
+<td>Systematic label bias</td>
+</tr>
+<tr>
+<td><strong>Process-generated (flywheel)</strong></td>
+<td>Marginal (free byproduct)</td>
+<td><strong>Very high</strong></td>
+<td>The moat</td>
+<td>Requires product usage first</td>
+</tr>
+</tbody>
+</table></div>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>Pure synthetic training without real anchors collapses. Treat synthetic data as a supplement that fills gaps in a real-data backbone, never as a substitute for it. Budget for a permanent floor of human-verified real examples.</p>
+</div>
+<h2 id="designing-the-data-flywheel"><span class="secnum">5.3</span>Designing the data flywheel<a class="anchor" href="#designing-the-data-flywheel" aria-label="Link to this section">#</a></h2>
+<p>The flywheel is not a metaphor you hope emerges; it is an engineering system you design. The canonical loop has four stages, each of which you must instrument deliberately.</p>
+<figure class="diagram">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The data flywheel: more usage produces more proprietary data, which trains a better model, which yields a better product, which drives more usage.">
+  <style>.dg text{font-family:var(--sans);fill:var(--ink);font-size:13px} .dg .box{fill:var(--paper-2);stroke:var(--rule-2)} .dg .accent{fill:var(--accent-bg);stroke:var(--accent)} .dg .rec{fill:var(--sage-bg);stroke:var(--sage)} .dg .lbl{fill:var(--muted);font-size:11px;font-weight:600} .dg .flow{stroke:var(--rule-2);stroke-width:1.6;fill:none}</style>
+  <defs><marker id="fwArrow05" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2)"/></marker></defs>
+  <g class="dg">
+    <rect class="accent" x="285" y="18" width="150" height="46" rx="9"/>
+    <text x="360" y="46" text-anchor="middle">More usage</text>
+    <rect class="box" x="540" y="120" width="160" height="46" rx="9"/>
+    <text x="620" y="148" text-anchor="middle">More proprietary data</text>
+    <rect class="rec" x="285" y="230" width="150" height="46" rx="9"/>
+    <text x="360" y="258" text-anchor="middle">Better product</text>
+    <rect class="box" x="20" y="120" width="160" height="46" rx="9"/>
+    <text x="100" y="148" text-anchor="middle">Better model</text>
+    <path class="flow" d="M435 48 Q560 70 610 118" marker-end="url(#fwArrow05)"/>
+    <path class="flow" d="M600 166 Q470 220 435 240" marker-end="url(#fwArrow05)"/>
+    <path class="flow" d="M285 253 Q160 220 108 168" marker-end="url(#fwArrow05)"/>
+    <path class="flow" d="M115 118 Q240 70 285 50" marker-end="url(#fwArrow05)"/>
+    <text class="lbl" x="565" y="90" text-anchor="middle">capture</text>
+    <text class="lbl" x="505" y="215" text-anchor="middle">deploy</text>
+    <text class="lbl" x="150" y="215" text-anchor="middle">train / tune</text>
+    <text class="lbl" x="205" y="90" text-anchor="middle">ship</text>
+  </g>
+</svg>
+<figcaption><strong>Figure 5.1</strong> - The data flywheel: usage generates proprietary data, which trains a better model, which ships a better product, which drives more usage.</figcaption>
+</figure>
+
+<p>The stages are <strong>capture</strong> (log production traffic, decisions, and outcomes), <strong>curate</strong> (filter, label, and select what is worth training on), <strong>train</strong> (fine-tune, distill, or update routing/retrieval on the curated set), and <strong>deploy</strong> (ship the improvement and measure the lift). NVIDIA&rsquo;s open-source Data Flywheel blueprint formalizes exactly this loop - collect production logs, evaluate with an LLM judge, fine-tune, and redeploy - and in NVIDIA&rsquo;s own internal tests it cut inference costs by up to 98.6% while holding accuracy, largely by distilling a big model&rsquo;s behavior into a small fine-tuned one once enough production data existed.<sup class="footnote-ref" id="fnref:nvidia"><a class="footnote-ref" href="#fn:nvidia">4</a></sup> That cost collapse is the underrated payoff: a working flywheel doesn&rsquo;t just improve quality, it lets you replace an expensive frontier call with a cheap specialized model on the tasks you now have data for.</p>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>Data flywheel</strong> - a self-reinforcing system in which product usage generates proprietary data, that data measurably improves the product, and the improved product drives more usage. The loop is &ldquo;closed&rdquo; only when a real production signal flows all the way back into a shipped model or system change.</p>
+</div>
+<p><strong>Cortex&rsquo;s flywheel in motion.</strong> Every ticket Cortex touches ends in one of two labeled states: <em>resolved</em> (the customer confirmed the fix, or never reopened it within the SLA window) or <em>escalated</em> (a human agent took over). Each terminal state is a free, high-quality label for what &ldquo;good&rdquo; looked like on that ticket. Resolved tickets teach the routing model which retrieval passages and action sequence produced a fix; escalated tickets flag exactly where the agent&rsquo;s confidence should have been lower - training signal for <em>when to hand off</em>. The retrieval layer (Chapter 8) is re-ranked on which documents actually appeared in successful resolutions. No synthetic corpus and no purchased dataset can produce this, because the label is defined by the outcome of Cortex&rsquo;s own action inside a specific customer&rsquo;s live product.</p>
+<p>The trap founders fall into is building a flywheel that is technically closed but too slow to matter. If it takes six weeks to get a production signal back into the model, you get roughly eight turns a year. If it takes two days, you get a hundred. <strong>Loop latency is a first-class metric</strong> - instrument it and drive it down like you would p95 response time.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>Measure the time from a production signal to a shipped improvement. That loop latency, not model size, sets how fast your moat compounds.</p>
+</div>
+<h2 id="capturing-feedback-and-implicit-signals"><span class="secnum">5.4</span>Capturing feedback and implicit signals<a class="anchor" href="#capturing-feedback-and-implicit-signals" aria-label="Link to this section">#</a></h2>
+<p>Training data quality lives or dies at the capture layer, and most teams under-invest here catastrophically. There are two families of signal, and you need both.</p>
+<p><strong>Explicit feedback</strong> is what the user deliberately tells you: thumbs up/down, a corrected answer, an accepted or rejected suggestion, a star rating. It is high-signal but scarce - people rarely bother. The single highest-leverage UX decision is friction: an <em>inline</em> thumbs up/down, designed into the primary interaction surface rather than hidden behind a click, lifts submission volume by an order of magnitude over a separate modal form. Better still, capture <strong>user edits</strong> - when a user takes your model&rsquo;s draft and changes three words before sending, those edits are a gift-wrapped preference pair.</p>
+<p><strong>Implicit feedback</strong> is the behavioral exhaust: regeneration requests, session abandonment, dwell time, copy events, whether the user re-asked the same question, whether they escalated to a human.<sup class="footnote-ref" id="fnref2:nvidia"><a class="footnote-ref" href="#fn:nvidia">4</a></sup> Implicit signals are noisier per event but arrive in enormous volume and cannot be gamed by survey fatigue. A regeneration is a soft thumbs-down; an abandoned session after an answer is a strong negative; a copied code block is a strong positive. The art is mapping each behavior to a confidence-weighted label.</p>
+<p>These labels feed preference-tuning pipelines directly. Explicit up/down and implicit positive/negative can be filtered into DPO or KTO training sets, or used to gate which examples enter supervised fine-tuning - a full RLHF pipeline is often overkill for an application startup, and gives only a minor, non-durable edge <em>unless</em> you already have a large engaged base generating the preferences.<sup class="footnote-ref" id="fnref3:flywheel"><a class="footnote-ref" href="#fn:flywheel">1</a></sup> Your advantage is not the RL algorithm - those are public - it is the proprietary preference data flowing in.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Type</th>
+<th>Volume</th>
+<th>Noise</th>
+<th>Maps to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thumbs up/down (inline)</td>
+<td>Explicit</td>
+<td>Medium</td>
+<td>Low</td>
+<td>Direct preference label</td>
+</tr>
+<tr>
+<td>User edit of output</td>
+<td>Explicit</td>
+<td>Medium</td>
+<td>Very low</td>
+<td>Preference pair (before/after)</td>
+</tr>
+<tr>
+<td>Accept / reject suggestion</td>
+<td>Explicit</td>
+<td>High</td>
+<td>Low</td>
+<td>Binary label</td>
+</tr>
+<tr>
+<td>Regeneration request</td>
+<td>Implicit</td>
+<td>High</td>
+<td>Medium</td>
+<td>Soft negative</td>
+</tr>
+<tr>
+<td>Session abandonment</td>
+<td>Implicit</td>
+<td>Very high</td>
+<td>High</td>
+<td>Weak negative</td>
+</tr>
+<tr>
+<td>Copy / export output</td>
+<td>Implicit</td>
+<td>High</td>
+<td>Low</td>
+<td>Strong positive</td>
+</tr>
+<tr>
+<td>Escalation to human</td>
+<td>Implicit</td>
+<td>Medium</td>
+<td>Very low</td>
+<td>Hard negative + handoff signal</td>
+</tr>
+<tr>
+<td>Task completion / non-reopen</td>
+<td>Implicit</td>
+<td>High</td>
+<td>Low</td>
+<td>Strong positive (outcome)</td>
+</tr>
+</tbody>
+</table></div>
+<p>For Cortex, the richest implicit signal is the <strong>outcome itself</strong>: did the ticket stay closed? A ticket the customer reopens within 48 hours is a delayed, unambiguous negative that no thumbs-down button would have captured, because the user felt satisfied in the moment and only discovered the failure later. Outcome-based labels - tied to what actually happened downstream - are the crown jewels of any flywheel, and they are available only to the company that owns the end-to-end workflow.</p>
+<span class="sidenote-ref">4</span><span class="sidenote case"><span class="sn-num">4</span><span class="sn-label">In the wild</span><strong>NVIDIA Data Flywheel Blueprint (2025-26)</strong> - NVIDIA open-sourced a reference blueprint (with a Weights &amp; Biases observability layer) that operationalizes the full loop: capture production logs and thumbs/edit/regeneration signals, evaluate candidate models with an LLM judge, run DPO/KTO or filtered fine-tuning, and redeploy. In one internal run it distilled a 70b production model into a fine-tuned 1b for a tool-calling task at comparable accuracy. A concrete template founders can study rather than reinvent.</span>
+<h2 id="privacy-governance-and-data-rights"><span class="secnum">5.5</span>Privacy, governance and data rights<a class="anchor" href="#privacy-governance-and-data-rights" aria-label="Link to this section">#</a></h2>
+<p>Here is where founders quietly sabotage their own flywheel: they build the loop and only later discover they never had the <em>right</em> to train on the data flowing through it. Data you cannot legally use for training is not fuel - it is liability. Governance is a precondition for the flywheel to spin at all, not a compliance afterthought. (The regulatory deep-dive - EU AI Act, GDPR, sector rules - is Chapter 17; here we cover the data-rights mechanics specific to training.)</p>
+<p><strong>Your training rights live in the contract, not the homepage.</strong> Two controls are routinely conflated and are legally distinct: <strong>zero data retention (ZDR)</strong>, meaning the processor does not store your inputs/outputs beyond the immediate request, and <strong>training opt-out</strong>, meaning your data is not used to improve someone&rsquo;s model. A vendor can honor one and violate the other.<sup class="footnote-ref" id="fnref:zdr"><a class="footnote-ref" href="#fn:zdr">5</a></sup> You must resolve <em>both</em> directions:</p>
+<ul>
+<li><strong>As a consumer of model APIs:</strong> confirm in the DPA/MSA (not the marketing page) that your customers&rsquo; data is not used to train the <em>provider&rsquo;s</em> models, with explicit scope, covered endpoints, and exclusions. Enterprise tiers of the major providers contractually prohibit training on API data - but consumer and free tiers increasingly opt you <em>in</em> by default. GitHub Copilot, for instance, begins using Free/Pro/Pro+ interaction data for training by default on April 24, 2026 unless users opt out, while Business and Enterprise seats are exempt.<sup class="footnote-ref" id="fnref:copilot"><a class="footnote-ref" href="#fn:copilot">6</a></sup> <span class="sidenote-ref">5</span><span class="sidenote"><span class="sn-num">5</span>Read the version-and-tier fine print. "We don't train on your data" is almost always true only of the enterprise SKU, and submitting thumbs-up feedback can explicitly opt <em>that specific conversation</em> back into training even on protected tiers.</span></li>
+<li><strong>As a producer building on customer data:</strong> your own customer contracts must <em>grant you the right</em> to use their data - ideally de-identified and aggregated - to improve your product. If your MSA is silent, assume you cannot, and you will discover this during a security review that stalls a six-figure deal.</li>
+</ul>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>The most expensive data-governance failure is retroactive: shipping a flywheel for a year, then learning your contracts never permitted training on that data. Every example you trained on is now tainted, and unwinding it can mean re-training from a clean cut. Get the training-rights clause into your customer MSA <em>before</em> the flywheel starts, not after.</p>
+</div>
+<p>For a B2B product like Cortex, the governance design is load-bearing to the sales motion. Cortex&rsquo;s contracts specify that resolved-ticket data may be used to improve the service in <strong>de-identified, aggregated</strong> form - customer names, account IDs, and PII stripped at the capture boundary, never at training time. Cross-tenant learning (patterns from Customer A improving Customer B&rsquo;s routing) is permitted only on abstracted signals - which retrieval strategy worked, not the content - so no customer&rsquo;s proprietary data leaks into another&rsquo;s model. Documented, de-identified provenance of this kind also eases the data-governance expectations regulators now attach to higher-risk systems, whose enforcement regime is Chapter 17&rsquo;s subject.<sup class="footnote-ref" id="fnref:aiact"><a class="footnote-ref" href="#fn:aiact">7</a></sup> The startups that treat governance as an enabling design constraint sell into regulated enterprises; the ones that treat it as paperwork get stuck in procurement forever.</p>
+<div class="callout takeaways">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L17 8"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg>Key Takeaways</p>
+<p><strong>Key takeaways</strong>
+- Model weights are rented and converging; your only durable, compounding asset is proprietary process-generated data and the loop that recycles it.
+- Distinguish commodity, purchased, and process-generated data - only the third is a moat, because a competitor cannot buy back the calendar it took to accumulate.
+- Bootstrap with founder hand-labels and expert vendors, scale with programmatic supervision, and use synthetic data for edge cases and privacy - but keep a real-data floor to avoid model collapse.
+- Design the flywheel as an explicit capture -&gt; curate -&gt; train -&gt; deploy loop, and treat <em>loop latency</em> as a first-class metric: more turns per year beats a bigger model.
+- Capture both explicit (thumbs, edits) and implicit (regeneration, abandonment, outcomes) signals; inline feedback controls raise volume by an order of magnitude, and outcome-based labels are the crown jewels.
+- Secure training rights contractually in both directions before the loop spins - ZDR and training opt-out are distinct, and retroactive governance failures can taint everything you trained on.</p>
+</div>
+<div class="exercise">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Exercise</p>
+<p><strong>Hands-on: Map your flywheel</strong>
+1. Write down the single proprietary signal your product generates that no competitor could buy or scrape. If you cannot name one, your first job is to design the product so it produces one.
+2. For that signal, specify the four loop stages concretely: how you capture it, how you curate/label it, what you train or tune on it, and how you deploy and measure the lift.
+3. Estimate your current loop latency (production signal -&gt; shipped improvement) in days, and set a target that at least doubles your turns per year.
+4. Inventory your feedback surfaces: list every explicit and implicit signal you capture today and one high-value signal you are currently throwing away. Design the UX to capture it inline.
+5. Pull your customer MSA and your model-provider DPA. Confirm, in writing, (a) that you have the right to train on customer data in de-identified form and (b) that your provider does not train on your inputs. Flag any gap as a blocker before you scale the loop.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:flywheel">
+<p>Data Flywheel: The Only AI Moat That Compounds. <a href="https://www.rohitprabhakar.com/blog/market-of-one-data-flywheel-competitive-moat/">https://www.rohitprabhakar.com/blog/market-of-one-data-flywheel-competitive-moat/</a>&#160;<a class="footnote-backref" href="#fnref:flywheel" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:flywheel" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:flywheel" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:scale">
+<p>Scale AI Competitors (2026): Who Won the Data Market After the Meta Deal. <a href="https://www.teahose.com/guides/scale-ai-competitors">https://www.teahose.com/guides/scale-ai-competitors</a>&#160;<a class="footnote-backref" href="#fnref:scale" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:scale" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:scale" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:synth">
+<p>Synthetic Data for AI in 2026: Guide + Best Tools. <a href="https://futureagi.com/blog/synthetic-data-guide/">https://futureagi.com/blog/synthetic-data-guide/</a>&#160;<a class="footnote-backref" href="#fnref:synth" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:synth" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:synth" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:nvidia">
+<p>NVIDIA Data Flywheel Blueprint. <a href="https://github.com/NVIDIA-AI-Blueprints/data-flywheel">https://github.com/NVIDIA-AI-Blueprints/data-flywheel</a>&#160;<a class="footnote-backref" href="#fnref:nvidia" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:nvidia" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:nvidia" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:zdr">
+<p>Zero Data Retention for AI APIs: What It Actually Means in 2026. <a href="https://meridianblue.ai/blog/zero-data-retention/">https://meridianblue.ai/blog/zero-data-retention/</a>&#160;<a class="footnote-backref" href="#fnref:zdr" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:zdr" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:copilot">
+<p>GitHub Copilot&rsquo;s new policy for AI training: a governance wake-up call. <a href="https://about.gitlab.com/blog/github-copilots-new-policy-for-ai-training-is-a-governance-wake-up-call/">https://about.gitlab.com/blog/github-copilots-new-policy-for-ai-training-is-a-governance-wake-up-call/</a>&#160;<a class="footnote-backref" href="#fnref:copilot" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:aiact">
+<p>Enforcement of Chapter V (GPAI obligations) under the EU AI Act. <a href="https://artificialintelligenceact.eu/enforcement-of-chapter-v-under-the-eu-ai-act/">https://artificialintelligenceact.eu/enforcement-of-chapter-v-under-the-eu-ai-act/</a></parameter>
+<parameter name="changelog">Fact-checked all 2026 claims via web search; all major ones verified (Meta $14.3B/49% Scale stake, Scale ~14% July 2025 layoffs, Gartner 75%, NVIDIA 98.6%, Copilot Apr 24 2026 opt-out, GPAI enforcement Aug 2026). Corrections: Surge AI revenue set to $1.2B 2024 (verified); Gretel softened to &ldquo;reported nine-figure deal&rdquo; (price never disclosed, above ~$320M valuation); dropped unverified &ldquo;Microsoft&rdquo; from contract-pullers (kept Google/OpenAI/xAI). Removed the unsupportable &ldquo;40x&rdquo; inline-feedback figure plus its incorrect <sup class="footnote-ref" id="fnref3:nvidia"><a class="footnote-ref" href="#fn:nvidia">4</a></sup> citation and softened to an order-of-magnitude claim; fixed matching takeaway. Compressed the EU AI Act passage to a Ch17 cross-reference instead of explaining Article 10, and re-cited it to a proper EU AI Act source <sup class="footnote-ref" id="fnref2:aiact"><a class="footnote-ref" href="#fn:aiact">7</a></sup> rather than the mismatched <sup class="footnote-ref" id="fnref2:zdr"><a class="footnote-ref" href="#fn:zdr">5</a></sup>. Trimmed NVIDIA 98.6% duplication between body and case box. Cut restated filler in the moat section opener. Verified format: frontmatter keys present, unnumbered ## headings, valid callout types, single diagram figure with unique marker id, all [^id] footnotes defined, no footnotes inside sn/case blocks, Cortex present. reading_time set to 18 min. Stripped the stray non-chapter trailing markup that had leaked into the draft.&#160;<a class="footnote-backref" href="#fnref:aiact" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:aiact" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+      <nav class="prevnext"><a class="prev" href="04-markets-users-product-strategy.html"><div class="dir">← Previous</div><div class="t">Ch 4 · Markets, Users &amp; AI Product Strategy</div></a><a class="next" href="06-customer-validation-for-ai.html"><div class="dir">Next →</div><div class="t">Ch 6 · Customer Validation for AI</div></a></nav>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> github.com/arubhatt</a>
+  </div>
+</footer>
+<div class="search-modal" id="search-modal">
+  <div class="scrim"></div>
+  <div class="search-box">
+    <input id="search-input" type="text" placeholder="Search the book…" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>

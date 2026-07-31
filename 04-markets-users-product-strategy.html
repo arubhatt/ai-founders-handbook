@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markets, Users &amp; AI Product Strategy · The AI Founder&#x27;s Handbook</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/book.css">
+<link rel="stylesheet" href="assets/css/code.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html">The AI Founder's <b>Handbook</b></a>
+  <span class="spacer"></span>
+  <span class="byline-top hide-sm">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+  <button class="iconbtn" data-search-open aria-label="Search"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="hide-sm">Search</span> <kbd>/</kbd></button>
+  <a class="iconbtn" href="https://github.com/arubhatt" target="_blank" rel="noopener" aria-label="GitHub — arubhatt"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  <button class="iconbtn" id="theme-btn" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="toc"><a class="toc-book" href="index.html">The AI Founder&#x27;s Handbook</a>
+<div class="toc-part"><span class="pnum">I</span> Foundations</div>
+<a class="" href="01-introduction-to-ai-startups.html"><span class="cnum">01</span>Introduction to AI Startups</a>
+<a class="" href="02-ai-fundamentals-models.html"><span class="cnum">02</span>AI Fundamentals I: Models, Modalities &amp; Inference</a>
+<a class="" href="03-ai-fundamentals-rag-agents.html"><span class="cnum">03</span>AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</a>
+<div class="toc-part"><span class="pnum">II</span> Market &amp; Validation</div>
+<a class="current" href="04-markets-users-product-strategy.html"><span class="cnum">04</span>Markets, Users &amp; AI Product Strategy</a>
+<div class="subnav"><a href="#problem-solution-fit-for-ai-value-versus-gimmick">4.1  Problem-solution fit for AI: value versus gimmick</a><a href="#segmenting-for-ai-who-feels-the-pain-enough">4.2  Segmenting for AI: who feels the pain enough</a><a href="#product-market-fit-signals-for-ai-products">4.3  Product-market-fit signals for AI products</a><a href="#the-thin-wrapper-trap-and-where-to-add-real-value">4.4  The thin-wrapper trap and where to add real value</a><a href="#ai-business-models-and-usage-based-pricing">4.5  AI business models and usage-based pricing</a></div>
+<a class="" href="05-data-strategy-flywheel.html"><span class="cnum">05</span>Data Strategy &amp; the Data Flywheel</a>
+<a class="" href="06-customer-validation-for-ai.html"><span class="cnum">06</span>Customer Validation for AI</a>
+<div class="toc-part"><span class="pnum">III</span> The Stack</div>
+<a class="" href="07-choosing-model-providers.html"><span class="cnum">07</span>Choosing Model Providers &amp; Hugging Face</a>
+<a class="" href="08-content-data-stack.html"><span class="cnum">08</span>The Content &amp; Data Stack</a>
+<a class="" href="09-infra-observability-llmops.html"><span class="cnum">09</span>Infrastructure, Observability &amp; LLMOps</a>
+<a class="" href="10-production-evals-monitoring.html"><span class="cnum">10</span>Production Evals &amp; Monitoring</a>
+<div class="toc-part"><span class="pnum">IV</span> Go-to-Market &amp; Moat</div>
+<a class="" href="11-selling-ai-customer-success.html"><span class="cnum">11</span>Selling AI &amp; Customer Success</a>
+<a class="" href="12-defensibility-ai-moat.html"><span class="cnum">12</span>Defensibility &amp; the AI Moat</a>
+<div class="toc-part"><span class="pnum">V</span> Company Building</div>
+<a class="" href="13-finance-unit-economics.html"><span class="cnum">13</span>Finance &amp; Unit Economics for AI</a>
+<a class="" href="14-venture-funding-for-ai.html"><span class="cnum">14</span>Venture Funding for AI</a>
+<a class="" href="15-pitfalls-crises-ai.html"><span class="cnum">15</span>Pitfalls &amp; Crises in AI</a>
+<div class="toc-part"><span class="pnum">VI</span> People</div>
+<a class="" href="16-team-culture-leadership.html"><span class="cnum">16</span>Team, Culture &amp; Leadership for AI</a>
+<div class="toc-part"><span class="pnum">VII</span> Responsibility</div>
+<a class="" href="17-responsible-ai-regulation.html"><span class="cnum">17</span>Responsible AI: Safety, Ethics &amp; Regulation</a></nav></aside>
+  <main class="content">
+    <article class="chapter">
+      <header class="chapter-head reading">
+        <div class="kicker">Part II - Market and Validation · Chapter 4</div>
+        <div class="chapter-num">04</div>
+        <h1 class="chapter-title">Markets, Users &amp; AI Product Strategy</h1>
+        <p class="chapter-dek">Where AI creates durable value instead of a demo - and how to price it.</p>
+        <div class="chapter-meta">18 min read · Part II - Market and Validation</div>
+      </header>
+      <div class="reading"><div class="prose">
+<p class="lede">Every founder in 2026 can build a convincing demo in a weekend. That is precisely the problem. The model does the impressive part for free, so the demo proves nothing about whether you have a business - and the graveyard is full of products that died the week a user asked, &ldquo;Can&rsquo;t I just do this in ChatGPT?&rdquo; This chapter is about the judgment that separates a durable AI product from a gimmick: choosing a market that feels real pain, reading the fit signals that actually matter for AI, escaping the thin-wrapper trap, and pricing for the value you deliver rather than the seats you occupy.</p>
+<h2 id="problem-solution-fit-for-ai-value-versus-gimmick"><span class="secnum">4.1</span>Problem-solution fit for AI: value versus gimmick<a class="anchor" href="#problem-solution-fit-for-ai-value-versus-gimmick" aria-label="Link to this section">#</a></h2>
+<p>The foundational shift of the AI era is that <strong>capability is no longer the scarce resource</strong>. When GPT-class reasoning is a metered API call, the question &ldquo;can software do this?&rdquo; almost always answers yes. The scarce resources are trust, integration, and reliability at the tail. A gimmick impresses in the happy path and collapses on the 15% of cases that make up the actual job; a durable product is one a customer would feel real, budgeted pain from losing on a Tuesday.</p>
+<p>The single most useful filter is the <strong>ChatGPT test</strong>: if a competent user could get 80% of your output by pasting their problem into a frontier chatbot, you do not have a product, you have a prompt with a logo.<sup class="footnote-ref" id="fnref:valueadd"><a class="footnote-ref" href="#fn:valueadd">1</a></sup> Passing it requires that your value live in something the raw model cannot reach: proprietary or permissioned data, a workflow the model cannot execute on its own, an integration surface that is painful to assemble, or an accountability guarantee - an SLA, an audit trail, a human-in-the-loop escalation - that a chatbot will never offer.</p>
+<span class="sidenote-ref">1</span><span class="sidenote"><span class="sn-num">1</span>The corollary: your first demo should deliberately show the ugly case - the ambiguous ticket, the malformed input, the edge that breaks toys. If it survives that, you have something.</span>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>Durable AI value</strong> - value that persists after the novelty of &ldquo;the AI did that&rdquo; wears off, because it is anchored to a measurable business outcome, a data asset that compounds, or a workflow the customer cannot easily unwind.</p>
+</div>
+<p>Consider our running example. <strong>Cortex</strong> is an autonomous AI support agent for mid-market SaaS companies. A gimmick version is a chat widget that answers questions in a friendly tone - genuinely nice, and utterly indistinguishable from a weekend build. The durable version resolves tickets end to end: it reads the customer&rsquo;s actual account state through their CRM and billing system, executes the refund or the plan change, writes the resolution back, and hands off cleanly when it is not confident. The difference is not the model. It is that Cortex is wired into systems of record and is accountable for an outcome the buyer already pays humans to produce. Through 2026, the leading agent vendors - Sierra, Decagon, Ada - repriced the category around <em>resolved work</em>, publishing resolution-rate benchmarks instead of feature lists.<sup class="footnote-ref" id="fnref:superkind"><a class="footnote-ref" href="#fn:superkind">2</a></sup></p>
+<span class="sidenote-ref">2</span><span class="sidenote case"><span class="sn-num">2</span><span class="sn-label">In the wild</span><strong>The outcome bar</strong> - When agent vendors stopped selling "AI assistants" and started selling resolved tickets, the gimmick tier stopped clearing buyer scrutiny. A friendly-toned chat widget is now table stakes; a published resolution rate is the ask.</span>
+<h2 id="segmenting-for-ai-who-feels-the-pain-enough"><span class="secnum">4.2</span>Segmenting for AI: who feels the pain enough<a class="anchor" href="#segmenting-for-ai-who-feels-the-pain-enough" aria-label="Link to this section">#</a></h2>
+<p>AI does not change <em>whether</em> you need a sharp ICP - it changes <em>which</em> segment converts. The winning segment has three properties: the work is <strong>high-volume and repetitive</strong> (so automation compounds), the <strong>cost of the status quo is legible</strong> (so you can price against a number the buyer already knows), and the buyer has <strong>tolerance for probabilistic output</strong> (so a 92%-correct agent is a win, not a compliance incident).</p>
+<p>That last property is where founders misjudge. Regulated, low-latency, or zero-error-tolerance segments - clinical diagnosis, wire transfers, legal filings - feel like huge markets but punish the stochastic nature of a model. The sweet spot is work that is expensive, voluminous, and <em>forgiving at the margin</em> because errors are recoverable and a human backstop exists. This is why <strong>vertical AI agents are outgrowing horizontal SaaS</strong>: industry-specific agents grew 18-32% annually against 12-15% for horizontal tools, because a narrow segment lets you tune for its tail cases and sell completed work instead of software seats.<sup class="footnote-ref" id="fnref:saasmag"><a class="footnote-ref" href="#fn:saasmag">3</a></sup></p>
+<p>Cortex does not target &ldquo;companies that do customer support.&rdquo; It targets <strong>mid-market SaaS support teams</strong> (roughly 50-500 employees) drowning in Tier-1 tickets - password resets, billing questions, plan changes - where each ticket has a known fully-loaded cost, volume is high, and a wrong answer means an annoyed customer, not a lawsuit. Enterprise support has procurement cycles and bespoke compliance; SMB support has no budget. Mid-market feels the pain, controls its own budget, and can say yes in a quarter.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Segment axis</th>
+<th>Gimmick-prone segment</th>
+<th>Durable AI segment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task volume</td>
+<td>Occasional, bespoke</td>
+<td>High-frequency, repetitive</td>
+</tr>
+<tr>
+<td>Cost of status quo</td>
+<td>Diffuse, hard to name</td>
+<td>Legible (salaries, per-ticket cost)</td>
+</tr>
+<tr>
+<td>Error tolerance</td>
+<td>Zero (legal, medical, payments)</td>
+<td>Recoverable, human backstop exists</td>
+</tr>
+<tr>
+<td>Data access</td>
+<td>Locked, siloed, permissioned out</td>
+<td>Reachable via API / integration</td>
+</tr>
+<tr>
+<td>Buyer authority</td>
+<td>Committee, long procurement</td>
+<td>Departmental owner, quarterly budget</td>
+</tr>
+</tbody>
+</table></div>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p><strong>Founder&rsquo;s Rule:</strong> Sell to the buyer who can name the number your AI moves - in dollars, hours, or tickets - by the end of the first call.</p>
+</div>
+<span class="sidenote-ref">3</span><span class="sidenote"><span class="sn-num">3</span>A useful test for "pain enough": would the buyer keep paying if you removed the AI branding and just billed them for the outcome? If yes, the pain is real. If the AI <em>is</em> the pitch, it is a gimmick.</span>
+<h2 id="product-market-fit-signals-for-ai-products"><span class="secnum">4.3</span>Product-market-fit signals for AI products<a class="anchor" href="#product-market-fit-signals-for-ai-products" aria-label="Link to this section">#</a></h2>
+<p>The classic PMF instruments still apply, but AI products throw off two dangerous false positives. <strong>First, demo euphoria.</strong> AI products get abnormally strong early traction because the demo is magic - and then churn hard when users hit the reliability wall. Signup curves lie; retention curves do not. <strong>Second, usage without value.</strong> Users poke at your AI out of curiosity, inflating engagement metrics that have nothing to do with willingness to pay.</p>
+<p>The signals that actually matter for AI, in rough order of trustworthiness:</p>
+<ul>
+<li><strong>Retention curve flattening.</strong> Does a cohort plateau at a non-trivial level after the novelty decays, or decay to zero? A flat tail is the single strongest PMF signal, and for AI it must survive the &ldquo;magic wore off&rdquo; moment. Best-in-class SaaS in 2026 targets net dollar retention with annual churn below 5%.<sup class="footnote-ref" id="fnref:everhelp"><a class="footnote-ref" href="#fn:everhelp">4</a></sup></li>
+<li><strong>The outcome metric moves.</strong> For Cortex the north-star is <strong>deflection rate</strong> - the share of tickets fully resolved without a human. If it climbs cohort-over-cohort and stays high in month three, that is PMF. If it spikes in week one and sags as edge cases accumulate, that is a demo.</li>
+<li><strong>Segmented Sean Ellis score.</strong> &ldquo;How disappointed would you be if this went away?&rdquo; above 40% - but segmented by ICP, because a blended score hides the fact that your mid-market cohort loves you and your tire-kickers do not.<sup class="footnote-ref" id="fnref:userintuition"><a class="footnote-ref" href="#fn:userintuition">5</a></sup></li>
+<li><strong>Expansion and pull.</strong> Do customers route <em>more</em> ticket types to the agent unprompted? Expansion revenue and unprompted scope-creep are the clearest economic proof the value is real.</li>
+<li><strong>Willingness to pay per outcome.</strong> The ultimate AI PMF test is whether a customer will sign a contract that pays <em>per resolved ticket</em> - because that means they trust the outcome enough to bet their budget on it.</li>
+</ul>
+<span class="sidenote-ref">4</span><span class="sidenote case"><span class="sn-num">4</span><span class="sn-label">In the wild</span><strong>The raised retention bar</strong> - By 2026, teams running AI-driven support reported monthly churn reductions of 2-3 points - enough to move a company from median to top-quartile retention. AI PMF is now measured against a bar your buyers can already see.</span>
+<p>None of these signals is trustworthy without a rigorous evaluation harness: evals are what separate a genuine PMF signal from luck and let you defend your deflection numbers to a skeptical buyer. Treat them as validation infrastructure (see Chapter 6) and as the production monitor that keeps fit certified (see Chapter 10).</p>
+<figure class="diagram">
+<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two-by-two matrix positioning AI features by capability novelty against workflow depth, with the deep-workflow high-novelty quadrant highlighted as durable value.">
+  <style>.dg text{font-family:var(--sans);fill:var(--ink);font-size:13px} .dg .box{fill:var(--paper-2);stroke:var(--rule-2)} .dg .accent{fill:var(--accent-bg);stroke:var(--accent)} .dg .lbl{fill:var(--muted);font-size:11px;font-weight:600} .dg .flow{stroke:var(--rule-2);stroke-width:1.6;fill:none} .dg .qt{font-size:12px;font-weight:600} .dg .qs{fill:var(--muted);font-size:10.5px}</style>
+  <defs><marker id="ch4arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2)"/></marker></defs>
+  <g class="dg">
+    <path class="flow" d="M70 350 L70 40" marker-end="url(#ch4arrow)"/>
+    <path class="flow" d="M70 350 L690 350" marker-end="url(#ch4arrow)"/>
+    <text class="lbl" x="20" y="200" transform="rotate(-90 20 200)">Workflow depth &#8594;</text>
+    <text class="lbl" x="360" y="380">Capability novelty &#8594;</text>
+    <rect class="box" x="90" y="200" width="285" height="135" rx="9"/>
+    <text class="qt" x="105" y="230">Table stakes</text>
+    <text class="qs" x="105" y="250">Shallow + familiar.</text>
+    <text class="qs" x="105" y="266">A summarize button. Cloned in a week.</text>
+    <rect class="box" x="385" y="200" width="285" height="135" rx="9"/>
+    <text class="qt" x="400" y="230">Demo candy</text>
+    <text class="qs" x="400" y="250">Novel but shallow.</text>
+    <text class="qs" x="400" y="266">Impressive toy. The ChatGPT test</text>
+    <text class="qs" x="400" y="282">kills it. Thin-wrapper territory.</text>
+    <rect class="box" x="90" y="55" width="285" height="135" rx="9"/>
+    <text class="qt" x="105" y="85">Sticky integration</text>
+    <text class="qs" x="105" y="105">Deep but not novel.</text>
+    <text class="qs" x="105" y="121">Defensible via switching cost,</text>
+    <text class="qs" x="105" y="137">not intelligence. Solid, not a rocket.</text>
+    <rect class="accent" x="385" y="55" width="285" height="135" rx="9"/>
+    <text class="qt" x="400" y="85">Durable AI value</text>
+    <text class="qs" x="400" y="105">Novel capability, deep workflow.</text>
+    <text class="qs" x="400" y="121">Cortex: resolves the ticket end to end,</text>
+    <text class="qs" x="400" y="137">wired to CRM + billing, priced per outcome.</text>
+    <text class="qs" x="400" y="163">Aim here.</text>
+  </g>
+</svg>
+<figcaption><strong>Figure 4.1</strong> - Position every AI feature by novelty and workflow depth; only the top-right quadrant resists commoditization.</figcaption>
+</figure>
+
+<h2 id="the-thin-wrapper-trap-and-where-to-add-real-value"><span class="secnum">4.4</span>The thin-wrapper trap and where to add real value<a class="anchor" href="#the-thin-wrapper-trap-and-where-to-add-real-value" aria-label="Link to this section">#</a></h2>
+<p>A <strong>thin wrapper</strong> is a product whose entire value is a prompt plus a UI over a foundation model&rsquo;s API, with nothing underneath. The economics are brutal: analyses in 2026 found that a majority of AI wrapper startups generate little or no revenue, and the widely-cited projection is that roughly 80% of wrappers will fail as foundation-model providers ship the same features natively.<sup class="footnote-ref" id="fnref2:valueadd"><a class="footnote-ref" href="#fn:valueadd">1</a></sup> &ldquo;OpenAI ships your feature&rdquo; is not a tail risk; it is the base case for any product whose only asset is a clever prompt.</p>
+<p>The trap is seductive because a wrapper reaches a demo fastest and shows the best early activation - the exact metrics that fool founders and seed investors. The escape is to build value in a layer the model provider will never own:</p>
+<ul>
+<li><strong>Proprietary data and a flywheel.</strong> Every resolved ticket teaches Cortex which answers work for <em>this</em> customer&rsquo;s product, and that labeled outcome data compounds into an accuracy edge a generic chatbot cannot match. This is the most durable layer, and the subject of Chapter 5.</li>
+<li><strong>Workflow depth and systems of record.</strong> The model can draft a refund; only a product wired into Stripe, Zendesk, and the customer&rsquo;s internal APIs can <em>execute</em> it, log it, and stand behind it.</li>
+<li><strong>Reliability engineering.</strong> The eval harnesses, guardrails, fallback logic, and human-escalation paths that turn a 92% happy-path model into a 99%-dependable product are real, hard-won IP (see Chapters 6 and 10).</li>
+<li><strong>Distribution and trust.</strong> An SLA, SOC 2, an audit trail, and a brand a support VP will stake their job on - none of which a raw API confers.</li>
+</ul>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>If your honest answer to &ldquo;what do we own that OpenAI can&rsquo;t ship next quarter?&rdquo; is &ldquo;our prompt&rdquo; or &ldquo;our nicer UI,&rdquo; you are in the wrapper trap. Prompts are not IP; they leak, they get cloned, they get obsoleted by the next model release. Move value into data, workflow, or reliability before you raise on the demo.</p>
+</div>
+<p>The nuance: <strong>starting as a wrapper is fine; staying one is fatal.</strong> The 2026 playbook is to wrap fast to reach the market, then use the resulting usage to accumulate a proprietary data and workflow moat before the window closes. Cortex ships on a frontier API on day one - it would be malpractice to train a foundation model - but its defensibility comes from the resolution data, integrations, and deflection guarantees it accumulates, not the model it rents. Where that moat comes from, and how to sequence its construction, is the whole of Chapter 12.</p>
+<h2 id="ai-business-models-and-usage-based-pricing"><span class="secnum">4.5</span>AI business models and usage-based pricing<a class="anchor" href="#ai-business-models-and-usage-based-pricing" aria-label="Link to this section">#</a></h2>
+<p>Pricing is where AI product strategy becomes a business. The historical default - <strong>per-seat SaaS</strong> - is actively breaking, because the entire promise of an AI agent is to do the work of seats. Charging per human seat while you eliminate human seats is a contradiction the buyer notices immediately. The data confirms the shift: pure per-seat pricing fell from 21% to 15% of SaaS companies between 2025 and 2026, and IDC forecasts that 70% of vendors will move off pure per-seat models by 2028.<sup class="footnote-ref" id="fnref:monetizely"><a class="footnote-ref" href="#fn:monetizely">6</a></sup> The natural pricing unit for an agent is the <strong>unit of work it completes</strong>, not the number of people with a login.</p>
+<p>Three models dominate, and the right choice follows directly from how legible and attributable your value is:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>You charge for</th>
+<th>Best when</th>
+<th>Risk to you</th>
+<th>2026 signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Per-seat</strong></td>
+<td>Named users with access</td>
+<td>Humans are augmented, not replaced</td>
+<td>Collapses as agents cut headcount</td>
+<td>Falling: 21% &#8594; 15% of SaaS<sup class="footnote-ref" id="fnref3:monetizely"><a class="footnote-ref" href="#fn:monetizely">6</a></sup></td>
+</tr>
+<tr>
+<td><strong>Usage-based</strong></td>
+<td>Tokens, API calls, tasks attempted</td>
+<td>Value scales with volume; outcomes hard to attribute</td>
+<td>Bill shock; you eat cost on failed/retried work</td>
+<td>Dominant for AI infra; hybrid is the norm<sup class="footnote-ref" id="fnref:flexprice"><a class="footnote-ref" href="#fn:flexprice">7</a></sup></td>
+</tr>
+<tr>
+<td><strong>Outcome-based</strong></td>
+<td>Successful results (resolved ticket, booked meeting)</td>
+<td>Outcome is measurable and cleanly attributable</td>
+<td>You absorb model-cost variance en route to each outcome</td>
+<td>Fastest-growing frontier; strong retention gains<sup class="footnote-ref" id="fnref4:monetizely"><a class="footnote-ref" href="#fn:monetizely">6</a></sup></td>
+</tr>
+</tbody>
+</table></div>
+<p>Cortex lands on <strong>per-resolution pricing</strong> - it bills only when a ticket is fully resolved without a human, and charges nothing on escalations. This is the model the category converged on: through 2026, per-resolved-ticket pricing ran roughly $0.49-$2.00, with Intercom&rsquo;s Fin at a reference $0.99 per resolution and Zendesk moving its automation to $1.50-$2.00 per resolution while retiring its legacy bots.<sup class="footnote-ref" id="fnref:drag"><a class="footnote-ref" href="#fn:drag">8</a></sup><sup class="footnote-ref" id="fnref:drag2"><a class="footnote-ref" href="#fn:drag2">9</a></sup> Per-resolution pricing is <em>self-validating</em>: the buyer pays only when Cortex demonstrably did the job, which demolishes purchasing resistance, and it forces Cortex&rsquo;s incentives into alignment with the customer&rsquo;s - every dollar of revenue is a ticket a human did not have to touch.</p>
+<span class="sidenote-ref">5</span><span class="sidenote case"><span class="sn-num">5</span><span class="sn-label">In the wild</span><strong>The $0.99 anchor</strong> - Intercom's Fin bills a flat $0.99 per resolution; above roughly 3,000 monthly conversations, outcome pricing typically beats per-seat once helpdesk fees and agent salaries are folded in. The market has already taught your buyer what a resolution is worth - price against that anchor rather than inventing a new unit.</span>
+<p>The catch founders underestimate: <strong>outcome pricing pushes cost variance onto you.</strong> Every failed attempt, retry, and long agent trajectory burns model tokens you paid for but cannot bill. If your inference cost per attempted resolution creeps toward your per-resolution price, your gross margin evaporates regardless of how many tickets you deflect. This is why the modern default is a <strong>hybrid</strong>: a platform base fee for predictability plus an outcome component for alignment - a structure 43% of SaaS companies used in 2026, projected to reach 61%.<sup class="footnote-ref" id="fnref2:monetizely"><a class="footnote-ref" href="#fn:monetizely">6</a></sup> The base fee covers your fixed integration and infrastructure cost; the per-outcome charge captures value.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p><strong>Founder&rsquo;s Rule:</strong> Price on the unit your customer counts their value in - and make sure your cost to produce that unit is a small, stable fraction of what you charge for it.</p>
+</div>
+<p>The coupling between your pricing unit and your inference cost per that unit is the central unit-economics problem of an AI business, and it earns its own rigorous treatment - the gross-margin math, cost-of-goods modeling, and token-budget discipline that keep outcome pricing solvent live in Chapter 13. What matters here in strategy is the sequencing: <strong>choose the outcome your buyer already counts, price against the market&rsquo;s existing anchor for it, then engineer your cost per outcome down until the margin is durable.</strong> Get that loop right and pricing stops being a spreadsheet exercise and becomes your sharpest go-to-market weapon.</p>
+<div class="callout takeaways">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L17 8"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg>Key Takeaways</p>
+<p><strong>Key takeaways</strong>
+- Capability is cheap; trust, integration, and tail reliability are the scarce resources. Apply the <strong>ChatGPT test</strong> to every feature - if a chatbot gets 80% of the way, you have a prompt, not a product.
+- Target segments with <strong>high-volume repetitive work, legible status-quo cost, and tolerance for probabilistic output</strong>. Vertical agents beat horizontal tools because they sell completed work, not seats.
+- For AI, <strong>retention beats activation</strong> as a PMF signal - demo euphoria produces false positives. The strongest signal is willingness to pay <em>per outcome</em>.
+- Starting as a wrapper is fine; staying one is fatal. Move value into <strong>proprietary data, workflow depth, and reliability engineering</strong> before the model provider ships your feature.
+- Per-seat pricing is breaking. Price on the <strong>unit of work</strong> - usage or outcome - and default to a <strong>hybrid</strong> base-plus-outcome structure to survive cost variance.</p>
+</div>
+<div class="exercise">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Exercise</p>
+<p><strong>Hands-on: Position and price your AI product</strong>
+1. Write your product&rsquo;s core feature on one line, then run the ChatGPT test: could a competent user get 80% of the output from a frontier chatbot today? If yes, name the specific data, workflow, or accountability layer you will add to fail that test.
+2. Plot your top three features on the Figure 4.1 matrix (novelty vs. workflow depth). Any feature not in the top-right quadrant is either a roadmap risk or a deliberate loss-leader - label which.
+3. Define your ICP by the three durable-segment axes: task volume, legible status-quo cost (in dollars), and error tolerance. Write the single number your product moves for that buyer.
+4. Identify the <strong>unit of value</strong> your buyer already counts (resolutions, meetings, contracts, hours). Find the market&rsquo;s existing per-unit price anchor for it via a competitor.
+5. Estimate your <strong>inference cost per attempted unit</strong> (including failures and retries) and divide by your proposed per-unit price. If that ratio exceeds ~30%, redesign toward a hybrid base-plus-outcome model and flag it for the unit-economics work in Chapter 13.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:valueadd">
+<p>Startup Strategy in the AI Era: Why 80% of Wrappers Die and 5 Moats That Survive. <a href="https://valueaddvc.com/blog/how-to-build-a-startup-in-a-market-where-ai-will-eventually-do-what-you-do">https://valueaddvc.com/blog/how-to-build-a-startup-in-a-market-where-ai-will-eventually-do-what-you-do</a>&#160;<a class="footnote-backref" href="#fnref:valueadd" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:valueadd" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:superkind">
+<p>The Best AI Customer Support Agents in 2026: Decagon, Sierra, Intercom Fin, and When to Build Your Own. <a href="https://superkind.ai/blog/ai-customer-support-agents">https://superkind.ai/blog/ai-customer-support-agents</a>&#160;<a class="footnote-backref" href="#fnref:superkind" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:saasmag">
+<p>Vertical AI Agents Are Eating Horizontal SaaS in 2026. <a href="https://www.saasmag.com/vertical-ai-agents-eating-horizontal-saas/">https://www.saasmag.com/vertical-ai-agents-eating-horizontal-saas/</a>&#160;<a class="footnote-backref" href="#fnref:saasmag" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:everhelp">
+<p>The 2026 SaaS retention benchmarks every founder should know. <a href="https://www.ever-help.com/blog/saas-retention-rate-benchmarks">https://www.ever-help.com/blog/saas-retention-rate-benchmarks</a>&#160;<a class="footnote-backref" href="#fnref:everhelp" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:userintuition">
+<p>How to Measure Product-Market Fit in SaaS. <a href="https://www.userintuition.ai/reference-guides/measure-product-market-fit-saas/">https://www.userintuition.ai/reference-guides/measure-product-market-fit-saas/</a>&#160;<a class="footnote-backref" href="#fnref:userintuition" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:monetizely">
+<p>The 2026 Guide to SaaS, AI, and Agentic Pricing Models. <a href="https://www.getmonetizely.com/blogs/the-2026-guide-to-saas-ai-and-agentic-pricing-models">https://www.getmonetizely.com/blogs/the-2026-guide-to-saas-ai-and-agentic-pricing-models</a>&#160;<a class="footnote-backref" href="#fnref:monetizely" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:monetizely" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:monetizely" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:monetizely" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:flexprice">
+<p>Why AI Companies Have Adopted Usage Based Pricing in 2026. <a href="https://flexprice.io/blog/why-ai-companies-have-adopted-usage-based-pricing">https://flexprice.io/blog/why-ai-companies-have-adopted-usage-based-pricing</a>&#160;<a class="footnote-backref" href="#fnref:flexprice" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:drag">
+<p>The State of AI Support Pricing 2026: Every Model, Every Rate. <a href="https://www.dragapp.com/blog/state-of-ai-support-pricing/">https://www.dragapp.com/blog/state-of-ai-support-pricing/</a>&#160;<a class="footnote-backref" href="#fnref:drag" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:drag2">
+<p>AI Agent Pricing in 2026: What Fin, Sierra, Decagon and Agentforce Actually Charge. <a href="https://www.thewitn.com/blog/ai-agent-pricing-in-2026-what-fin-sierra-decagon-and-agentforce-actually-charge">https://www.thewitn.com/blog/ai-agent-pricing-in-2026-what-fin-sierra-decagon-and-agentforce-actually-charge</a>&#160;<a class="footnote-backref" href="#fnref:drag2" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+      <nav class="prevnext"><a class="prev" href="03-ai-fundamentals-rag-agents.html"><div class="dir">← Previous</div><div class="t">Ch 3 · AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</div></a><a class="next" href="05-data-strategy-flywheel.html"><div class="dir">Next →</div><div class="t">Ch 5 · Data Strategy &amp; the Data Flywheel</div></a></nav>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> github.com/arubhatt</a>
+  </div>
+</footer>
+<div class="search-modal" id="search-modal">
+  <div class="scrim"></div>
+  <div class="search-box">
+    <input id="search-input" type="text" placeholder="Search the book…" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>

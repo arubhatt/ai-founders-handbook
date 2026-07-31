@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responsible AI: Safety, Ethics &amp; Regulation · The AI Founder&#x27;s Handbook</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/book.css">
+<link rel="stylesheet" href="assets/css/code.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html">The AI Founder's <b>Handbook</b></a>
+  <span class="spacer"></span>
+  <span class="byline-top hide-sm">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+  <button class="iconbtn" data-search-open aria-label="Search"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="hide-sm">Search</span> <kbd>/</kbd></button>
+  <a class="iconbtn" href="https://github.com/arubhatt" target="_blank" rel="noopener" aria-label="GitHub — arubhatt"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  <button class="iconbtn" id="theme-btn" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="toc"><a class="toc-book" href="index.html">The AI Founder&#x27;s Handbook</a>
+<div class="toc-part"><span class="pnum">I</span> Foundations</div>
+<a class="" href="01-introduction-to-ai-startups.html"><span class="cnum">01</span>Introduction to AI Startups</a>
+<a class="" href="02-ai-fundamentals-models.html"><span class="cnum">02</span>AI Fundamentals I: Models, Modalities &amp; Inference</a>
+<a class="" href="03-ai-fundamentals-rag-agents.html"><span class="cnum">03</span>AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</a>
+<div class="toc-part"><span class="pnum">II</span> Market &amp; Validation</div>
+<a class="" href="04-markets-users-product-strategy.html"><span class="cnum">04</span>Markets, Users &amp; AI Product Strategy</a>
+<a class="" href="05-data-strategy-flywheel.html"><span class="cnum">05</span>Data Strategy &amp; the Data Flywheel</a>
+<a class="" href="06-customer-validation-for-ai.html"><span class="cnum">06</span>Customer Validation for AI</a>
+<div class="toc-part"><span class="pnum">III</span> The Stack</div>
+<a class="" href="07-choosing-model-providers.html"><span class="cnum">07</span>Choosing Model Providers &amp; Hugging Face</a>
+<a class="" href="08-content-data-stack.html"><span class="cnum">08</span>The Content &amp; Data Stack</a>
+<a class="" href="09-infra-observability-llmops.html"><span class="cnum">09</span>Infrastructure, Observability &amp; LLMOps</a>
+<a class="" href="10-production-evals-monitoring.html"><span class="cnum">10</span>Production Evals &amp; Monitoring</a>
+<div class="toc-part"><span class="pnum">IV</span> Go-to-Market &amp; Moat</div>
+<a class="" href="11-selling-ai-customer-success.html"><span class="cnum">11</span>Selling AI &amp; Customer Success</a>
+<a class="" href="12-defensibility-ai-moat.html"><span class="cnum">12</span>Defensibility &amp; the AI Moat</a>
+<div class="toc-part"><span class="pnum">V</span> Company Building</div>
+<a class="" href="13-finance-unit-economics.html"><span class="cnum">13</span>Finance &amp; Unit Economics for AI</a>
+<a class="" href="14-venture-funding-for-ai.html"><span class="cnum">14</span>Venture Funding for AI</a>
+<a class="" href="15-pitfalls-crises-ai.html"><span class="cnum">15</span>Pitfalls &amp; Crises in AI</a>
+<div class="toc-part"><span class="pnum">VI</span> People</div>
+<a class="" href="16-team-culture-leadership.html"><span class="cnum">16</span>Team, Culture &amp; Leadership for AI</a>
+<div class="toc-part"><span class="pnum">VII</span> Responsibility</div>
+<a class="current" href="17-responsible-ai-regulation.html"><span class="cnum">17</span>Responsible AI: Safety, Ethics &amp; Regulation</a>
+<div class="subnav"><a href="#responsibility-as-a-business-asset-not-a-tax">17.1  Responsibility as a business asset, not a tax</a><a href="#bias-fairness-and-transparency-in-practice">17.2  Bias, fairness and transparency in practice</a><a href="#safety-misuse-and-human-oversight">17.3  Safety, misuse and human oversight</a><a href="#the-2026-regulatory-map-the-eu-ai-act-and-beyond">17.4  The 2026 regulatory map: the EU AI Act and beyond</a><a href="#governance-documentation-and-audit-readiness">17.5  Governance, documentation and audit readiness</a></div></nav></aside>
+  <main class="content">
+    <article class="chapter">
+      <header class="chapter-head reading">
+        <div class="kicker">Part VII - Responsibility · Chapter 17</div>
+        <div class="chapter-num">17</div>
+        <h1 class="chapter-title">Responsible AI: Safety, Ethics &amp; Regulation</h1>
+        <p class="chapter-dek">Trust is the asset that compounds or collapses - building responsibly, and staying legal, in 2026.</p>
+        <div class="chapter-meta">14 min read · Part VII - Responsibility</div>
+      </header>
+      <div class="reading"><div class="prose">
+<p class="lede">Every AI founder eventually meets the same fork: treat responsibility as a compliance tax paid under duress, or build it as product infrastructure on purpose. Founders who pick the second path close enterprise deals faster, survive incidents that sink their competitors, and turn regulation into a moat. This chapter is about making responsible AI a source of leverage rather than a line item of regret.</p>
+<p>The stakes changed in 2026. A German appellate court ruled that a company owns what its chatbot says. Article 50 of the EU AI Act made &ldquo;tell the user it&rsquo;s a bot&rdquo; a legal obligation with an August deadline. And procurement teams started asking for a certification that did not exist three years ago. If you are building an autonomous agent, responsibility is no longer a values statement - it is the terms of doing business.</p>
+<h2 id="responsibility-as-a-business-asset-not-a-tax"><span class="secnum">17.1</span>Responsibility as a business asset, not a tax<a class="anchor" href="#responsibility-as-a-business-asset-not-a-tax" aria-label="Link to this section">#</a></h2>
+<p>Start with the economics, because the ethics follow the money more reliably than founders admit. Responsible AI produces three compounding returns. It <strong>shortens sales cycles</strong>: by mid-2026 the question &ldquo;Are you ISO 42001 certified or implementing it?&rdquo; appeared in roughly 40% of EU enterprise AI vendor RFPs and about 25% in North America, moving formal AI governance from differentiator to table stakes.<sup class="footnote-ref" id="fnref:iso42001"><a class="footnote-ref" href="#fn:iso42001">1</a></sup> It <strong>lowers the blast radius of incidents</strong>: documented oversight and rollback turn a lawsuit into an insurance claim. And it <strong>buys pricing power</strong>: a support agent a bank can actually deploy is worth multiples of one it cannot.</p>
+<span class="sidenote-ref">1</span><span class="sidenote"><span class="sn-num">1</span>The reframe that works on skeptical engineers: responsibility is just reliability with a compliance surface. The same eval harness that catches regressions catches bias. You are not building a second system.</span>
+<p>The mistake is sequencing. Founders bolt governance on after product-market fit, then discover the retrofit costs more than the greenfield build would have. Bias controls, audit logs, escalation paths, and model documentation are architectural decisions - deferring them is the same error as deferring observability (see Chapter 9). Trust is an asset that either compounds through every shipped feature or collapses in a single screenshot.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>Responsibility is not the brake on the car. It is the brakes that let you corner at speed.</p>
+</div>
+<p>For <strong>Cortex</strong>, our autonomous support agent for mid-market SaaS companies, this is existential. Cortex answers customers directly, takes actions in a client&rsquo;s billing and account systems, and does so unsupervised at 3 a.m. Each property - autonomy, action-taking, direct end-user contact - moves it up the risk and liability curve. A responsible-AI posture is the precondition for a mid-market SaaS company letting an outside agent touch its customers at all; the trust that closes the sale (see Chapter 11) is manufactured here.</p>
+<h2 id="bias-fairness-and-transparency-in-practice"><span class="secnum">17.2</span>Bias, fairness and transparency in practice<a class="anchor" href="#bias-fairness-and-transparency-in-practice" aria-label="Link to this section">#</a></h2>
+<p>Fairness is not a slogan you affirm; it is a number you can show. The failure mode that bites support agents is <strong>quality-of-service harm</strong>: the model answers competently in standard English and degrades for minoritized dialects, non-native phrasing, or prompts with typos - a disparity documented in 2026 auditing research and easy to miss because aggregate metrics look fine.<sup class="footnote-ref" id="fnref:dialect"><a class="footnote-ref" href="#fn:dialect">2</a></sup> The user who gets worse answers rarely files a bug; they just churn, and the harm stays invisible until someone measures it by cohort.</p>
+<span class="sidenote-ref">2</span><span class="sidenote case"><span class="sn-num">2</span><span class="sn-label">In the wild</span><strong>OLG Hamm ruling</strong> - In May 2026 Germany's Higher Regional Court of Hamm held a medical company liable under unfair-competition law for false statements its own AI chatbot made about its physicians' qualifications - part of a 2026 line of cases establishing that operators own their chatbot's output.</span>
+<p>Operationalize fairness as a slice of your eval suite (see Chapter 10), not a separate research project. For Cortex:</p>
+<ul>
+<li><strong>Disaggregated evals.</strong> Run the golden test set segmented by dialect, language, channel, and customer tier. Track quality deltas across slices, not just the mean. A 12-point resolution-rate gap between standard and vernacular English is a fairness defect with the same severity as a latency regression.</li>
+<li><strong>Adversarial fairness probes.</strong> Seed the set with paraphrases, typos, and code-switching to surface degradation before customers do.</li>
+<li><strong>Transparency by construction.</strong> Cortex opens every conversation by disclosing it is an AI agent and naming the escalation path in the first turn - now legally required, not merely polite.</li>
+</ul>
+<p>Transparency became statutory in 2026. <strong>Article 50</strong> of the EU AI Act, applicable from 2 August 2026, requires that anyone interacting with an AI system be informed clearly and at first contact - the Commission&rsquo;s 20 July 2026 guidelines specify the disclosure fails if it is &ldquo;buried in terms and conditions or hidden under layers of menu options.&rdquo;<sup class="footnote-ref" id="fnref:article50"><a class="footnote-ref" href="#fn:article50">4</a></sup><sup class="footnote-ref" id="fnref:guidelines"><a class="footnote-ref" href="#fn:guidelines">5</a></sup> AI-generated content aimed at the public must be machine-readably marked. Non-compliance carries fines up to EUR 15 million or 3% of worldwide annual turnover.<sup class="footnote-ref" id="fnref2:article50"><a class="footnote-ref" href="#fn:article50">4</a></sup></p>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>Quality-of-service harm</strong> - A fairness failure where an AI system works well for some user groups and measurably worse for others (by dialect, language, disability, or demographic), even absent any explicit discriminatory rule. Detected only by disaggregated evaluation.</p>
+</div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fairness control</th>
+<th>What it catches</th>
+<th>Where it lives</th>
+<th>Cortex implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disaggregated evals</td>
+<td>Cohort quality gaps</td>
+<td>Eval suite (Ch 10)</td>
+<td>Resolution rate by dialect, language, tier</td>
+</tr>
+<tr>
+<td>Bias red-team probes</td>
+<td>Discriminatory outputs</td>
+<td>Pre-release gate</td>
+<td>Adversarial paraphrase + code-switch set</td>
+</tr>
+<tr>
+<td>Article 50 disclosure</td>
+<td>Undisclosed AI interaction</td>
+<td>Product UX</td>
+<td>&ldquo;You&rsquo;re chatting with an AI agent&rdquo; first turn</td>
+</tr>
+<tr>
+<td>Content marking</td>
+<td>Unlabeled synthetic content</td>
+<td>Output pipeline</td>
+<td>Machine-readable tag on generated text</td>
+</tr>
+<tr>
+<td>Human escalation</td>
+<td>High-stakes error propagation</td>
+<td>Runtime routing</td>
+<td>Confidence + topic triggers → human</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="safety-misuse-and-human-oversight"><span class="secnum">17.3</span>Safety, misuse and human oversight<a class="anchor" href="#safety-misuse-and-human-oversight" aria-label="Link to this section">#</a></h2>
+<p>Autonomy multiplies both value and hazard. In NIST red-team exercises, novel agent-tailored attacks achieved an <strong>81% task-hijacking success rate</strong> against a tool-using agent, versus 11% for known baseline attacks - agents are far more hijackable than chat models because tool access converts a prompt injection into a real-world action.<sup class="footnote-ref" id="fnref:nist"><a class="footnote-ref" href="#fn:nist">6</a></sup> For Cortex, a malicious email dropped into a support inbox could, absent controls, instruct the agent to issue refunds or exfiltrate account data. Safety engineering for agents is therefore mostly about <strong>constraining the action space</strong>, not perfecting the model.</p>
+<figure class="diagram">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EU AI Act risk tiers from unacceptable to minimal with a support agent placed at limited risk">
+  <style>.dg text{font-family:var(--sans);fill:var(--ink);font-size:13px} .dg .box{fill:var(--paper-2);stroke:var(--rule-2)} .dg .accent{fill:var(--accent-bg);stroke:var(--accent)} .dg .rec{fill:var(--sage-bg);stroke:var(--sage)} .dg .lbl{fill:var(--muted);font-size:11px;font-weight:600} .dg .flow{stroke:var(--rule-2);stroke-width:1.6;fill:none}</style>
+  <defs><marker id="arw17" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2)"/></marker></defs>
+  <g class="dg">
+    <text x="20" y="26" class="lbl">EU AI ACT RISK TIERS  (obligation rises with risk)</text>
+    <rect x="20" y="42" width="160" height="200" rx="9" class="box"/>
+    <text x="42" y="70" font-weight="700">Unacceptable</text>
+    <text x="42" y="92" class="lbl">Banned outright</text>
+    <text x="42" y="112" class="lbl">Social scoring,</text>
+    <text x="42" y="128" class="lbl">manipulation</text>
+    <rect x="196" y="42" width="160" height="200" rx="9" class="box"/>
+    <text x="218" y="70" font-weight="700">High</text>
+    <text x="218" y="92" class="lbl">Conformity assess.,</text>
+    <text x="218" y="108" class="lbl">docs, oversight</text>
+    <text x="218" y="128" class="lbl">Hiring, credit,</text>
+    <text x="218" y="144" class="lbl">critical infra</text>
+    <rect x="372" y="42" width="160" height="200" rx="9" class="accent"/>
+    <text x="394" y="70" font-weight="700">Limited</text>
+    <text x="394" y="92" class="lbl">Transparency only</text>
+    <text x="394" y="112" class="lbl">(Article 50)</text>
+    <rect x="392" y="170" width="122" height="52" rx="9" class="rec"/>
+    <text x="404" y="192" font-size="12" font-weight="700">Cortex</text>
+    <text x="404" y="210" class="lbl">support agent</text>
+    <rect x="548" y="42" width="152" height="200" rx="9" class="box"/>
+    <text x="570" y="70" font-weight="700">Minimal</text>
+    <text x="570" y="92" class="lbl">No new duties</text>
+    <text x="570" y="112" class="lbl">Spam filters,</text>
+    <text x="570" y="128" class="lbl">game AI</text>
+    <path d="M180 270 L700 270" class="flow" marker-end="url(#arw17)"/>
+    <text x="196" y="288" class="lbl">MOST regulated</text>
+    <text x="600" y="288" class="lbl">LEAST regulated</text>
+  </g>
+</svg>
+<figcaption><strong>Figure 17.1</strong> - A general support agent lands in the limited-risk tier, but adjacent use cases can push it into high-risk.</figcaption>
+</figure>
+
+<p>Build the safety stack in layers of decreasing trust in the model:</p>
+<ol>
+<li><strong>Human escalation paths.</strong> Define hard triggers - low confidence, refund above a threshold, legal or safety topics, repeated user frustration - that route to a human every time, no model judgment involved. This is your last line and it must be un-bypassable.</li>
+<li><strong>Action gating.</strong> Any state-changing action (refund, cancellation, data export) runs against allowlists, dollar limits, and rate caps enforced outside the model. The LLM proposes; deterministic code disposes.</li>
+<li><strong>Input isolation.</strong> Treat all retrieved content and inbound messages as untrusted. Instructions embedded in a customer&rsquo;s email are data, never commands - the same posture this book&rsquo;s own operating rules take toward observed content.</li>
+<li><strong>Continuous red-teaming.</strong> The 2026 shift is autonomous, agent-orchestrated red-teaming, where an attacker LLM is handed an objective and composes its own attacks; run it continuously against Cortex, not once at launch.<sup class="footnote-ref" id="fnref:redteam"><a class="footnote-ref" href="#fn:redteam">7</a></sup></li>
+</ol>
+<p>Not every hazard is transactional; some are conversational, surfacing as human harm rather than a bad API call.<sup class="footnote-ref" id="fnref:character"><a class="footnote-ref" href="#fn:character">8</a></sup></p>
+<span class="sidenote-ref">3</span><span class="sidenote case"><span class="sn-num">3</span><span class="sn-label">In the wild</span><strong>Character.AI settlements</strong> - In January 2026 Character.AI and Google agreed to settle lawsuits by families alleging their chatbots contributed to mental-health crises and suicides among minors - a reminder that unbounded conversational systems create liability no eval catches.</span>
+<p>A caution the safety-evaluation community made loudly in 2026: a passed red-team is not a safety certificate. If a capability exists that no test has yet elicited, the test&rsquo;s silence proves nothing.<sup class="footnote-ref" id="fnref:evals"><a class="footnote-ref" href="#fn:evals">9</a></sup> Oversight is a standing function, not a launch gate. When an incident does happen - and it will - crisis response is its own discipline (see Chapter 15); the job here is to make incidents rare, bounded, and reversible.</p>
+<h2 id="the-2026-regulatory-map-the-eu-ai-act-and-beyond"><span class="secnum">17.4</span>The 2026 regulatory map: the EU AI Act and beyond<a class="anchor" href="#the-2026-regulatory-map-the-eu-ai-act-and-beyond" aria-label="Link to this section">#</a></h2>
+<p>The regulatory picture in mid-2026 is a patchwork moving at different speeds, and founders who wait for it to settle will wait past their deployment date. Anchor on three regimes.</p>
+<p><strong>The EU AI Act</strong> classifies systems into four risk tiers (Figure 17.1). The one 2026 change that matters most: the <strong>Digital Omnibus</strong>, provisionally agreed on 7 May 2026, deferred the high-risk (Annex III) obligations from 2 August 2026 to <strong>2 December 2027</strong> - buying roughly sixteen months.<sup class="footnote-ref" id="fnref:omnibus"><a class="footnote-ref" href="#fn:omnibus">10</a></sup> But the parts that bind a support agent did not move. Prohibited practices have been banned since February 2025, general-purpose AI (GPAI) model rules since August 2025 with Commission enforcement powers activating 2 August 2026, and Article 50 transparency lands 2 August 2026.<sup class="footnote-ref" id="fnref:gpai"><a class="footnote-ref" href="#fn:gpai">11</a></sup><sup class="footnote-ref" id="fnref3:article50"><a class="footnote-ref" href="#fn:article50">4</a></sup> A standard support agent sits in the <strong>limited-risk</strong> tier - transparency obligations only - but adjacent features drag you upward: let Cortex screen job applicants or make credit decisions and it becomes <strong>high-risk</strong>, triggering conformity assessment, technical documentation, and mandated human oversight.</p>
+<span class="sidenote-ref">4</span><span class="sidenote"><span class="sn-num">4</span>The tier is a property of the <em>use case</em>, not the model. The same Cortex codebase is limited-risk for billing support and high-risk for loan-eligibility triage. Classify per deployment.</span>
+<p><strong>The United States</strong> has no federal AI statute and, as of mid-2026, no enacted preemption. A December 2025 executive order stood up a DOJ AI Litigation Task Force to challenge state laws, but no federal statute preempts them as of mid-2026, and the Senate had already stripped a proposed ten-year moratorium 99-1 in 2025.<sup class="footnote-ref" id="fnref:usstate"><a class="footnote-ref" href="#fn:usstate">12</a></sup> So the operative law is state law: <strong>Texas&rsquo;s TRAIGA</strong> (in force 1 January 2026) is the broadest comprehensive regime, and it grants a genuine safe harbor - substantial compliance with the <strong>NIST AI RMF</strong> is an affirmative defense to enforcement.<sup class="footnote-ref" id="fnref2:usstate"><a class="footnote-ref" href="#fn:usstate">12</a></sup> <strong>California&rsquo;s SB 53</strong> and <strong>Illinois HB 3773</strong> are also live; <strong>Colorado</strong> repealed its landmark SB 205 in May 2026, replacing it with the narrower SB 26-189 effective 1 January 2027.<sup class="footnote-ref" id="fnref3:usstate"><a class="footnote-ref" href="#fn:usstate">12</a></sup> Over 700 state AI bills were introduced in 2025 alone - the fragmentation is the environment, not a temporary glitch.</p>
+<p><strong>The voluntary standards</strong> are quietly becoming the real compliance layer, because they are what enterprises actually ask about. Map them once and satisfy all three regimes with one control set.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Regime</th>
+<th>Legal force</th>
+<th>Scope</th>
+<th>What it demands</th>
+<th>Cortex relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EU AI Act</td>
+<td>Binding (staggered)</td>
+<td>Tiered by use-case risk</td>
+<td>Transparency now; high-risk duties from Dec 2027</td>
+<td>Limited-risk; Article 50 disclosure</td>
+</tr>
+<tr>
+<td>NIST AI RMF</td>
+<td>Voluntary / safe-harbor</td>
+<td>Risk management method</td>
+<td>Govern-Map-Measure-Manage functions</td>
+<td>TRAIGA affirmative defense</td>
+</tr>
+<tr>
+<td>ISO/IEC 42001</td>
+<td>Certifiable</td>
+<td>AI management system</td>
+<td>Policy, risk assessment, audit, review</td>
+<td>40% of EU RFPs ask for it</td>
+</tr>
+<tr>
+<td>US state laws</td>
+<td>Binding, fragmented</td>
+<td>Per-state</td>
+<td>Varies (TRAIGA, SB 53, HB 3773)</td>
+<td>Deploy-state dependent</td>
+</tr>
+</tbody>
+</table></div>
+<p>The strategic move is to <strong>build the governance program once and map it outward</strong>: adopt ISO/IEC 42001&rsquo;s management-system skeleton, use the NIST AI RMF&rsquo;s functions as your risk methodology, and layer the EU AI Act&rsquo;s prescriptive obligations on top for any high-risk deployment.<sup class="footnote-ref" id="fnref2:iso42001"><a class="footnote-ref" href="#fn:iso42001">1</a></sup> One set of processes, policies, and documentation - three frameworks satisfied.</p>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>Do not architect around the December 2027 high-risk deferral. If a single enterprise customer deploys Cortex for hiring or credit decisions, that deployment is high-risk today under their obligations, and your contract will inherit them. Classify per customer, not per company.</p>
+</div>
+<h2 id="governance-documentation-and-audit-readiness"><span class="secnum">17.5</span>Governance, documentation and audit readiness<a class="anchor" href="#governance-documentation-and-audit-readiness" aria-label="Link to this section">#</a></h2>
+<p>Governance turns good intentions into evidence, and evidence is what survives a regulator, an enterprise security review, or a courtroom. The Air Canada tribunal in 2024 and the Hamm court in 2026 converged on the same principle - <strong>you own what your agent says</strong> - which puts the burden on you to prove you took reasonable care.<sup class="footnote-ref" id="fnref:hamm"><a class="footnote-ref" href="#fn:hamm">3</a></sup> Documentation is that proof.</p>
+<p>Cortex&rsquo;s audit-ready posture is a small number of living artifacts, each owned by a named person and updated on a cadence, not a one-time PDF:</p>
+<ul>
+<li><strong>Model card / system card</strong> for each model version: intended use, known limitations, eval results including disaggregated fairness slices, and out-of-scope uses.</li>
+<li><strong>Risk classification record</strong> stating Cortex&rsquo;s EU AI Act tier per deployment type, with the reasoning and the review date - so a shift into high-risk territory is a tracked decision, not an accident.</li>
+<li><strong>Data provenance and rights</strong> documentation covering training and retrieval sources and the consent basis (owned by your data strategy, see Chapter 5).</li>
+<li><strong>Immutable audit logs</strong>: every agent action, the inputs that triggered it, the confidence, and whether a human was in the loop. The single most valuable artifact in any dispute.</li>
+<li><strong>Incident register and red-team reports</strong>: what you tested, who tested it, with what access, and what you found and fixed.</li>
+<li><strong>AI governance policy and RACI</strong>: who approves a model promotion, who owns escalation, who signs off on a new high-risk use.</li>
+</ul>
+<span class="sidenote-ref">5</span><span class="sidenote"><span class="sn-num">5</span>A useful test for any artifact: could you hand it to an auditor tomorrow without a week of scrambling? If not, it is a slide, not a control.</span>
+<p>Assign a <strong>responsible-AI owner</strong> early - a named accountable human, not a committee that meets quarterly. ISO/IEC 42001 exists precisely because this pattern is familiar: it is the same management-system loop as ISO 27001 (leadership commitment, risk assessment, controls, internal audit, review, continual improvement) applied to AI, and any 27001-shop already knows the muscle.<sup class="footnote-ref" id="fnref3:iso42001"><a class="footnote-ref" href="#fn:iso42001">1</a></sup> Pursue certification when the RFPs demand it, but implement the loop the day you have your first customer, because the log you did not keep is the defense you do not have.</p>
+<div class="callout takeaways">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L17 8"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg>Key Takeaways</p>
+<p><strong>Key takeaways</strong>
+- Responsibility compounds as a business asset - faster enterprise sales, smaller incident blast radius, pricing power - or collapses in a single public failure. Build it in from the start, not as a retrofit.
+- Fairness is a measurement, not a value: run disaggregated evals to catch quality-of-service harms that aggregate metrics hide.
+- Agent autonomy multiplies risk (81% task-hijack rates in NIST red-team tests); constrain the action space with human escalation, action gating, and input isolation rather than trusting the model.
+- The EU AI Act&rsquo;s high-risk duties slipped to December 2027, but Article 50 transparency and GPAI rules bind from August 2026 - and a support agent&rsquo;s tier depends on the use case, not the code.
+- US law is state-by-state and unpreempted as of mid-2026; NIST AI RMF compliance is a real safe harbor under Texas&rsquo;s TRAIGA.
+- Build governance once and map it to EU AI Act + NIST AI RMF + ISO/IEC 42001 with one control set. Immutable audit logs are your most valuable artifact when &ldquo;you own what your agent says.&rdquo;</p>
+</div>
+<div class="exercise">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Exercise</p>
+<p><strong>Hands-on: Draft Cortex&rsquo;s responsible-AI posture in one afternoon</strong>
+1. <strong>Classify.</strong> Write the EU AI Act risk tier for each Cortex deployment type (billing support, general Q&amp;A, and one hypothetical hiring-screen use). Note what pushes any of them to high-risk.
+2. <strong>Disclose.</strong> Write the exact first-turn Article 50 disclosure text and confirm it cannot be buried in a menu or T&amp;Cs.
+3. <strong>Gate.</strong> List every state-changing action Cortex can take, then define the allowlist, dollar limit, and human-escalation trigger for each.
+4. <strong>Measure.</strong> Define three disaggregated fairness slices (e.g., dialect, language, customer tier) and the maximum acceptable quality gap for each.
+5. <strong>Document.</strong> Create a one-page model card and a five-line audit-log schema (action, inputs, confidence, human-in-loop, timestamp).
+6. <strong>Map.</strong> Draw a table matching each artifact above to the framework it satisfies (EU AI Act / NIST AI RMF / ISO 42001) and assign a named owner to each.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:iso42001">
+<p>ISO 42001 &amp; NIST AI RMF: Mastering Responsible AI Governance in 2026. TrustCloud. <a href="https://www.trustcloud.ai/ai/iso-42001-nist-ai-rmf-practical-steps-for-responsible-ai-governance/">https://www.trustcloud.ai/ai/iso-42001-nist-ai-rmf-practical-steps-for-responsible-ai-governance/</a>&#160;<a class="footnote-backref" href="#fnref:iso42001" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:iso42001" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:iso42001" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:dialect">
+<p>A Framework for Auditing Chatbots for Dialect-Based Quality-of-Service Harms. arXiv. <a href="https://arxiv.org/abs/2506.04419">https://arxiv.org/abs/2506.04419</a>&#160;<a class="footnote-backref" href="#fnref:dialect" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:hamm">
+<p>Germany: Court Rules Chatbot Operators Are Liable for AI Hallucinations. Library of Congress Global Legal Monitor. <a href="https://www.loc.gov/item/global-legal-monitor/2026-06-09/germany-court-rules-chatbot-operators-are-liable-for-ai-hallucinations/">https://www.loc.gov/item/global-legal-monitor/2026-06-09/germany-court-rules-chatbot-operators-are-liable-for-ai-hallucinations/</a>&#160;<a class="footnote-backref" href="#fnref:hamm" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:article50">
+<p>AI Act Article 50 Transparency Obligations: 2 August 2026. Bratby Law. <a href="https://bratby.law/ai-act-transparency-obligations-2026/">https://bratby.law/ai-act-transparency-obligations-2026/</a>&#160;<a class="footnote-backref" href="#fnref:article50" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:article50" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:article50" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:guidelines">
+<p>Guidelines on Transparency Obligations for Providers and Deployers of Certain AI Systems. European Commission, Shaping Europe&rsquo;s Digital Future. <a href="https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems">https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems</a>&#160;<a class="footnote-backref" href="#fnref:guidelines" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:nist">
+<p>NIST AI Agent Security: Red-Teaming Guidance and Enterprise Compliance. Cloud Security Alliance Lab Space. <a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-nist-ai-agent-red-teaming-standards-202603/">https://labs.cloudsecurityalliance.org/research/csa-research-note-nist-ai-agent-red-teaming-standards-202603/</a>&#160;<a class="footnote-backref" href="#fnref:nist" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:redteam">
+<p>AI Red Teaming in 2026: A Practical Field Guide. Gov Capital. <a href="https://gov.capital/ai-red-teaming-in-2026-a-practical-field-guide/">https://gov.capital/ai-red-teaming-in-2026-a-practical-field-guide/</a>&#160;<a class="footnote-backref" href="#fnref:redteam" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:character">
+<p>Google, Character.AI to settle suits involving suicides and AI chatbots. CNBC. <a href="https://www.cnbc.com/2026/01/07/google-characterai-to-settle-suits-involving-suicides-ai-chatbots.html">https://www.cnbc.com/2026/01/07/google-characterai-to-settle-suits-involving-suicides-ai-chatbots.html</a>&#160;<a class="footnote-backref" href="#fnref:character" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:evals">
+<p>AI Safety Evaluations Are Not Safety Certificates: Formal Analysis Today. Tech Times. <a href="https://www.techtimes.com/articles/321745/20260727/ai-safety-evaluations-are-not-safety-certificates-formal-analysis-today.htm">https://www.techtimes.com/articles/321745/20260727/ai-safety-evaluations-are-not-safety-certificates-formal-analysis-today.htm</a>&#160;<a class="footnote-backref" href="#fnref:evals" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:omnibus">
+<p>EU AI Act Omnibus Agreement - Postponed High-Risk Deadlines and Other Key Changes. Gibson Dunn. <a href="https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/">https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/</a>&#160;<a class="footnote-backref" href="#fnref:omnibus" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:gpai">
+<p>Overview of the Code of Practice. EU Artificial Intelligence Act. <a href="https://artificialintelligenceact.eu/code-of-practice-overview/">https://artificialintelligenceact.eu/code-of-practice-overview/</a>&#160;<a class="footnote-backref" href="#fnref:gpai" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:usstate">
+<p>U.S. Artificial Intelligence Law Update: Navigating the Evolving State and Federal Regulatory Landscape. Baker Botts. <a href="https://www.bakerbotts.com/thought-leadership/publications/2026/january/us-ai-law-update">https://www.bakerbotts.com/thought-leadership/publications/2026/january/us-ai-law-update</a>&#160;<a class="footnote-backref" href="#fnref:usstate" title="Jump back to footnote 12 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:usstate" title="Jump back to footnote 12 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:usstate" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+      <nav class="prevnext"><a class="prev" href="16-team-culture-leadership.html"><div class="dir">← Previous</div><div class="t">Ch 16 · Team, Culture &amp; Leadership for AI</div></a><a class="next" href="index.html"><div class="dir">→</div><div class="t">Back to Contents</div></a></nav>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> github.com/arubhatt</a>
+  </div>
+</footer>
+<div class="search-modal" id="search-modal">
+  <div class="scrim"></div>
+  <div class="search-box">
+    <input id="search-input" type="text" placeholder="Search the book…" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>

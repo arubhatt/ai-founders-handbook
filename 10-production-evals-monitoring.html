@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Production Evals &amp; Monitoring · The AI Founder&#x27;s Handbook</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/book.css">
+<link rel="stylesheet" href="assets/css/code.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html">The AI Founder's <b>Handbook</b></a>
+  <span class="spacer"></span>
+  <span class="byline-top hide-sm">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+  <button class="iconbtn" data-search-open aria-label="Search"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="hide-sm">Search</span> <kbd>/</kbd></button>
+  <a class="iconbtn" href="https://github.com/arubhatt" target="_blank" rel="noopener" aria-label="GitHub — arubhatt"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  <button class="iconbtn" id="theme-btn" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="toc"><a class="toc-book" href="index.html">The AI Founder&#x27;s Handbook</a>
+<div class="toc-part"><span class="pnum">I</span> Foundations</div>
+<a class="" href="01-introduction-to-ai-startups.html"><span class="cnum">01</span>Introduction to AI Startups</a>
+<a class="" href="02-ai-fundamentals-models.html"><span class="cnum">02</span>AI Fundamentals I: Models, Modalities &amp; Inference</a>
+<a class="" href="03-ai-fundamentals-rag-agents.html"><span class="cnum">03</span>AI Fundamentals II: Prompting, RAG, Agents &amp; Tooling</a>
+<div class="toc-part"><span class="pnum">II</span> Market &amp; Validation</div>
+<a class="" href="04-markets-users-product-strategy.html"><span class="cnum">04</span>Markets, Users &amp; AI Product Strategy</a>
+<a class="" href="05-data-strategy-flywheel.html"><span class="cnum">05</span>Data Strategy &amp; the Data Flywheel</a>
+<a class="" href="06-customer-validation-for-ai.html"><span class="cnum">06</span>Customer Validation for AI</a>
+<div class="toc-part"><span class="pnum">III</span> The Stack</div>
+<a class="" href="07-choosing-model-providers.html"><span class="cnum">07</span>Choosing Model Providers &amp; Hugging Face</a>
+<a class="" href="08-content-data-stack.html"><span class="cnum">08</span>The Content &amp; Data Stack</a>
+<a class="" href="09-infra-observability-llmops.html"><span class="cnum">09</span>Infrastructure, Observability &amp; LLMOps</a>
+<a class="current" href="10-production-evals-monitoring.html"><span class="cnum">10</span>Production Evals &amp; Monitoring</a>
+<div class="subnav"><a href="#from-pre-launch-evals-to-continuous-evals">10.1  From pre-launch evals to continuous evals</a><a href="#monitoring-quality-drift-and-regressions">10.2  Monitoring quality, drift and regressions</a><a href="#guardrails-and-hallucination-detection-in-production">10.3  Guardrails and hallucination detection in production</a><a href="#hallucination-detection-that-actually-works">Hallucination detection that actually works</a><a href="#surviving-provider-and-model-updates">10.4  Surviving provider and model updates</a><a href="#closing-the-loop-production-signals-into-the-eval-set">10.5  Closing the loop: production signals into the eval set</a></div>
+<div class="toc-part"><span class="pnum">IV</span> Go-to-Market &amp; Moat</div>
+<a class="" href="11-selling-ai-customer-success.html"><span class="cnum">11</span>Selling AI &amp; Customer Success</a>
+<a class="" href="12-defensibility-ai-moat.html"><span class="cnum">12</span>Defensibility &amp; the AI Moat</a>
+<div class="toc-part"><span class="pnum">V</span> Company Building</div>
+<a class="" href="13-finance-unit-economics.html"><span class="cnum">13</span>Finance &amp; Unit Economics for AI</a>
+<a class="" href="14-venture-funding-for-ai.html"><span class="cnum">14</span>Venture Funding for AI</a>
+<a class="" href="15-pitfalls-crises-ai.html"><span class="cnum">15</span>Pitfalls &amp; Crises in AI</a>
+<div class="toc-part"><span class="pnum">VI</span> People</div>
+<a class="" href="16-team-culture-leadership.html"><span class="cnum">16</span>Team, Culture &amp; Leadership for AI</a>
+<div class="toc-part"><span class="pnum">VII</span> Responsibility</div>
+<a class="" href="17-responsible-ai-regulation.html"><span class="cnum">17</span>Responsible AI: Safety, Ethics &amp; Regulation</a></nav></aside>
+  <main class="content">
+    <article class="chapter">
+      <header class="chapter-head reading">
+        <div class="kicker">Part III - The Stack · Chapter 10</div>
+        <div class="chapter-num">10</div>
+        <h1 class="chapter-title">Production Evals &amp; Monitoring</h1>
+        <p class="chapter-dek">Shipping is not the end of evaluation. How to catch silent quality drift before your customers do.</p>
+        <div class="chapter-meta">17 min read · Part III - The Stack</div>
+      </header>
+      <div class="reading"><div class="prose">
+<p class="lede">Your pre-launch eval suite is a photograph: a fixed set of cases, scored once, green before you shipped. Production is a river. The model you called yesterday is not guaranteed to be the model you call today, the questions your users ask drift week over week, and a prompt tweak that improved one cohort quietly broke another. The founders who survive year two are the ones who treat evaluation as a <strong>continuously running system</strong>, not a launch-gate checkbox — because the alternative is learning about a quality collapse from an angry customer, a churned account, or a screenshot on X.</p>
+<p>This chapter is about the machinery that watches quality after launch: continuous evals on live traffic, drift and regression monitoring, production guardrails and hallucination detection, and the discipline of surviving provider updates you never consented to. We build directly on the eval-set <strong>design</strong> principles from Chapter 6 (golden datasets, rubrics, LLM-as-judge calibration) and assume the tracing and observability plumbing from Chapter 9 is already emitting spans. Here we turn that plumbing into an early-warning system.</p>
+<h2 id="from-pre-launch-evals-to-continuous-evals"><span class="secnum">10.1</span>From pre-launch evals to continuous evals<a class="anchor" href="#from-pre-launch-evals-to-continuous-evals" aria-label="Link to this section">#</a></h2>
+<p>A pre-launch eval runs once against a curated dataset and answers &ldquo;is this good enough to ship?&rdquo; A <strong>continuous eval</strong> runs forever against a sample of real traffic and answers a harder question: &ldquo;is this <em>still</em> good enough, right now, for the inputs users are actually sending?&rdquo; The two share a rubric and a judge but differ in every operational dimension — cadence, sampling, cost model, and who gets paged when they fail.</p>
+<p>The core mechanic is a loop: <strong>production traffic → sample → auto-score → alert on regression → feed the failures back into the eval set.</strong> Everything in this chapter is an elaboration of those five steps. The auto-scorer is usually a cheaper model acting as <strong>LLM-as-judge</strong> against the same rubric you validated pre-launch (see Chapter 6), plus deterministic checks — schema validation, regex for banned phrases, latency thresholds — that cost nothing and catch the dumb failures a judge would waste tokens on.</p>
+<span class="sidenote-ref">1</span><span class="sidenote"><span class="sn-num">1</span>The single most common mistake here is running your <em>offline</em> eval suite on a cron and calling it "continuous." That tells you the model still passes yesterday's frozen cases. It tells you nothing about the novel inputs arriving today — which is exactly where regressions hide.</span>
+<p>The economics force a decision that pre-launch evals never do. Offline, you run every case because the dataset is small and you run it rarely. Online, an LLM-as-judge assessment costs roughly <strong>$0.01–$0.10 per trace</strong> depending on judge model and input size,<sup class="footnote-ref" id="fnref:langfuse"><a class="footnote-ref" href="#fn:langfuse">1</a></sup> and that cost scales linearly with traffic — every trace you judge burns fresh tokens forever. So you tier your evaluation by cost and coverage:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Eval layer</th>
+<th>Coverage</th>
+<th>Method</th>
+<th>Cost profile</th>
+<th>Catches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deterministic checks</td>
+<td>100% of traffic</td>
+<td>Regex, schema, latency, refusal detection</td>
+<td>~Free</td>
+<td>Malformed output, banned phrases, timeouts</td>
+</tr>
+<tr>
+<td>Small-model scorers</td>
+<td>100% of traffic</td>
+<td>Distilled classifier / SLM judge</td>
+<td>~$0.001/trace</td>
+<td>Faithfulness, toxicity, PII, off-topic</td>
+</tr>
+<tr>
+<td>LLM-as-judge</td>
+<td>1–10% sample</td>
+<td>Frontier judge vs. rubric</td>
+<td>$0.01–$0.10/trace</td>
+<td>Nuanced quality, tone, resolution correctness</td>
+</tr>
+<tr>
+<td>Agent-as-judge</td>
+<td>Flagged only</td>
+<td>Multi-step judge with tool access</td>
+<td>High</td>
+<td>Trajectory errors, tool-misuse on anomalies</td>
+</tr>
+<tr>
+<td>Human review</td>
+<td>&lt;1%, targeted</td>
+<td>SME labeling queue</td>
+<td>Very high</td>
+<td>Ground truth, judge calibration, edge cases</td>
+</tr>
+</tbody>
+</table></div>
+<span class="sidenote-ref">2</span><span class="sidenote"><span class="sn-num">2</span>The 2026 consensus, visible across Langfuse, Braintrust and Galileo docs, is <em>cheap-and-wide plus expensive-and-narrow</em>: run distilled evaluators on 100% of traffic and reserve frontier or agent judges for the sample and the flagged anomalies. Never run your most expensive judge on every request — it does not scale and it does not need to.</span>
+<p><strong>Cortex</strong>, our autonomous support agent for mid-market SaaS, runs exactly this stack. Every resolved ticket gets three free deterministic checks (did it produce valid tool calls, did it avoid the banned-phrase list, did it close under the latency SLA) and one distilled <strong>faithfulness scorer</strong> that verifies every claim in the reply traces back to a retrieved doc. Then 5% of resolved tickets are sampled into a frontier LLM-as-judge that scores <strong>resolution quality</strong> on a 1–5 rubric: did this actually solve the customer&rsquo;s problem, or did it merely sound helpful? That 5% sample, running every fifteen minutes, is the sensor that will later save the company.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>Continuous evals are cheap-and-wide plus expensive-and-narrow. Deterministic and distilled scorers on 100% of traffic; a frontier judge on a small, constant sample; a human on the anomalies.</p>
+</div>
+<figure class="diagram">
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The continuous evaluation loop from production traffic through sampling, scoring, regression alerting, and back into the eval set">
+  <style>.dg text{font-family:var(--sans);fill:var(--ink);font-size:13px} .dg .box{fill:var(--paper-2);stroke:var(--rule-2)} .dg .accent{fill:var(--accent-bg);stroke:var(--accent)} .dg .rec{fill:var(--sage-bg);stroke:var(--sage)} .dg .lbl{fill:var(--muted);font-size:11px;font-weight:600} .dg .flow{stroke:var(--rule-2);stroke-width:1.6;fill:none}</style>
+  <defs><marker id="arrowCh10" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--rule-2)"/></marker></defs>
+  <g class="dg">
+    <rect class="box" x="12" y="98" width="120" height="54" rx="9"/>
+    <text x="72" y="122" text-anchor="middle">Production</text>
+    <text x="72" y="139" text-anchor="middle">traffic</text>
+    <rect class="box" x="176" y="98" width="120" height="54" rx="9"/>
+    <text x="236" y="122" text-anchor="middle">Sample</text>
+    <text x="236" y="139" text-anchor="middle" class="lbl">1–10% + 100% cheap</text>
+    <rect class="accent" x="340" y="98" width="120" height="54" rx="9"/>
+    <text x="400" y="122" text-anchor="middle">Auto-score</text>
+    <text x="400" y="139" text-anchor="middle" class="lbl">judge + rules</text>
+    <rect class="accent" x="504" y="98" width="120" height="54" rx="9"/>
+    <text x="564" y="122" text-anchor="middle">Alert on</text>
+    <text x="564" y="139" text-anchor="middle">regression</text>
+    <rect class="rec" x="504" y="12" width="120" height="54" rx="9"/>
+    <text x="564" y="36" text-anchor="middle">Triage</text>
+    <text x="564" y="53" text-anchor="middle" class="lbl">rollback / patch</text>
+    <rect class="rec" x="258" y="12" width="150" height="54" rx="9"/>
+    <text x="333" y="36" text-anchor="middle">Feed back into</text>
+    <text x="333" y="53" text-anchor="middle">eval set</text>
+    <path class="flow" d="M132 125 H176" marker-end="url(#arrowCh10)"/>
+    <path class="flow" d="M296 125 H340" marker-end="url(#arrowCh10)"/>
+    <path class="flow" d="M460 125 H504" marker-end="url(#arrowCh10)"/>
+    <path class="flow" d="M564 98 V66" marker-end="url(#arrowCh10)"/>
+    <path class="flow" d="M504 39 H408" marker-end="url(#arrowCh10)"/>
+    <path class="flow" d="M258 39 H72 V98" marker-end="url(#arrowCh10)"/>
+  </g>
+</svg>
+<figcaption><strong>Figure 10.1</strong> - The continuous-eval loop: every production regression becomes a new permanent test case.</figcaption>
+</figure>
+
+<h2 id="monitoring-quality-drift-and-regressions"><span class="secnum">10.2</span>Monitoring quality, drift and regressions<a class="anchor" href="#monitoring-quality-drift-and-regressions" aria-label="Link to this section">#</a></h2>
+<p>Standard observability — latency, error rate, token spend (Chapter 9) — will not detect a quality collapse. Your p99 can be flat, your 5xx rate zero, your costs nominal, and your agent can still be silently giving worse answers. <strong>Quality regressions are invisible to infrastructure metrics.</strong><sup class="footnote-ref" id="fnref:valuestream"><a class="footnote-ref" href="#fn:valuestream">3</a></sup> You need metrics that measure the <em>content</em> of outputs, and you need to watch them for two distinct failure modes: drift and regression.</p>
+<p><strong>Drift</strong> is gradual and usually driven by the world changing around you. <strong>Input drift</strong> happens when the distribution of user prompts shifts away from what you optimized for — a support agent tuned on 2024 product questions now fielding questions about features shipped in 2026.<sup class="footnote-ref" id="fnref:galileo-drift"><a class="footnote-ref" href="#fn:galileo-drift">4</a></sup> <strong>Output drift</strong> and <strong>embedding drift</strong> happen when your responses slowly wander in tone, length, or semantic content even though no single day looks anomalous. Embedding-based drift detection — clustering the vector representations of inputs and outputs and watching the centroids move — is the standard technique, and tools like <strong>Arize Phoenix</strong> ship it built in alongside RAG retrieval-quality evaluation.<sup class="footnote-ref" id="fnref:phoenix"><a class="footnote-ref" href="#fn:phoenix">5</a></sup></p>
+<p><strong>Regression</strong> is sudden. A prompt change, a retrieval-index rebuild, a dependency bump, or — the one you don&rsquo;t control — a provider updating a model underneath you. Regressions show up as a step-change in your quality metric, and the whole point of continuous evals is to make that step visible within minutes, not weeks.</p>
+<p>The metrics worth alerting on, in rough priority order:</p>
+<ul>
+<li><strong>Task-success / resolution rate</strong> — your north-star quality metric, scored by judge or inferred from downstream signal (did the ticket reopen?).</li>
+<li><strong>Faithfulness / groundedness</strong> — fraction of claims supported by retrieved context; the leading indicator for hallucination.</li>
+<li><strong>Judge-score distribution</strong>, not just the mean — a bimodal split where 20% of answers crater while the average holds is invisible if you only watch averages.</li>
+<li><strong>Retrieval quality</strong> — recall and precision of the RAG step, since most &ldquo;the model got worse&rdquo; incidents are actually &ldquo;retrieval got worse&rdquo; (see Chapter 3).</li>
+<li><strong>Refusal and escalation rate</strong> — a spike means the model is punting; a collapse means it stopped escalating things it should.</li>
+</ul>
+<p>Set alert thresholds on rolling windows, not single traces — a 15-minute or 100-trace window smooths noise while still catching a genuine step-change fast. <strong>Braintrust</strong>, which raised an $80M Series B at an $800M valuation in February 2026, gates on exactly this in CI and in production, blocking deploys on score regression and alerting on live drops.<sup class="footnote-ref" id="fnref:braintrust"><a class="footnote-ref" href="#fn:braintrust">2</a></sup> The build-vs-buy calculus mirrors Chapter 9: roll your own on Langfuse or Phoenix if you have the engineering bandwidth and want the data in your warehouse; buy Braintrust, Arize AX, or Galileo if you want the judge orchestration, dashboards, and CI gates out of the box.</p>
+<span class="sidenote-ref">3</span><span class="sidenote case"><span class="sn-num">3</span><span class="sn-label">In the wild</span><strong>Braintrust's Loop (2026)</strong> - Braintrust's <em>Loop</em> agent turns the feedback loop into a product: it generates eval datasets, recommends scorers, and — the load-bearing feature — converts a flagged production failure into a permanent eval case in one click. This collapses the "closing the loop" step of Figure 10.1 from a data-engineering chore into a button, which is why the pattern has spread across the category.</span>
+<p>For Cortex, the metric that matters is resolution quality, and the team watches its <strong>p10 on a rolling 100-ticket window</strong>. Average resolution quality is a vanity number for them; a healthy agent that suddenly fails hard on a slice of tickets is the disaster scenario, and only the tail exposes it.</p>
+<div class="callout warning">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19H3z"/><path d="M12 10v4M12 17h.01"/></svg>Warning</p>
+<p>If you only monitor averages, you are blind to the most dangerous failure mode: a model update or prompt change that catastrophically breaks a <em>subset</em> of inputs while leaving the aggregate untouched. Segment by cohort, intent, and customer tier, and alert on the tail.</p>
+</div>
+<h2 id="guardrails-and-hallucination-detection-in-production"><span class="secnum">10.3</span>Guardrails and hallucination detection in production<a class="anchor" href="#guardrails-and-hallucination-detection-in-production" aria-label="Link to this section">#</a></h2>
+<p>Evals tell you, after the fact, that quality dropped. <strong>Guardrails</strong> act <em>in the request path</em>, in real time, to stop a bad output before the user sees it. They are complementary: evals are your smoke detector, guardrails are your circuit breaker. Do not confuse the two — a guardrail that blocks toxic output does nothing to tell you your resolution quality is sliding, and a monitoring dashboard has never once prevented a hallucinated refund policy from reaching a customer.</p>
+<p>A production guardrail stack in 2026 is layered, and the canonical architecture has roughly six stages: <strong>input validation, prompt hardening, retrieval/RAG-rail filtering, output filtering (including hallucination detection), tool-call execution gating, and a managed moderation API.</strong><sup class="footnote-ref" id="fnref:digitalapplied"><a class="footnote-ref" href="#fn:digitalapplied">6</a></sup> The two open-source anchors are <strong>NVIDIA NeMo Guardrails</strong>, which uses a DSL called Colang to define dialog and agentic rails across five pipeline stages and hits sub-100ms latency, and <strong>Guardrails AI</strong>, whose Hub had roughly 70 composable validators as of May 2026 spanning factuality, PII, safety, and brand risk.<sup class="footnote-ref" id="fnref:nemo"><a class="footnote-ref" href="#fn:nemo">7</a></sup><sup class="footnote-ref" id="fnref2:digitalapplied"><a class="footnote-ref" href="#fn:digitalapplied">6</a></sup> The emerging consensus treats them as complementary — NeMo for dialog and agentic rails, Guardrails AI for composable output validation.</p>
+<p>The critical design constraint is <strong>latency</strong>. A guardrail sits in the synchronous request path, so a slow validator is a slow product. This is why the 2026 shift is toward <strong>small, purpose-built models</strong> for real-time checks: Galileo&rsquo;s <strong>Luna-2</strong> small language models detect hallucinations, prompt injection, PII, toxicity and bias in real time at a claimed 98% lower cost than LLM-based evaluation while hitting a 0.95 F1 score.<sup class="footnote-ref" id="fnref:galileo-guardrails"><a class="footnote-ref" href="#fn:galileo-guardrails">8</a></sup> A frontier model as your inline hallucination check is too slow and too expensive; a distilled SLM is fast enough to run on every request.</p>
+<h3 id="hallucination-detection-that-actually-works">Hallucination detection that actually works<a class="anchor" href="#hallucination-detection-that-actually-works" aria-label="Link to this section">#</a></h3>
+<p>The most reliable production technique is not &ldquo;ask a big model if this is true&rdquo; — it&rsquo;s <strong>grounding verification</strong>. For any RAG or tool-using system, decompose the output into atomic claims and check each against the retrieved context. If a claim isn&rsquo;t supported by a source, it&rsquo;s a candidate hallucination, and you either suppress it, regenerate, or escalate. NeMo&rsquo;s fact-checking and retrieval rails do this against a knowledge base; you can also build it as a distilled scorer.<sup class="footnote-ref" id="fnref2:nemo"><a class="footnote-ref" href="#fn:nemo">7</a></sup> This groundedness check is the same faithfulness metric you monitor in evals — the difference is you&rsquo;re now running it inline and blocking on it, not sampling and dashboarding it.</p>
+<p>The newest pattern, pioneered by Galileo, dissolves the boundary between evals and guardrails entirely: <strong>pre-production evaluations automatically become production guardrails</strong>, where eval scores gate agent actions, tool access, and escalation at runtime.<sup class="footnote-ref" id="fnref:getmaxim"><a class="footnote-ref" href="#fn:getmaxim">9</a></sup> The rubric you validate offline becomes the runtime policy. This is where the two halves of this chapter converge.</p>
+<span class="sidenote-ref">4</span><span class="sidenote case"><span class="sn-num">4</span><span class="sn-label">In the wild</span><strong>Guardrails AI Hub at ~70 validators (May 2026)</strong> - Guardrails AI's <em>Guard</em> wrapper orchestrates composable validators pulled from a Hub that reached roughly 70 validators by mid-2026, letting teams stack factuality, PII-leak, and brand-risk checks declaratively rather than hand-coding each one. The composability matters: guardrails are not one model but a pipeline you tune per output type.</span>
+<p>Cortex runs a tight inline stack. Before any reply leaves the agent, a Luna-class SLM verifies groundedness against the retrieved help-center docs, a PII filter scrubs anything that looks like a leaked customer record, and a <strong>tool-call gate</strong> blocks the agent from issuing a refund above a per-customer threshold without human sign-off — the last one being a guardrail against <em>action</em>, not just <em>text</em>, which is the category most founders forget until an agent does something expensive.</p>
+<div class="callout definition">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20h15"/></svg>Definition</p>
+<p><strong>Guardrail vs. eval.</strong> A <em>guardrail</em> runs synchronously in the request path and can block, rewrite, or escalate a single output before the user sees it. An <em>eval</em> runs asynchronously on sampled traffic and measures aggregate quality over time. You need both; neither substitutes for the other.</p>
+</div>
+<h2 id="surviving-provider-and-model-updates"><span class="secnum">10.4</span>Surviving provider and model updates<a class="anchor" href="#surviving-provider-and-model-updates" aria-label="Link to this section">#</a></h2>
+<p>Here is the industry&rsquo;s dirtiest open secret, and the reason continuous evals are non-negotiable for an AI startup: <strong>the model behind your API call can change without you doing anything.</strong> Even when you pin a version, the platform-level system prompt, safety layer, and routing evolve independently — two calls to the same pinned model on different days can behave differently because of what surrounds the model, not the weights themselves.<sup class="footnote-ref" id="fnref:silent"><a class="footnote-ref" href="#fn:silent">10</a></sup> This is the <em>silent versioning problem</em>, and it is structural, not a bug.</p>
+<p>The 2026 deprecation calendar makes the hard version of this concrete. Anthropic <strong>retired the entire Claude 4.0 lineage on June 15, 2026</strong> — calls to those snapshots now return an error — and the same Claude Sonnet 4 that was retired on the first-party API on that date carries a <em>different</em> end-of-life of October 14, 2026 on Amazon Bedrock.<sup class="footnote-ref" id="fnref:anthropic-dep"><a class="footnote-ref" href="#fn:anthropic-dep">11</a></sup><sup class="footnote-ref" id="fnref:lifecycle"><a class="footnote-ref" href="#fn:lifecycle">12</a></sup> OpenAI notified older GPT-5 and o3 snapshots for removal on December 11, 2026.<sup class="footnote-ref" id="fnref:openai-dep"><a class="footnote-ref" href="#fn:openai-dep">13</a></sup> Meanwhile the frontier keeps moving: <strong>Claude Opus 4.8</strong> launched May 28, 2026 at $5/$25 per million input/output tokens, Sonnet 4.6 at $3/$15, Haiku 4.5 at $1/$5, against OpenAI&rsquo;s GPT-5.4 at $2.50/$15.<sup class="footnote-ref" id="fnref:anthropic-price"><a class="footnote-ref" href="#fn:anthropic-price">14</a></sup> Every one of those numbers is a migration you will eventually be forced to make.</p>
+<p>There are three distinct threats, and they need three distinct defenses:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Threat</th>
+<th>What happens</th>
+<th>Defense</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hard deprecation</strong></td>
+<td>Pinned model returns an error on a known date</td>
+<td>Track the deprecation calendar; pre-migrate and eval the successor weeks early</td>
+</tr>
+<tr>
+<td><strong>Silent regression</strong></td>
+<td>Same model ID, different behavior day-to-day</td>
+<td>Continuous evals with a constant sample; alert on the step-change</td>
+</tr>
+<tr>
+<td><strong>Forced upgrade</strong></td>
+<td>Provider sunsets your version; you must move</td>
+<td>A/B the new model against your golden set before cutover; keep a rollback path</td>
+</tr>
+</tbody>
+</table></div>
+<p>The defenses compound. <strong>Pin every model version explicitly</strong> — never call a floating alias like <code>latest</code> in production, because that hands the provider a live edit button on your product. <strong>Maintain a model-migration runbook</strong> and treat every provider version bump as a deploy that must pass your full offline eval suite before it ships (see Chapter 6 for the suite). And keep the abstraction layer from Chapter 7 thin enough that swapping providers is a config change, not a rewrite — multi-provider optionality is your leverage when a single vendor&rsquo;s roadmap diverges from your needs.</p>
+<p>But pinning is necessary, not sufficient: the version string can lie. The only defense against a regression on a pinned model is the sensor — a continuous eval on a constant sample against a stable rubric, so that when behavior shifts, your metric shifts within minutes.</p>
+<span class="sidenote-ref">5</span><span class="sidenote case"><span class="sn-num">5</span><span class="sn-label">In the wild</span><strong>The Opus "nerf" complaints (2026)</strong> - In mid-2026 a widely-shared GitHub thread accused Anthropic of quietly degrading Opus performance on complex engineering work — the archetypal <em>silent regression</em> dispute. Whether or not weights changed, the episode's lesson is unambiguous: teams <em>without</em> their own continuous evals had only vibes and forum threads as evidence, while teams <em>with</em> them had a dated quality-score chart. Own your own measurement or you are arguing about feelings.</span>
+<p><strong>This is the Cortex moment the whole chapter has been building toward.</strong> On a Tuesday afternoon, Cortex&rsquo;s upstream provider silently updated the model behind Cortex&rsquo;s pinned tier — same version string, changed behavior. Within roughly three hours, the rolling p10 on resolution quality dropped from 4.1 to 2.8 on the 5-point rubric; the 15-minute LLM-as-judge sample caught it long before support tickets started reopening at scale. Infrastructure metrics were pristine the entire time — latency flat, error rate zero, spend nominal. The only thing that fired was the continuous eval. The on-call engineer rolled traffic to the fallback provider through the Chapter 7 abstraction layer, and the incident stayed a footnote instead of a headline. <strong>The next chapter&rsquo;s crisis is what happens to the startup that shipped Cortex&rsquo;s exact architecture <em>without</em> this sensor</strong> (see Chapter 15) — same provider update, no early warning, discovered three weeks later through churn.</p>
+<div class="callout rule">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 3.5L16 11H5"/><path d="M5 21v-4"/></svg>Founder&#x27;s Rule</p>
+<p>Never call a floating model alias in production. Pin the version, and then distrust the pin — the version string is a promise the provider can silently break, so run a continuous eval as your ground truth.</p>
+</div>
+<h2 id="closing-the-loop-production-signals-into-the-eval-set"><span class="secnum">10.5</span>Closing the loop: production signals into the eval set<a class="anchor" href="#closing-the-loop-production-signals-into-the-eval-set" aria-label="Link to this section">#</a></h2>
+<p>A continuous-eval system that only alerts is a system that decays. Every regression it catches, every hallucination a guardrail blocks, every ticket a human overturns is a <strong>new test case your offline suite was missing</strong> — and the discipline that separates teams whose quality compounds from teams who fight the same fire twice is feeding those failures back in. This is the arrow in Figure 10.1 that returns to the eval set, and it is the mechanism that turns your Chapter 5 data flywheel into a <em>quality</em> flywheel.</p>
+<p>The loop has four steps, and each needs an owner:</p>
+<ol>
+<li><strong>Capture.</strong> Every flagged production failure — low judge score, guardrail block, human override, customer thumbs-down — lands in a triage queue with its full trace (Chapter 9).</li>
+<li><strong>Curate.</strong> A human confirms it&rsquo;s a real failure (not a judge miscalibration), assigns the correct label, and writes the expected output. This is where your <strong>golden dataset</strong> grows, and where you also catch your judge drifting.</li>
+<li><strong>Promote.</strong> The curated case joins the offline eval set, so the next prompt or model change is tested against a failure that actually happened in your product, not a hypothetical.</li>
+<li><strong>Regress-guard.</strong> The new case now blocks any deploy that would reintroduce the failure — a permanent ratchet against backsliding.</li>
+</ol>
+<span class="sidenote-ref">6</span><span class="sidenote"><span class="sn-num">6</span>Weight your golden set toward <em>observed</em> failures, not imagined ones. A hundred real production failures your users actually hit is worth more than a thousand synthetic edge cases you dreamed up in a planning meeting. The distribution of your test set should track the distribution of your risk.</span>
+<p>Tooling has made this nearly frictionless — Braintrust&rsquo;s Loop converts a production failure into an eval case in one click, and the same one-click promotion is now table stakes across Langfuse, Galileo and Arize.<sup class="footnote-ref" id="fnref2:braintrust"><a class="footnote-ref" href="#fn:braintrust">2</a></sup> But the tool is the easy part; the hard part is the <strong>human curation discipline</strong>, because a golden set polluted with mislabeled cases silently corrupts every downstream decision. Budget real SME time for step 2. And watch your judge: the same production samples that grow your eval set are the data you use to re-check that your LLM-as-judge still agrees with human labels, because a judge that has drifted is a broken instrument reporting confident nonsense (judge calibration is designed in Chapter 6; here you <em>maintain</em> it).</p>
+<p>For Cortex, the Tuesday regression became case #4,417 in the golden set that same week: the exact prompts that scored 2.8, paired with the correct high-quality resolutions, now permanently gate every deploy. The provider can update the model again — and it will — but this specific failure can never silently return without turning the CI suite red. That is what a closed loop buys you: <strong>every incident makes the system permanently harder to break in the same way twice.</strong></p>
+<div class="callout takeaways">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L17 8"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg>Key Takeaways</p>
+<p><strong>Key takeaways</strong>
+- Pre-launch evals are a photograph; production needs a continuously running video. The loop is: traffic → sample → auto-score → alert → feed back into the eval set.
+- Tier evaluation by cost and coverage: deterministic and distilled scorers on 100% of traffic, a frontier LLM-as-judge on a small constant sample, humans on the anomalies.
+- Infrastructure metrics cannot see quality collapse. Monitor task-success, faithfulness, and the <em>distribution</em> of judge scores — alert on the tail, not the mean.
+- Guardrails act in real time to block bad outputs; evals measure quality over time. You need both, and small purpose-built models (e.g. Luna-2-class SLMs) make inline checks fast and cheap enough to run on every request.
+- The model behind your pinned API call can change silently. Pin versions, track the deprecation calendar, keep a thin multi-provider abstraction — and run a continuous eval as ground truth because the version string can lie.
+- Close the loop: every caught regression becomes a permanent eval case, turning your data flywheel into a quality ratchet.</p>
+</div>
+<div class="exercise">
+<p class="co-label"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Exercise</p>
+<p><strong>Hands-on: Stand up a minimum-viable continuous-eval loop</strong>
+1. Pick your single north-star quality metric (e.g. resolution correctness) and write it as a 1–5 rubric — reuse your Chapter 6 eval rubric.
+2. Instrument a <strong>5% sample</strong> of production traffic to run an LLM-as-judge scorer against that rubric on a 15-minute cadence, using a cheaper judge model to control cost (~$0.01–$0.10/trace).
+3. Add <strong>two free deterministic checks</strong> on 100% of traffic: schema/format validation and a banned-phrase regex.
+4. Plot the judge-score <strong>p10 on a rolling 100-trace window</strong> and set an alert on a step-change (e.g. p10 drops &gt;0.8 points in one window).
+5. Pin your model version explicitly and add a calendar reminder for your provider&rsquo;s next known deprecation date.
+6. Build the one-click path: when a trace scores below threshold, promote it (with a human-written expected output) into your offline golden set so it gates the next deploy.
+7. Simulate a regression — swap to a deliberately weaker model for ten minutes — and confirm the alert fires and the trace lands in your triage queue.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:langfuse">
+<p>LLM-as-a-Judge — Langfuse Documentation (per-assessment cost and production sampling). <a href="https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge">https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge</a>&#160;<a class="footnote-backref" href="#fnref:langfuse" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:braintrust">
+<p>8 best human-in-the-loop LLM evaluation platforms in 2026 — Braintrust (Series B, CI/CD gating, Loop agent). <a href="https://www.braintrust.dev/articles/best-human-in-the-loop-llm-evaluation-platforms-2026">https://www.braintrust.dev/articles/best-human-in-the-loop-llm-evaluation-platforms-2026</a>&#160;<a class="footnote-backref" href="#fnref:braintrust" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:braintrust" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:valuestream">
+<p>AI Monitoring in Production 2026: LLM Observability &amp; Drift Detection — ValueStream AI. <a href="https://valuestreamai.com/blog/ai-monitoring-in-production-guide-2026">https://valuestreamai.com/blog/ai-monitoring-in-production-guide-2026</a>&#160;<a class="footnote-backref" href="#fnref:valuestream" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:galileo-drift">
+<p>9 Best LLM Drift Monitoring Platforms in 2026 — Galileo (input, output, and embedding drift). <a href="https://galileo.ai/blog/best-llm-output-drift-monitoring-platforms">https://galileo.ai/blog/best-llm-output-drift-monitoring-platforms</a>&#160;<a class="footnote-backref" href="#fnref:galileo-drift" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:phoenix">
+<p>Fiddler AI vs Arize Phoenix (2026) — embedding drift visualization and hallucination detection. <a href="https://aisecurityandsafety.org/en/compare/fiddler-ai-tool-vs-arize-phoenix/">https://aisecurityandsafety.org/en/compare/fiddler-ai-tool-vs-arize-phoenix/</a>&#160;<a class="footnote-backref" href="#fnref:phoenix" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:digitalapplied">
+<p>LLM Guardrails: Production Safety Layers Reference 2026 — Digital Applied (six-layer architecture; Guardrails AI Hub). <a href="https://www.digitalapplied.com/blog/llm-guardrails-production-safety-layers-reference-2026">https://www.digitalapplied.com/blog/llm-guardrails-production-safety-layers-reference-2026</a>&#160;<a class="footnote-backref" href="#fnref:digitalapplied" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:digitalapplied" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:nemo">
+<p>NeMo Guardrails 2026: NVIDIA&rsquo;s LLM Safety Toolkit (Colang, sub-100ms, fact-checking and retrieval rails). <a href="https://appsecsanta.com/nemo-guardrails">https://appsecsanta.com/nemo-guardrails</a>&#160;<a class="footnote-backref" href="#fnref:nemo" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:nemo" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:galileo-guardrails">
+<p>5 Best AI Guardrails Platforms Compared in 2026 — Galileo (Luna-2 SLMs, 98% cost reduction, 0.95 F1). <a href="https://galileo.ai/blog/best-ai-guardrails-platforms">https://galileo.ai/blog/best-ai-guardrails-platforms</a>&#160;<a class="footnote-backref" href="#fnref:galileo-guardrails" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:getmaxim">
+<p>Top 5 LLM Evaluation Platforms in 2026 — Maxim AI (evals-become-guardrails pattern). <a href="https://www.getmaxim.ai/articles/top-5-llm-evaluation-platforms-in-2026/">https://www.getmaxim.ai/articles/top-5-llm-evaluation-platforms-in-2026/</a>&#160;<a class="footnote-backref" href="#fnref:getmaxim" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:silent">
+<p>The Silent Versioning Problem in AI Inference — DigitalOcean. <a href="https://www.digitalocean.com/community/tutorials/model-silent-versioning-problem">https://www.digitalocean.com/community/tutorials/model-silent-versioning-problem</a>&#160;<a class="footnote-backref" href="#fnref:silent" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:anthropic-dep">
+<p>Model deprecations — Claude Platform Docs (Claude 4 retirement, June 15, 2026). <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations">https://platform.claude.com/docs/en/about-claude/model-deprecations</a>&#160;<a class="footnote-backref" href="#fnref:anthropic-dep" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:lifecycle">
+<p>AI Model Deprecation and Lifecycle Calendar — Anthropic, OpenAI, Google, Amazon Bedrock. <a href="https://hidekazu-konishi.com/entry/ai_model_deprecation_and_lifecycle_calendar.html">https://hidekazu-konishi.com/entry/ai_model_deprecation_and_lifecycle_calendar.html</a>&#160;<a class="footnote-backref" href="#fnref:lifecycle" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:openai-dep">
+<p>Deprecations — OpenAI API (GPT-5/o3 snapshot removal, December 11, 2026). <a href="https://developers.openai.com/api/docs/deprecations">https://developers.openai.com/api/docs/deprecations</a>&#160;<a class="footnote-backref" href="#fnref:openai-dep" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:anthropic-price">
+<p>Claude Opus 4.8: Pricing, benchmarks, and which model to run in 2026 — CloudZero. <a href="https://www.cloudzero.com/blog/claude-opus-4-8-pricing/">https://www.cloudzero.com/blog/claude-opus-4-8-pricing/</a>&#160;<a class="footnote-backref" href="#fnref:anthropic-price" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+      <nav class="prevnext"><a class="prev" href="09-infra-observability-llmops.html"><div class="dir">← Previous</div><div class="t">Ch 9 · Infrastructure, Observability &amp; LLMOps</div></a><a class="next" href="11-selling-ai-customer-success.html"><div class="dir">Next →</div><div class="t">Ch 11 · Selling AI &amp; Customer Success</div></a></nav>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span class="foot-curated">Curated by <a href="https://github.com/arubhatt" target="_blank" rel="noopener">Arunabh Bhattacharjee</a></span>
+    <a class="foot-gh" href="https://github.com/arubhatt" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> github.com/arubhatt</a>
+  </div>
+</footer>
+<div class="search-modal" id="search-modal">
+  <div class="scrim"></div>
+  <div class="search-box">
+    <input id="search-input" type="text" placeholder="Search the book…" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>
