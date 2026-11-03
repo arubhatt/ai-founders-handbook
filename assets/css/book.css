@@ -485,3 +485,11 @@ figure figcaption .fig-label { color: var(--accent); font-weight: 600; text-tran
   a { color: #000; text-decoration: none; background: none; }
   .chapter-head { break-after: avoid; }
 }
+
+/* social links: header icons on wider screens, footer on phones */
+@media (max-width: 600px) {
+  .top a.iconbtn[href*="github.com"], .top a.iconbtn[href*="linkedin.com"],
+  header a.iconbtn[href*="github.com"], header a.iconbtn[href*="linkedin.com"] { display: none; }
+  .topbar { gap: .6rem; }
+  .topbar .brand { min-width: 0; overflow: hidden; text-overflow: ellipsis; letter-spacing: .08em; }
+}
